@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Order Confirmed | ElectroLux</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-surface-variant": "#c4c7c7",
+                    "on-tertiary": "#002e69",
+                    "outline-variant": "#444748",
+                    "error-container": "#93000a",
+                    "secondary-fixed": "#ffe088",
+                    "surface": "#131315",
+                    "secondary-fixed-dim": "#e9c349",
+                    "primary-fixed": "#e5e2e1",
+                    "on-tertiary-container": "#0075f4",
+                    "surface-container": "#1f1f21",
+                    "on-secondary-container": "#342800",
+                    "on-secondary-fixed-variant": "#574500",
+                    "on-error-container": "#ffdad6",
+                    "on-primary-fixed": "#1c1b1b",
+                    "tertiary": "#adc6ff",
+                    "on-surface": "#e4e2e4",
+                    "error": "#ffb4ab",
+                    "surface-bright": "#39393b",
+                    "on-secondary": "#3c2f00",
+                    "on-primary-container": "#7b7979",
+                    "inverse-primary": "#5f5e5e",
+                    "primary-container": "#0a0a0a",
+                    "inverse-on-surface": "#303032",
+                    "tertiary-fixed": "#d8e2ff",
+                    "tertiary-fixed-dim": "#adc6ff",
+                    "on-primary-fixed-variant": "#474646",
+                    "on-secondary-fixed": "#241a00",
+                    "inverse-surface": "#e4e2e4",
+                    "primary-fixed-dim": "#c9c6c5",
+                    "background": "#131315",
+                    "outline": "#8e9192",
+                    "surface-container-highest": "#353437",
+                    "on-primary": "#313030",
+                    "on-background": "#e4e2e4",
+                    "primary": "#c9c6c5",
+                    "tertiary-container": "#00091f",
+                    "surface-container-low": "#1b1b1d",
+                    "secondary": "#e9c349",
+                    "surface-container-lowest": "#0e0e10",
+                    "on-tertiary-fixed-variant": "#004493",
+                    "on-error": "#690005",
+                    "on-tertiary-fixed": "#001a41",
+                    "surface-tint": "#c9c6c5",
+                    "surface-dim": "#131315",
+                    "surface-variant": "#353437",
+                    "secondary-container": "#af8d11",
+                    "surface-container-high": "#2a2a2c"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-md": "24px",
+                    "stack-lg": "48px",
+                    "margin-mobile": "16px",
+                    "unit": "8px",
+                    "gutter": "24px",
+                    "stack-sm": "12px",
+                    "container-max-width": "1440px",
+                    "margin-desktop": "80px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "display-xl": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "label-sm": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                    "display-xl": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-lg": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #131315;
+            color: #e4e2e4;
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md antialiased">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-zinc-950/90 backdrop-blur-xl border-b border-zinc-800/50 shadow-2xl shadow-black/40">
+<div class="flex justify-between items-center px-10 py-4 max-w-[1440px] mx-auto">
+<div class="text-2xl font-bold tracking-tighter text-zinc-50 dark:text-white">ElectroLux</div>
+<div class="hidden md:flex items-center gap-stack-md font-sans antialiased tracking-tight">
+<a class="text-zinc-400 dark:text-zinc-500 hover:text-blue-500 dark:hover:text-blue-400 transition-colors duration-300" href="#">Collections</a>
+<a class="text-zinc-400 dark:text-zinc-500 hover:text-blue-500 dark:hover:text-blue-400 transition-colors duration-300" href="#">New Arrivals</a>
+<a class="text-zinc-400 dark:text-zinc-500 hover:text-blue-500 dark:hover:text-blue-400 transition-colors duration-300" href="#">Support</a>
+</div>
+<div class="flex items-center gap-6">
+<button class="active:scale-95 duration-200 text-zinc-400 hover:text-blue-500 transition-colors">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+</button>
+<button class="active:scale-95 duration-200 text-zinc-400 hover:text-blue-500 transition-colors">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</button>
+</div>
+</div>
+</nav>
+<main class="pt-32 pb-20 px-margin-mobile md:px-margin-desktop max-w-[1440px] mx-auto min-h-screen">
+<div class="max-w-4xl mx-auto">
+<!-- Success Header -->
+<div class="text-center space-y-stack-md mb-16">
+<div class="inline-flex items-center justify-center w-24 h-24 rounded-full bg-on-tertiary-container/10 mb-6">
+<span class="material-symbols-outlined text-on-tertiary-container text-6xl" style="font-variation-settings: 'wght' 200;">check_circle</span>
+</div>
+<h1 class="font-display-xl text-display-xl tracking-tighter text-on-surface">Thank you for your order.</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl mx-auto">Your premium hardware is being prepared for shipment. We've sent a confirmation email with tracking details to your inbox.</p>
+<div class="pt-4">
+<span class="font-label-sm text-label-sm uppercase tracking-[0.2em] text-on-tertiary-container">Order #ELX-99420815</span>
+</div>
+</div>
+<!-- Bento Summary Layout -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Items Summary -->
+<div class="md:col-span-2 bg-surface-container rounded-xl p-stack-md shadow-2xl shadow-black/40 border border-white/5">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-stack-md border-b border-outline-variant/30 pb-4">Order Summary</h2>
+<div class="space-y-stack-md">
+<!-- Product Item 1 -->
+<div class="flex items-center gap-gutter">
+<div class="w-24 h-24 bg-surface-container-highest rounded-lg overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="A macro photography shot of a high-end black brushed aluminum audio amplifier. The lighting is dramatic and moody with thin electric blue light traces highlighting the precision-milled edges. The aesthetic is clean, corporate, and extremely premium, set against a dark, minimalist background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxu69RJJlPfVnwcJsct4Sn8doumtkiTcF0eCmZpnkp-rI3VOn48I-11wt7KFFM7eqGDZk84QjezqHSnz8yiDxQ6r7R_mB1LfwkGlxIQu3MykKt6GDSBjuyEieG9wV-O-a4dkb3bTiQ4ROnH8WAG3XW9XtCg1hr5Vo5xAoZ9zaBWIge1oTfAR7NPSmiI2HNFYyZVo_0aCKScwFjQrIUU6ENZaFaSULNmsdARinTMXu6_f09fu0b565wCZL3c1_6RdgQw6aefEUSQb10"/>
+</div>
+<div class="flex-grow">
+<h3 class="font-headline-md text-body-lg text-on-surface">Lumina X-1 Pro Amplifier</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Standard Black | Matte Finish</p>
+</div>
+<div class="text-right">
+<p class="font-headline-md text-body-lg text-on-surface">$2,499.00</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Qty: 1</p>
+</div>
+</div>
+<!-- Product Item 2 -->
+<div class="flex items-center gap-gutter">
+<div class="w-24 h-24 bg-surface-container-highest rounded-lg overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Close-up of a silver-braided high-performance audio cable with gold-plated connectors resting on a dark slate surface. Soft, cinematic lighting from the side emphasizes the intricate texture of the braiding. The atmosphere is professional and focuses on technical excellence and high-fidelity hardware." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMpHfrEhmQlIXpkabJFV02pco0b-7GC4F6IiycIjgoewq5-rNi2Yn7sU2a0jWnx6STkfHuntGmPt-I47WuzzKqdX7HnaC5xIpthnCgrejUMb2fxK7Ho6aZ3aWLFUhndDPbjF7kS33oEMymdIupZ0SyehGHKnOS4RjA80dfhiXoPpOATLkzqKQsv8qRoCv2HirexuYvWvrSUKXA--xPHslDs9mCy_2LTHACZkowZNgkSTnCp4kX9PjqstyeKSh3p6-pt_LQbKUDP85H"/>
+</div>
+<div class="flex-grow">
+<h3 class="font-headline-md text-body-lg text-on-surface">Ion-Core Link Cable</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant">2.0m | Braided Silver</p>
+</div>
+<div class="text-right">
+<p class="font-headline-md text-body-lg text-on-surface">$149.00</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Qty: 2</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Totals & Shipping -->
+<div class="space-y-gutter">
+<!-- Pricing Card -->
+<div class="bg-surface-container-high rounded-xl p-stack-md shadow-2xl shadow-black/40 border border-white/5">
+<div class="space-y-4">
+<div class="flex justify-between font-body-md text-on-surface-variant">
+<span>Subtotal</span>
+<span>$2,797.00</span>
+</div>
+<div class="flex justify-between font-body-md text-on-surface-variant">
+<span>Shipping</span>
+<span class="text-secondary">Complimentary</span>
+</div>
+<div class="flex justify-between font-body-md text-on-surface-variant">
+<span>Estimated Tax</span>
+<span>$223.76</span>
+</div>
+<div class="pt-4 border-t border-outline-variant/30 flex justify-between font-headline-md text-on-surface">
+<span>Total</span>
+<span class="text-on-tertiary-container">$3,020.76</span>
+</div>
+</div>
+</div>
+<!-- Delivery Info -->
+<div class="bg-surface-container-low rounded-xl p-stack-md border border-white/5">
+<h4 class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant mb-4">Estimated Delivery</h4>
+<div class="flex items-center gap-3 mb-2">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">calendar_today</span>
+<span class="font-headline-md text-body-md">October 24 – 26, 2024</span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Express White-Glove Shipping</p>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="mt-16 flex flex-col md:flex-row gap-gutter justify-center items-center">
+<a class="px-10 py-4 bg-on-tertiary-container text-white font-label-sm uppercase tracking-[0.2em] rounded-sm hover:brightness-110 active:scale-95 transition-all w-full md:w-auto text-center" href="index.html">
+                    Return to Shop
+                </a>
+<button class="px-10 py-4 border border-outline-variant text-on-surface font-label-sm uppercase tracking-[0.2em] rounded-sm hover:bg-white/5 active:scale-95 transition-all w-full md:w-auto text-center">
+                    Print Receipt
+                </button>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 bg-zinc-950 border-t border-zinc-900">
+<div class="flex flex-col md:flex-row justify-between items-center px-20 gap-8">
+<div class="text-lg font-black tracking-tighter text-zinc-300">ElectroLux</div>
+<div class="flex gap-8 text-xs font-light text-zinc-600">
+<a class="hover:text-blue-400 underline-offset-4 hover:underline transition-opacity" href="#">Privacy Policy</a>
+<a class="hover:text-blue-400 underline-offset-4 hover:underline transition-opacity" href="#">Terms of Service</a>
+<a class="hover:text-blue-400 underline-offset-4 hover:underline transition-opacity" href="#">Warranty</a>
+</div>
+<div class="text-xs font-light text-zinc-500">
+                © 2024 ElectroLux Global. All rights reserved.
+            </div>
+</div>
+</footer>
+<!-- BottomNavBar (Mobile only) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 rounded-t-2xl bg-zinc-900/95 backdrop-blur-lg border-t border-zinc-800 shadow-[0_-10px_30px_rgba(0,0,0,0.5)]">
+<div class="flex justify-around items-center h-20 pb-4">
+<a class="text-zinc-500 dark:text-zinc-400 flex flex-col items-center gap-1 hover:bg-zinc-800/50 transition-all active:scale-90 duration-150" href="index.html">
+<span class="material-symbols-outlined" data-icon="storefront">storefront</span>
+<span class="text-[10px] uppercase tracking-widest font-medium">Shop</span>
+</a>
+<a class="text-zinc-500 dark:text-zinc-400 flex flex-col items-center gap-1 hover:bg-zinc-800/50 transition-all active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+<span class="text-[10px] uppercase tracking-widest font-medium">Search</span>
+</a>
+<a class="text-zinc-500 dark:text-zinc-400 flex flex-col items-center gap-1 hover:bg-zinc-800/50 transition-all active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+<span class="text-[10px] uppercase tracking-widest font-medium">Cart</span>
+</a>
+<a class="text-zinc-500 dark:text-zinc-400 flex flex-col items-center gap-1 hover:bg-zinc-800/50 transition-all active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="text-[10px] uppercase tracking-widest font-medium">Account</span>
+</a>
+</div>
+</nav>
+</body></html>

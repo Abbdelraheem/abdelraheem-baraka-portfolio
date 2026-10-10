@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RecFlow — Browser Screen Recording & Distributed Media Platform</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-black: #060608;
+      --card-black: #0c0c10;
+      --card-black-2: #121218;
+      --rec-red: #ff1e44;
+      --rec-red-bright: #ff3b5c;
+      --rec-red-glow: rgba(255, 30, 68, 0.35);
+      --rec-red-subtle: rgba(255, 30, 68, 0.12);
+      --hair-red: rgba(255, 30, 68, 0.22);
+    }
+    body {
+      background-color: var(--bg-black);
+      color: #f5f5f7;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+    .font-heading { font-family: 'Space Grotesk', sans-serif; }
+    .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+    /* Red neon glow aura */
+    .red-glow {
+      box-shadow: 0 0 35px var(--rec-red-glow), 0 0 10px rgba(255, 30, 68, 0.2);
+    }
+    .red-badge {
+      background: var(--rec-red-subtle);
+      border: 1px solid var(--hair-red);
+      color: #ff6b84;
+    }
+    .red-btn {
+      background: linear-gradient(135deg, #ff1e44 0%, #d80b2d 100%);
+      color: #ffffff;
+      box-shadow: 0 4px 25px var(--rec-red-glow);
+      transition: all 0.2s ease;
+    }
+    .red-btn:hover {
+      background: linear-gradient(135deg, #ff3b5c 0%, #e00f32 100%);
+      box-shadow: 0 6px 32px rgba(255, 30, 68, 0.55);
+      transform: translateY(-1px);
+    }
+    .grid-bg {
+      background-image: radial-gradient(circle at 50% 20%, rgba(255, 30, 68, 0.12) 0%, transparent 60%),
+                        linear-gradient(rgba(255, 30, 68, 0.03) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255, 30, 68, 0.03) 1px, transparent 1px);
+      background-size: 100% 100%, 32px 32px, 32px 32px;
+    }
+  </style>
+</head>
+<body class="bg-[#060608] text-zinc-100 min-h-screen grid-bg">
+
+  <!-- Header -->
+  <header class="border-b border-red-950/40 bg-[#060608]/85 backdrop-blur-md sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-lg bg-[#ff1e44] flex items-center justify-center font-black text-white text-lg shadow-lg shadow-red-600/40 font-mono">
+          ●
+        </div>
+        <span class="font-bold text-xl tracking-tight text-white font-heading">
+          REC<span class="text-[#ff1e44]">FLOW</span>
+        </span>
+      </div>
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-400">
+        <a href="#features" class="hover:text-[#ff3b5c] transition">Features</a>
+        <a href="#architecture" class="hover:text-[#ff3b5c] transition">Zero-API Architecture</a>
+        <a href="#telemetry" class="hover:text-[#ff3b5c] transition">Live Telemetry</a>
+      </nav>
+      <div class="flex items-center gap-4">
+        <button id="btnNavRecord" class="rounded-xl red-btn px-5 py-2 text-sm font-semibold tracking-wide">
+          ● Quick Record
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-6">
+    <!-- Hero Section -->
+    <section class="flex flex-col items-center py-16 text-center">
+      <span class="mb-5 rounded-full px-4 py-1.5 text-xs font-mono font-semibold red-badge">
+        🔴 ZERO-INSTALL BROWSER RECORDING & MULTI-PART CHUNKING
+      </span>
+      <h1 class="max-w-4xl text-5xl font-black leading-tight tracking-tight sm:text-6xl text-white font-heading">
+        Record High-FPS Video.<br />
+        <span class="bg-gradient-to-r from-white via-[#ff6b84] to-[#ff1e44] bg-clip-text text-transparent">
+          Direct to Cloud Buckets.
+        </span>
+      </h1>
+      <p class="mt-5 max-w-xl text-base text-zinc-400 leading-relaxed">
+        Zero server transcoding bottlenecks. Capture ultra-crisp screen, webcam, and system audio simultaneously while streaming binary chunks directly to S3/R2 storage with pre-signed authorization.
+      </p>
+
+      <div class="mt-8 flex flex-wrap gap-4 justify-center">
+        <button id="btnHeroRecord" class="rounded-xl red-btn px-8 py-3.5 text-base font-semibold active:scale-95 flex items-center gap-2">
+          <span>●</span> Launch In-Browser Recorder
+        </button>
+        <button class="rounded-xl border border-red-950/60 bg-[#0d0d12] px-7 py-3.5 text-base font-semibold text-zinc-300 hover:border-[#ff1e44]/40 hover:text-white transition">
+          View Distributed Pipeline
+        </button>
+      </div>
+
+      <!-- Live Interactive Screen Recording Console -->
+      <div class="w-full max-w-3xl mt-12 border border-[#ff1e44]/30 rounded-2xl bg-[#0c0c12]/90 p-6 shadow-2xl text-left red-glow relative overflow-hidden backdrop-blur-xl">
+        <div class="flex items-center justify-between border-b border-red-950/50 pb-4 mb-4">
+          <div class="flex items-center gap-3">
+            <span id="recDot" class="w-3.5 h-3.5 rounded-full bg-[#ff1e44] shadow-[0_0_12px_#ff1e44]"></span>
+            <span id="recStatusText" class="text-xs font-mono text-zinc-200 font-bold uppercase tracking-wider">
+              STATUS: IDLE // READY TO CAPTURE
+            </span>
+          </div>
+          <div class="flex items-center gap-4">
+            <span id="recTimer" class="font-mono text-xs text-[#ff3b5c] font-bold bg-[#ff1e44]/15 px-2.5 py-0.5 rounded border border-[#ff1e44]/30">
+              00:00:00
+            </span>
+            <span class="text-[11px] font-mono text-zinc-500">FASTIFY 5 + BULLMQ</span>
+          </div>
+        </div>
+
+        <div class="bg-[#050508] border border-red-950/60 rounded-xl p-8 flex flex-col items-center justify-center min-h-[200px] relative overflow-hidden">
+          <!-- Audio Waves (Active when recording) -->
+          <div id="recWaveform" class="hidden flex items-end gap-1.5 h-14 mb-4">
+            <span class="w-1.5 bg-[#ff1e44] rounded-full animate-pulse h-6"></span>
+            <span class="w-1.5 bg-[#ff3b5c] rounded-full animate-bounce h-12 delay-75"></span>
+            <span class="w-1.5 bg-red-600 rounded-full animate-pulse h-8 delay-150"></span>
+            <span class="w-1.5 bg-[#ff1e44] rounded-full animate-bounce h-14 delay-200"></span>
+            <span class="w-1.5 bg-[#ff6b84] rounded-full animate-pulse h-10 delay-100"></span>
+            <span class="w-1.5 bg-[#ff1e44] rounded-full animate-bounce h-7 delay-300"></span>
+            <span class="w-1.5 bg-red-500 rounded-full animate-pulse h-12 delay-75"></span>
+            <span class="w-1.5 bg-[#ff3b5c] rounded-full animate-bounce h-9 delay-150"></span>
+          </div>
+
+          <div id="recIdleDisplay" class="text-center">
+            <div class="w-16 h-16 rounded-2xl bg-[#ff1e44]/10 border border-[#ff1e44]/30 flex items-center justify-center mx-auto mb-3 text-[#ff1e44] text-2xl">
+              🎥
+            </div>
+            <p class="text-sm font-semibold text-zinc-200 font-heading">Display Surface Capture Ready</p>
+            <p class="text-xs text-zinc-500 mt-1">Supports up to 4K 60FPS with hardware VP9/H.264 encode</p>
+          </div>
+
+          <div class="mt-4 flex gap-3">
+            <button id="btnActionRecord" class="rounded-lg red-btn px-6 py-2.5 text-xs font-mono font-bold tracking-wider uppercase">
+              Start Capture (Space)
+            </button>
+            <button id="btnActionStop" class="hidden rounded-lg bg-zinc-800 hover:bg-zinc-700 text-white px-6 py-2.5 text-xs font-mono font-bold uppercase transition">
+              Stop & Commit Chunk
+            </button>
+          </div>
+        </div>
+
+        <!-- Telemetry Data Grid -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-4 text-xs font-mono">
+          <div class="bg-[#101017] border border-red-950/40 p-2.5 rounded-lg">
+            <span class="text-zinc-500 block text-[10px]">CHUNKS STREAMED</span>
+            <span id="metricChunks" class="text-zinc-200 font-bold text-sm">0 Chunks</span>
+          </div>
+          <div class="bg-[#101017] border border-red-950/40 p-2.5 rounded-lg">
+            <span class="text-zinc-500 block text-[10px]">DIRECT S3 INGESTION</span>
+            <span id="metricSpeed" class="text-[#ff3b5c] font-bold text-sm">0.0 MB / s</span>
+          </div>
+          <div class="bg-[#101017] border border-red-950/40 p-2.5 rounded-lg">
+            <span class="text-zinc-500 block text-[10px]">BACKEND API LOAD</span>
+            <span class="text-emerald-400 font-bold text-sm">0.0% (Zero Drag)</span>
+          </div>
+          <div class="bg-[#101017] border border-red-950/40 p-2.5 rounded-lg">
+            <span class="text-zinc-500 block text-[10px]">STORAGE CONTAINER</span>
+            <span class="text-zinc-300 font-bold text-sm">Cloudflare R2</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Architecture Breakdown -->
+    <section id="architecture" class="py-16 border-t border-red-950/30">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-black text-white font-heading">Zero-API-Load Architecture</h2>
+        <p class="text-zinc-400 text-sm mt-2 max-w-xl mx-auto">
+          How RecFlow streams massive recording archives without overwhelming node servers.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-[#0b0b10] border border-red-950/50 p-6 rounded-2xl hover:border-[#ff1e44]/40 transition">
+          <div class="w-10 h-10 rounded-xl bg-[#ff1e44]/15 border border-[#ff1e44]/30 flex items-center justify-center text-[#ff3b5c] font-mono font-bold mb-4">
+            01
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2 font-heading">Direct Browser Chunking</h3>
+          <p class="text-zinc-400 text-xs leading-relaxed">
+            MediaRecorder API extracts 5-second WebM fragments on the client thread, bypassing backend memory allocations.
+          </p>
+        </div>
+
+        <div class="bg-[#0b0b10] border border-red-950/50 p-6 rounded-2xl hover:border-[#ff1e44]/40 transition">
+          <div class="w-10 h-10 rounded-xl bg-[#ff1e44]/15 border border-[#ff1e44]/30 flex items-center justify-center text-[#ff3b5c] font-mono font-bold mb-4">
+            02
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2 font-heading">Pre-Signed Multi-part S3</h3>
+          <p class="text-zinc-400 text-xs leading-relaxed">
+            The API issues cryptographically signed URLs. Each media chunk uploads directly to Cloudflare R2 / S3 without touching backend bandwidth.
+          </p>
+        </div>
+
+        <div class="bg-[#0b0b10] border border-red-950/50 p-6 rounded-2xl hover:border-[#ff1e44]/40 transition">
+          <div class="w-10 h-10 rounded-xl bg-[#ff1e44]/15 border border-[#ff1e44]/30 flex items-center justify-center text-[#ff3b5c] font-mono font-bold mb-4">
+            03
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2 font-heading">BullMQ Worker Stitching</h3>
+          <p class="text-zinc-400 text-xs leading-relaxed">
+            Upon final chunk completion, an asynchronous Redis BullMQ worker concatenates fragments into MP4 and generates HLS streams.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-red-950/40 py-8 text-center text-xs text-zinc-500 font-mono mt-16">
+    © 2026 RecFlow Media Pipeline // Built with Next.js 15, Fastify 5 & Distributed Workers.
+  </footer>
+
+  <script>
+    // Interactive Recording Simulator Logic
+    let isRecording = false;
+    let timerSeconds = 0;
+    let timerInterval = null;
+    let chunkCount = 0;
+
+    const btnActionRecord = document.getElementById('btnActionRecord');
+    const btnActionStop = document.getElementById('btnActionStop');
+    const btnHeroRecord = document.getElementById('btnHeroRecord');
+    const btnNavRecord = document.getElementById('btnNavRecord');
+    const recDot = document.getElementById('recDot');
+    const recStatusText = document.getElementById('recStatusText');
+    const recTimer = document.getElementById('recTimer');
+    const recWaveform = document.getElementById('recWaveform');
+    const recIdleDisplay = document.getElementById('recIdleDisplay');
+    const metricChunks = document.getElementById('metricChunks');
+    const metricSpeed = document.getElementById('metricSpeed');
+
+    function startCapture() {
+      if (isRecording) return;
+      isRecording = true;
+      btnActionRecord.classList.add('hidden');
+      btnActionStop.classList.remove('hidden');
+      recIdleDisplay.classList.add('hidden');
+      recWaveform.classList.remove('hidden');
+      recStatusText.textContent = 'STREAMING: LIVE INGESTION ACTIVE ●';
+      recStatusText.classList.add('text-[#ff3b5c]');
+      recDot.classList.add('animate-ping');
+
+      timerSeconds = 0;
+      chunkCount = 0;
+      timerInterval = setInterval(() => {
+        timerSeconds++;
+        const mins = String(Math.floor(timerSeconds / 60)).padStart(2, '0');
+        const secs = String(timerSeconds % 60).padStart(2, '0');
+        recTimer.textContent = `00:${mins}:${secs}`;
+
+        if (timerSeconds % 3 === 0) {
+          chunkCount++;
+          metricChunks.textContent = `${chunkCount} Chunks (${(chunkCount * 4.2).toFixed(1)} MB)`;
+          metricSpeed.textContent = `${(3.8 + Math.random() * 1.5).toFixed(1)} MB / s`;
+        }
+      }, 1000);
+    }
+
+    function stopCapture() {
+      if (!isRecording) return;
+      isRecording = false;
+      clearInterval(timerInterval);
+      btnActionRecord.classList.remove('hidden');
+      btnActionStop.classList.add('hidden');
+      recIdleDisplay.classList.remove('hidden');
+      recWaveform.classList.add('hidden');
+      recStatusText.textContent = 'STATUS: STREAM COMPLETE // COMMITTED TO R2 ✔';
+      recStatusText.classList.remove('text-[#ff3b5c]');
+      recDot.classList.remove('animate-ping');
+      metricSpeed.textContent = '0.0 MB / s (Idle)';
+    }
+
+    btnActionRecord.addEventListener('click', startCapture);
+    btnHeroRecord.addEventListener('click', startCapture);
+    btnNavRecord.addEventListener('click', startCapture);
+    btnActionStop.addEventListener('click', stopCapture);
+  </script>
+</body>
+</html>

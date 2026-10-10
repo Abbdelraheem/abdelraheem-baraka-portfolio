@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>وصلني — تطبيق إدارة التوصيل والخدمات اللوجستية الذكية</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&family=Cairo:wght@600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primaryNavy: #0F2942;
+    --secondaryNavy: #1B365D;
+    --accentOrange: #F5A623;
+    --successGreen: #2ECC71;
+    --dangerRed: #E74C3C;
+    --infoBlue: #3498DB;
+    --purpleCourier: #8E44AD;
+    --scaffoldBg: #F6F8FB;
+    --cardSurface: #FFFFFF;
+    --textPrimary: #1E293B;
+    --textSecondary: #64748B;
+    --textMuted: #94A3B8;
+    --dividerColor: #E2E8F0;
+    --cardBorder: #EDF2F7;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background-color: #E2E8F0;
+    color: var(--textPrimary);
+    font-family: 'Tajawal', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px 10px;
+  }
+
+  /* Authentic Mobile / Tablet Device Mockup Container */
+  .device-shell {
+    width: 100%;
+    max-width: 480px;
+    background-color: var(--scaffoldBg);
+    border-radius: 36px;
+    box-shadow: 0 25px 60px rgba(15, 41, 66, 0.22), 0 0 0 10px #0b1a2b, 0 0 0 12px #334155;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 820px;
+    position: relative;
+  }
+
+  /* App Bar */
+  .app-bar {
+    background-color: var(--primaryNavy);
+    color: #FFFFFF;
+    padding: 16px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 14px rgba(15, 41, 66, 0.15);
+  }
+  .app-bar-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .app-bar-icon {
+    background-color: var(--accentOrange);
+    color: #FFFFFF;
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    box-shadow: 0 3px 10px rgba(245, 166, 35, 0.35);
+  }
+  .app-bar-titles h1 {
+    font-size: 1.25rem;
+    font-weight: 900;
+    line-height: 1.2;
+    color: #FFFFFF;
+  }
+  .app-bar-titles span {
+    font-size: 0.72rem;
+    color: rgba(255, 255, 255, 0.75);
+    font-weight: 500;
+  }
+  .app-bar-actions {
+    display: flex;
+    gap: 8px;
+  }
+  .app-bar-btn {
+    background: rgba(255, 255, 255, 0.12);
+    border: none;
+    color: #FFFFFF;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .app-bar-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+  }
+
+  /* Body Content (HomeScreen) */
+  .app-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  /* Welcome Banner */
+  .welcome-banner {
+    background: linear-gradient(135deg, var(--primaryNavy) 0%, var(--secondaryNavy) 100%);
+    border-radius: 16px;
+    padding: 18px;
+    color: #FFFFFF;
+    box-shadow: 0 8px 20px rgba(15, 41, 66, 0.12);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .banner-text h2 {
+    font-size: 1rem;
+    font-weight: 800;
+    margin-bottom: 4px;
+  }
+  .banner-text p {
+    font-size: 0.78rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.4;
+  }
+  .btn-new-order {
+    background-color: var(--accentOrange);
+    color: #FFFFFF;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-family: 'Tajawal', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 800;
+    cursor: pointer;
+    white-space: nowrap;
+    box-shadow: 0 4px 12px rgba(245, 166, 35, 0.35);
+    transition: transform 0.2s;
+  }
+  .btn-new-order:hover {
+    transform: scale(1.04);
+  }
+
+  /* Section Titles */
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 4px;
+  }
+  .section-title {
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--textPrimary);
+  }
+  .section-action {
+    font-size: 0.78rem;
+    color: var(--accentOrange);
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  /* 6 Stats Cards Grid */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .stat-card {
+    background: var(--cardSurface);
+    border: 1px solid var(--cardBorder);
+    border-radius: 16px;
+    padding: 14px;
+    box-shadow: 0 4px 14px rgba(15, 41, 66, 0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 88px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+  }
+  .stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(15, 41, 66, 0.09);
+  }
+  .stat-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .stat-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+  }
+  .stat-badge {
+    font-size: 0.68rem;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 4px;
+    background: #F1F5F9;
+    color: var(--textSecondary);
+  }
+  .stat-val {
+    font-size: 1.35rem;
+    font-weight: 900;
+    color: var(--textPrimary);
+    margin-top: 8px;
+    font-family: 'Cairo', sans-serif;
+  }
+  .stat-lbl {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--textSecondary);
+  }
+
+  /* Quick Action Buttons */
+  .quick-actions {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+  }
+  .quick-chip {
+    background: var(--cardSurface);
+    border: 1px solid var(--cardBorder);
+    border-radius: 12px;
+    padding: 10px 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--textPrimary);
+    transition: all 0.2s;
+  }
+  .quick-chip:hover {
+    border-color: var(--accentOrange);
+    color: var(--accentOrange);
+    transform: translateY(-2px);
+  }
+  .quick-chip span.emoji {
+    font-size: 1.2rem;
+  }
+
+  /* Order Cards Feed */
+  .orders-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .order-card {
+    background: var(--cardSurface);
+    border: 1px solid var(--cardBorder);
+    border-radius: 16px;
+    padding: 14px;
+    box-shadow: 0 4px 12px rgba(15, 41, 66, 0.04);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .order-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .order-id {
+    font-weight: 800;
+    font-size: 0.88rem;
+    color: var(--primaryNavy);
+  }
+  .order-status-badge {
+    font-size: 0.72rem;
+    font-weight: 800;
+    padding: 3px 8px;
+    border-radius: 6px;
+  }
+  .badge-driver {
+    background: rgba(142, 68, 173, 0.12);
+    color: var(--purpleCourier);
+  }
+  .badge-prep {
+    background: rgba(245, 166, 35, 0.12);
+    color: #D98200;
+  }
+  .badge-delivered {
+    background: rgba(46, 204, 113, 0.12);
+    color: #27AE60;
+  }
+  .order-info {
+    font-size: 0.8rem;
+    color: var(--textSecondary);
+    display: flex;
+    justify-content: space-between;
+  }
+  .order-price {
+    font-family: 'Cairo', sans-serif;
+    font-weight: 900;
+    color: var(--primaryNavy);
+    font-size: 0.95rem;
+  }
+
+  /* Bottom Navigation Bar */
+  .bottom-nav {
+    background-color: #FFFFFF;
+    border-top: 1px solid var(--dividerColor);
+    padding: 10px 16px 14px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 0 -4px 16px rgba(15, 41, 66, 0.05);
+  }
+  .nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    color: var(--textMuted);
+    font-size: 0.7rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  .nav-item.active {
+    color: var(--accentOrange);
+  }
+  .nav-item .nav-icon {
+    font-size: 1.15rem;
+  }
+
+  /* Driver Mode Banner at Bottom */
+  .driver-mode-toggle {
+    background: #F1F5F9;
+    border-top: 1px solid var(--dividerColor);
+    padding: 8px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--textSecondary);
+  }
+  .btn-switch-mode {
+    background: var(--primaryNavy);
+    color: #FFFFFF;
+    border: none;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-family: 'Tajawal', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 800;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+
+<div class="device-shell">
+  <!-- App Bar -->
+  <header class="app-bar">
+    <div class="app-bar-brand">
+      <div class="app-bar-icon">🚚</div>
+      <div class="app-bar-titles">
+        <h1>وصلني</h1>
+        <span>لوحة تحكم العمليات واللوجستيات</span>
+      </div>
+    </div>
+    <div class="app-bar-actions">
+      <button class="app-bar-btn" id="btnSync" title="مزامنة SQLite">🔄</button>
+      <button class="app-bar-btn" id="btnNotif" title="الإشعارات">🔔</button>
+    </div>
+  </header>
+
+  <!-- HomeScreen Body -->
+  <main class="app-body">
+    <!-- Welcome & Quick Order Banner -->
+    <section class="welcome-banner">
+      <div class="banner-text">
+        <h2>مرحباً بك في منصة وصلني</h2>
+        <p>لديك <strong>3 طلبات</strong> قيد التجهيز بالمستودع و <strong>2 طلب</strong> مع السائقين حالياً.</p>
+      </div>
+      <button class="btn-new-order" id="btnNewOrder">+ طلب جديد</button>
+    </section>
+
+    <!-- Quick Action Chips -->
+    <div class="quick-actions">
+      <div class="quick-chip">
+        <span class="emoji">📦</span>
+        <span>إضافة طلب</span>
+      </div>
+      <div class="quick-chip">
+        <span class="emoji">📋</span>
+        <span>الطلبات</span>
+      </div>
+      <div class="quick-chip">
+        <span class="emoji">🛵</span>
+        <span>السائقين</span>
+      </div>
+      <div class="quick-chip">
+        <span class="emoji">🗺️</span>
+        <span>الخريطة</span>
+      </div>
+    </div>
+
+    <!-- Section Title: إحصائيات العمليات اليومية -->
+    <div class="section-header">
+      <h3 class="section-title">إحصائيات العمليات اليومية</h3>
+      <span class="section-action">اليوم</span>
+    </div>
+
+    <!-- 6 Stats Cards Grid (Matching HomeScreen.dart GridView) -->
+    <div class="stats-grid">
+      <!-- 1. إجمالي الطلبات -->
+      <div class="stat-card">
+        <div class="stat-top">
+          <div class="stat-icon" style="background:rgba(15,41,66,0.1); color:var(--primaryNavy);">📥</div>
+          <span class="stat-badge">اليوم</span>
+        </div>
+        <div class="stat-val" id="valTotalOrders">24</div>
+        <div class="stat-lbl">إجمالي الطلبات</div>
+      </div>
+
+      <!-- 2. إجمالي المبالغ المحصلة -->
+      <div class="stat-card">
+        <div class="stat-top">
+          <div class="stat-icon" style="background:rgba(46,204,113,0.1); color:var(--successGreen);">💰</div>
+          <span class="stat-badge">المسلمة</span>
+        </div>
+        <div class="stat-val" style="color:var(--successGreen);">3,450 ₪</div>
+        <div class="stat-lbl">إجمالي المبالغ المحصلة</div>
+      </div>
+
+      <!-- 3. قيد التجهيز بالمستودع -->
+      <div class="stat-card">
+        <div class="stat-top">
+          <div class="stat-icon" style="background:rgba(245,166,35,0.12); color:var(--accentOrange);">📦</div>
+          <span class="stat-badge" style="color:var(--accentOrange);">انتظار</span>
+        </div>
+        <div class="stat-val" style="color:var(--accentOrange);">8</div>
+        <div class="stat-lbl">قيد التجهيز بالمستودع</div>
+      </div>
+
+      <!-- 4. مع السائقين بالطريق -->
+      <div class="stat-card">
+        <div class="stat-top">
+          <div class="stat-icon" style="background:rgba(142,68,173,0.12); color:var(--purpleCourier);">🛵</div>
+          <span class="stat-badge" style="color:var(--purpleCourier);">بالطريق</span>
+        </div>
+        <div class="stat-val" style="color:var(--purpleCourier);">6</div>
+        <div class="stat-lbl">مع السائقين بالطريق</div>
+      </div>
+
+      <!-- 5. تم التسليم بنجاح -->
+      <div class="stat-card">
+        <div class="stat-top">
+          <div class="stat-icon" style="background:rgba(46,204,113,0.12); color:var(--successGreen);">✔</div>
+          <span class="stat-badge" style="color:var(--successGreen);">ناجح</span>
+        </div>
+        <div class="stat-val" style="color:var(--successGreen);">10</div>
+        <div class="stat-lbl">تم التسليم بنجاح</div>
+      </div>
+
+      <!-- 6. لم يتم التسليم / مرتجع -->
+      <div class="stat-card">
+        <div class="stat-top">
+          <div class="stat-icon" style="background:rgba(231,76,60,0.12); color:var(--dangerRed);">⚠️</div>
+          <span class="stat-badge" style="color:var(--dangerRed);">مرتجع</span>
+        </div>
+        <div class="stat-val" style="color:var(--dangerRed);">0</div>
+        <div class="stat-lbl">لم يتم التسليم / مرتجع</div>
+      </div>
+    </div>
+
+    <!-- Section Title: آخر الطلبات المسجلة -->
+    <div class="section-header" style="margin-top:6px;">
+      <h3 class="section-title">آخر الطلبات المسجلة</h3>
+      <a href="#" class="section-action">عرض الكل (24)</a>
+    </div>
+
+    <!-- Orders Feed -->
+    <div class="orders-list">
+      <!-- Order 1 -->
+      <div class="order-card">
+        <div class="order-header">
+          <span class="order-id">طلب #1042 — أحمد خليل</span>
+          <span class="order-status-badge badge-driver">مع السائق بالطريق</span>
+        </div>
+        <div class="order-info">
+          <span>📍 غزة — شارع الوحدة (السائق: محمد درويش)</span>
+          <span class="order-price">120 ₪</span>
+        </div>
+      </div>
+
+      <!-- Order 2 -->
+      <div class="order-card">
+        <div class="order-header">
+          <span class="order-id">طلب #1041 — سارة عودة</span>
+          <span class="order-status-badge badge-prep">قيد التجهيز بالمستودع</span>
+        </div>
+        <div class="order-info">
+          <span>📍 خانيونس — شارع جلال (لم يُعيّن سائق بعد)</span>
+          <span class="order-price">85 ₪</span>
+        </div>
+      </div>
+
+      <!-- Order 3 -->
+      <div class="order-card">
+        <div class="order-header">
+          <span class="order-id">طلب #1040 — محمود بركة</span>
+          <span class="order-status-badge badge-delivered">تم التسليم بنجاح ✔</span>
+        </div>
+        <div class="order-info">
+          <span>📍 دير البلح — السوق التجاري (السائق: يوسف أحمد)</span>
+          <span class="order-price">210 ₪</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Driver Interface Switcher -->
+  <div class="driver-mode-toggle">
+    <span>نظام Clean Architecture مع مزامنة SQLite</span>
+    <button class="btn-switch-mode" id="btnToggleDriver">واجهة السائق 🛵</button>
+  </div>
+
+  <!-- Bottom Navigation Bar (MainNavigationScreen) -->
+  <nav class="bottom-nav">
+    <div class="nav-item active">
+      <span class="nav-icon">🏠</span>
+      <span>الرئيسية</span>
+    </div>
+    <div class="nav-item">
+      <span class="nav-icon">📋</span>
+      <span>الطلبات</span>
+    </div>
+    <div class="nav-item">
+      <span class="nav-icon">🛵</span>
+      <span>السائقين</span>
+    </div>
+    <div class="nav-item">
+      <span class="nav-icon">👥</span>
+      <span>العملاء</span>
+    </div>
+    <div class="nav-item">
+      <span class="nav-icon">📊</span>
+      <span>التقارير</span>
+    </div>
+  </nav>
+</div>
+
+<script>
+  // Simple interactive feedback
+  const btnSync = document.getElementById('btnSync');
+  if (btnSync) {
+    btnSync.addEventListener('click', () => {
+      btnSync.style.transform = 'rotate(360deg)';
+      btnSync.style.transition = 'transform 0.6s ease';
+      setTimeout(() => {
+        btnSync.style.transform = 'none';
+        alert('✔ تمت مزامنة قاعدة بيانات SQLite المحلية بنجاح!');
+      }, 600);
+    });
+  }
+
+  const btnNewOrder = document.getElementById('btnNewOrder');
+  if (btnNewOrder) {
+    btnNewOrder.addEventListener('click', () => {
+      const orders = document.getElementById('valTotalOrders');
+      if (orders) {
+        orders.textContent = parseInt(orders.textContent) + 1;
+        alert('✔ تم فتح شاشة إنشاء طلب جديد (CreateOrderScreen) وإضافة الطلب بنجاح');
+      }
+    });
+  }
+
+  const btnToggleDriver = document.getElementById('btnToggleDriver');
+  if (btnToggleDriver) {
+    let isDriver = false;
+    btnToggleDriver.addEventListener('click', () => {
+      isDriver = !isDriver;
+      if (isDriver) {
+        btnToggleDriver.textContent = 'واجهة الإدارة 🏛️';
+        alert('تم التبديل إلى: واجهة السائق الميداني (DriverDashboardScreen) مع تحديث الموقع وحالة التسليم');
+      } else {
+        btnToggleDriver.textContent = 'واجهة السائق 🛵';
+        alert('تم التبديل إلى: لوحة تحكم العمليات والإدارة العامة (HomeScreen)');
+      }
+    });
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ElectroLux | Precision Engineering</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface-variant": "#c4c7c7",
+                        "on-tertiary": "#002e69",
+                        "outline-variant": "#444748",
+                        "error-container": "#93000a",
+                        "secondary-fixed": "#ffe088",
+                        "surface": "#131315",
+                        "secondary-fixed-dim": "#e9c349",
+                        "primary-fixed": "#e5e2e1",
+                        "on-tertiary-container": "#0075f4",
+                        "surface-container": "#1f1f21",
+                        "on-secondary-container": "#342800",
+                        "on-secondary-fixed-variant": "#574500",
+                        "on-error-container": "#ffdad6",
+                        "on-primary-fixed": "#1c1b1b",
+                        "tertiary": "#adc6ff",
+                        "on-surface": "#e4e2e4",
+                        "error": "#ffb4ab",
+                        "surface-bright": "#39393b",
+                        "on-secondary": "#3c2f00",
+                        "on-primary-container": "#7b7979",
+                        "inverse-primary": "#5f5e5e",
+                        "primary-container": "#0a0a0a",
+                        "inverse-on-surface": "#303032",
+                        "tertiary-fixed": "#d8e2ff",
+                        "tertiary-fixed-dim": "#adc6ff",
+                        "on-primary-fixed-variant": "#474646",
+                        "on-secondary-fixed": "#241a00",
+                        "inverse-surface": "#e4e2e4",
+                        "primary-fixed-dim": "#c9c6c5",
+                        "background": "#131315",
+                        "outline": "#8e9192",
+                        "surface-container-highest": "#353437",
+                        "on-primary": "#313030",
+                        "on-background": "#e4e2e4",
+                        "primary": "#c9c6c5",
+                        "tertiary-container": "#00091f",
+                        "surface-container-low": "#1b1b1d",
+                        "secondary": "#e9c349",
+                        "surface-container-lowest": "#0e0e10",
+                        "on-tertiary-fixed-variant": "#004493",
+                        "on-error": "#690005",
+                        "on-tertiary-fixed": "#001a41",
+                        "surface-tint": "#c9c6c5",
+                        "surface-dim": "#131315",
+                        "surface-variant": "#353437",
+                        "secondary-container": "#af8d11",
+                        "surface-container-high": "#2a2a2c"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-md": "24px",
+                        "stack-lg": "48px",
+                        "margin-mobile": "16px",
+                        "unit": "8px",
+                        "gutter": "24px",
+                        "stack-sm": "12px",
+                        "container-max-width": "1440px",
+                        "margin-desktop": "80px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "display-xl": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                        "display-xl": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-lg": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #131315;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+        .glass-card {
+            background: rgba(28, 28, 30, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased">
+<!-- TopNavBar -->
+<header class="bg-zinc-950/90 backdrop-blur-xl fixed top-0 w-full z-50 border-b border-zinc-800/50 shadow-2xl shadow-black/40">
+<nav class="flex justify-between items-center px-10 py-4 max-w-[1440px] mx-auto">
+<div class="flex items-center gap-12">
+<a class="text-2xl font-bold tracking-tighter text-zinc-50 dark:text-white font-display-xl" href="index.html">ElectroLux</a>
+<div class="hidden md:flex gap-8">
+<a class="text-zinc-400 dark:text-zinc-500 hover:text-blue-500 dark:hover:text-blue-400 transition-colors duration-300 font-label-sm text-label-sm" href="catalog.html">Collections</a>
+<a class="text-zinc-400 dark:text-zinc-500 hover:text-blue-500 dark:hover:text-blue-400 transition-colors duration-300 font-label-sm text-label-sm" href="#">New Arrivals</a>
+<a class="text-zinc-400 dark:text-zinc-500 hover:text-blue-500 dark:hover:text-blue-400 transition-colors duration-300 font-label-sm text-label-sm" href="#">Support</a>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<a class="text-zinc-400 hover:text-blue-500 transition-colors" href="admin.html">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</a>
+<a class="text-zinc-400 hover:text-blue-500 transition-colors relative" href="cart.html">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+<span class="absolute -top-2 -right-2 bg-on-tertiary-container text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center">2</span>
+</a>
+</div>
+</nav>
+</header>
+<main class="pt-24">
+<!-- Hero Section -->
+<section class="relative min-h-[921px] flex items-center overflow-hidden px-10 md:px-20">
+<div class="absolute inset-0 z-0">
+<div class="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-transparent z-10"></div>
+<img class="w-full h-full object-cover opacity-40" data-alt="A high-end cinematic shot of futuristic minimalist computer hardware in a dark studio setting. Soft blue neon light strips trace the edges of a sleek brushed aluminum chassis. The atmosphere is professional and moody, with deep shadows and sharp, precise highlights reflecting off metallic surfaces. The overall aesthetic is one of technical mastery and luxury electronics." src="https://lh3.googleusercontent.com/aida-public/AB6AXuASergI3akY1-OhRTJQAFOcTjwSc4iTn6ELZ3g3BH0ht3z5k7lPlo3y0AO1LWLiUdAUBcHpb7p3kKu2NYabAje1CbBtcYOKXLRFJkeXFdwJiE8nXm2CAiS92UNxqRlb3UKyk1MgqeCVj8i0FTlXEqpkjKStHDZVfJ2yFotn_jGkMdgMYB_Yrr9UTSLB22kkDnRBoCteQ_vlDnhy6vOBpjjYdnRcjwOVKInY42yjCj1j2uRcR1W2NOwVde2aqKge-Z1YTqkl1pWATeuv"/>
+</div>
+<div class="relative z-20 max-w-3xl space-y-stack-md">
+<div class="inline-flex items-center gap-3 px-3 py-1 rounded-full bg-surface-container border border-outline-variant/30">
+<span class="w-2 h-2 rounded-full bg-secondary shadow-[0_0_8px_rgba(233,195,73,0.6)]"></span>
+<span class="text-label-sm font-label-sm text-secondary tracking-widest uppercase">Elite Series Now Live</span>
+</div>
+<h1 class="font-display-xl text-display-xl text-on-surface">The Architecture of Silence.</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
+                    Experience unparalleled thermal management and acoustic engineering. ElectroLux defines the intersection of high-performance computing and industrial minimalism.
+                </p>
+<div class="flex gap-gutter pt-4">
+<a class="px-8 py-4 bg-on-tertiary-container text-white font-label-sm rounded-none hover:bg-blue-600 transition-all active:scale-95 duration-200" href="catalog.html">
+                        EXPLORE CATALOG
+                    </a>
+<a class="px-8 py-4 border border-outline-variant text-on-surface font-label-sm rounded-none hover:bg-white/5 transition-all" href="#">
+                        TECHNICAL SPECS
+                    </a>
+</div>
+</div>
+</section>
+<!-- Bento Grid Features -->
+<section class="max-w-[1440px] mx-auto px-20 py-stack-lg">
+<div class="bento-grid">
+<!-- Large Card -->
+<div class="col-span-12 md:col-span-8 h-[500px] glass-card overflow-hidden group">
+<div class="p-10 h-full flex flex-col justify-between">
+<div class="max-w-md">
+<span class="text-secondary font-label-sm text-label-sm mb-4 block">THERMAL MASTERY</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-4">Cryo-Flow Vapor Chamber</h2>
+<p class="text-on-surface-variant">Our patented cooling technology ensures peak performance under extreme workloads without a whisper of noise.</p>
+</div>
+<img class="absolute bottom-0 right-0 w-2/3 object-contain translate-y-10 group-hover:translate-y-0 transition-transform duration-700" data-alt="Detailed macro photography of a sophisticated copper vapor chamber cooling system for a high-end motherboard. The lighting is cold and clinical, highlighting the intricate fins and precision-machined surfaces. The background is a soft-focus laboratory environment, maintaining a clean and professional corporate aesthetic with subtle blue undertones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLCT38X8wCr2QMrZ8s1cVen6SWR0IAp7CSqepvKWzoJPlPpDktsXwEn94Teu9z8CK4z3DkH76p8S5Ai_oQH4SuLcrzLHutNp2uDB_fM-rP0vgNZyoIc022cxCvVgGQVKT-MBu-v7SDptpFovx1P5WfuatWpsCAV6mhtMeicIn34xaANPsXPN_91C_AMxO2OZRRw-bJMs4r_ol56ao4T1HfJQ3J-Zfdidx4N3mWNMh9M6DD4t_NQWCM3oReiNars_XXAlalDjH3lERX"/>
+</div>
+</div>
+<!-- Small Card 1 -->
+<div class="col-span-12 md:col-span-4 h-[500px] bg-surface-container-high border border-outline-variant/10 p-10 flex flex-col justify-end relative overflow-hidden">
+<div class="relative z-10">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">Sustainable Core</h3>
+<p class="text-on-surface-variant font-body-md">Crafted from 100% recycled aerospace-grade aluminum.</p>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-background to-transparent z-0"></div>
+<img class="absolute top-0 left-0 w-full h-full object-cover opacity-30" data-alt="An abstract artistic shot of raw, brushed aluminum sheets reflecting a soft gradient of twilight sky. The texture is tactile and premium, emphasizing the material's purity and the brand's commitment to industrial excellence. The lighting is diffused and elegant, creating a sense of understated luxury and sustainability." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVIBY3tLD2AW9zQosRSE9IX7zUr5tKL7999UGHm8_5yog1zln2r9oWtrbT37jVTUW4vatQudoPsF4Uu5KlJdGJJIRCTL1D9WjETA6sK0w51ZOyTh7mEeFG1C7Wrpw3bQcXUcDMjHEcQVqBjwlI9IDyTtzNikNtHh3Zg4CvJsZ3IetejsrKjoZnPPiRMNwGk-8ZjCJ3B-PViK7oV5zFczd5_RXLoyDFJRngZNP08YCQso8Ax0x4n2UJwuz6M6fsiUTc51rdhuNJLR3c"/>
+</div>
+<!-- Small Card 2 -->
+<div class="col-span-12 md:col-span-4 h-[400px] glass-card p-10 flex flex-col items-center justify-center text-center">
+<span class="material-symbols-outlined text-on-tertiary-container mb-6 scale-[2]" data-icon="bolt">bolt</span>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">Ultra-Fast I/O</h3>
+<p class="text-on-surface-variant text-label-sm">Next-generation connectivity for seamless workflows.</p>
+</div>
+<!-- Small Card 3 -->
+<div class="col-span-12 md:col-span-8 h-[400px] bg-on-tertiary-container p-10 flex items-center overflow-hidden">
+<div class="w-1/2">
+<h3 class="font-headline-lg text-headline-lg text-white mb-4">Precision Audio Architecture</h3>
+<p class="text-white/80">Studio-grade DAC integration for pure, uncolored sound reproduction.</p>
+</div>
+<div class="w-1/2 flex justify-end">
+<span class="material-symbols-outlined text-[180px] text-white/10 select-none" data-icon="graphic_eq">graphic_eq</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Product Gallery Teaser -->
+<section class="bg-surface-container-lowest py-24">
+<div class="max-w-[1440px] mx-auto px-20">
+<div class="flex justify-between items-end mb-16">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-2">The Collection</h2>
+<p class="text-on-surface-variant">Selected masterworks for the creative professional.</p>
+</div>
+<a class="flex items-center gap-2 text-on-tertiary-container hover:gap-4 transition-all duration-300" href="catalog.html">
+<span class="font-label-sm text-label-sm">VIEW ALL COLLECTIONS</span>
+<span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Product Card 1 -->
+<div class="group cursor-pointer">
+<div class="aspect-[4/5] bg-surface-container overflow-hidden relative mb-6">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" data-alt="A minimalist, premium tablet device resting on a dark walnut desk. The screen displays a sophisticated architectural drawing. Soft, directional light from a window creates gentle shadows and highlights the slim profile of the device. The mood is quiet, focused, and professional, characteristic of a high-end studio environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQREAMZmNI0hg5PkzjAjMnm_hp1EkiPOVrNMlU0SAkO-tUIuEG7AhRKv-4PVZL5vzjc0TIBbm0vGFrjbucfi8drV2rpcr7YdxrOZGjS_H36hCikgq23c1EgSu6lhUFM3bRYea_pUOebAdK823JYKPrPBKH1uh9Ph5b4ehO_ugA2lvFQ99zw7hpK9HeUmgDrvQjGQhqpdTsqQ6bHSYEtgXW_zbyikoJax-rOdQ4xEwrhGLNIEeZELNUOOBvtNBaY6lxN94I2iE2Wfa3"/>
+<div class="absolute top-4 right-4 px-3 py-1 bg-background text-on-surface text-label-sm font-label-sm">
+                                $1,499
+                            </div>
+</div>
+<h4 class="font-headline-md text-headline-md text-on-surface">Pro Slate Gen 4</h4>
+<p class="text-on-surface-variant text-label-sm">OLED 120Hz / Neural Chip X1</p>
+</div>
+<!-- Product Card 2 -->
+<div class="group cursor-pointer">
+<div class="aspect-[4/5] bg-surface-container overflow-hidden relative mb-6">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" data-alt="A side view of a high-performance curved monitor in a dark office. The screen glows with deep blue and purple hues of a coding environment. The stand is a masterwork of minimalist industrial design in matte black. The lighting is low-key, focusing on the screen's thin bezel and the premium texture of the hardware." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDK0rwheUD2Ax9xzOdxp5JH4cMLQcBUbS3hAoittLhRg_tVE0OXv49RD1cKXhW1mvNolkCt4UvZDtDtAk8oKV7xrylQP_FpwkSu4TYXgDu8_iNRpfpkn33Xdtl83uLCYuX7AkCKt38PD1mdVs464YFXru8_FFuT2iJQycW_819jSsv-MGeKE9Yk386nB4Q4Q4WvNhXohj1GYuRDsZyNEu3D5oy3SJfzBWUaIca9L-dasVMyPUfLQSvJxcrUasrRHKHNcrWZW3UEnVSJ"/>
+<div class="absolute top-4 right-4 px-3 py-1 bg-background text-on-surface text-label-sm font-label-sm">
+                                $2,199
+                            </div>
+</div>
+<h4 class="font-headline-md text-headline-md text-on-surface">Vision Ultra 32"</h4>
+<p class="text-on-surface-variant text-label-sm">8K Resolution / 10-bit Color</p>
+</div>
+<!-- Product Card 3 -->
+<div class="group cursor-pointer">
+<div class="aspect-[4/5] bg-surface-container overflow-hidden relative mb-6">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" data-alt="A high-end mechanical keyboard with low-profile keys and subtle white backlighting. The body is machined from a single block of dark grey aluminum. The image is taken from a low angle to emphasize the build quality and precision engineering. The background is a clean, dark workspace with soft ambient lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZhlfch7OtqFtPfuQIwEp_dWAd7cFsS3Q_bKrxoNrqNcDSRI-QcWPx2CgR3iNDlPCoN_9Qvqujlq-8lGWZE0TIneEciMRKzhSETaxObhiMrQeFUJIiEAaDLF2CwoNkNHpaCPu9jVKD9cZi9jvB-MW0EfR8CGBW1rEQSprd6fO3f2OkF_FF0YUrfPwEbUk5GxJCqIpRs6e8ZI4zLTMKk5fFW79DBobb_kJP71F-uA3VOmIK-oAtKCsiw1Ssi24YX-Q9qmFS-8gnF6Ee"/>
+<div class="absolute top-4 right-4 px-3 py-1 bg-background text-on-surface text-label-sm font-label-sm">
+                                $349
+                            </div>
+</div>
+<h4 class="font-headline-md text-headline-md text-on-surface">Tactile Zero</h4>
+<p class="text-on-surface-variant text-label-sm">Custom Switches / Wireless Purity</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-zinc-950 w-full py-12 border-t border-zinc-900">
+<div class="flex flex-col md:flex-row justify-between items-center px-20 gap-8 max-w-[1440px] mx-auto">
+<div class="flex flex-col items-center md:items-start gap-4">
+<span class="text-lg font-black tracking-tighter text-zinc-300">ElectroLux</span>
+<p class="text-xs font-light text-zinc-500">© 2024 ElectroLux Global. All rights reserved.</p>
+</div>
+<div class="flex gap-12">
+<a class="text-zinc-600 hover:text-blue-400 underline-offset-4 hover:underline transition-opacity text-xs font-light" href="#">Privacy Policy</a>
+<a class="text-zinc-600 hover:text-blue-400 underline-offset-4 hover:underline transition-opacity text-xs font-light" href="#">Terms of Service</a>
+<a class="text-zinc-600 hover:text-blue-400 underline-offset-4 hover:underline transition-opacity text-xs font-light" href="#">Warranty</a>
+</div>
+<div class="flex gap-6">
+<span class="material-symbols-outlined text-zinc-600 cursor-pointer hover:text-white" data-icon="public">public</span>
+<span class="material-symbols-outlined text-zinc-600 cursor-pointer hover:text-white" data-icon="hub">hub</span>
+</div>
+</div>
+</footer>
+<!-- Mobile BottomNavBar (Visible only on small screens) -->
+<nav class="md:hidden bg-zinc-900/95 backdrop-blur-lg fixed bottom-0 w-full z-50 rounded-t-2xl border-t border-zinc-800 shadow-[0_-10px_30px_rgba(0,0,0,0.5)]">
+<div class="flex justify-around items-center h-20 pb-4">
+<a class="text-blue-500 dark:text-blue-400 flex flex-col items-center gap-1 active:scale-90 duration-150" href="index.html">
+<span class="material-symbols-outlined" data-icon="storefront">storefront</span>
+<span class="text-[10px] uppercase tracking-widest font-medium">Shop</span>
+</a>
+<a class="text-zinc-500 dark:text-zinc-400 flex flex-col items-center gap-1 active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+<span class="text-[10px] uppercase tracking-widest font-medium">Search</span>
+</a>
+<a class="text-zinc-500 dark:text-zinc-400 flex flex-col items-center gap-1 active:scale-90 duration-150" href="cart.html">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+<span class="text-[10px] uppercase tracking-widest font-medium">Cart</span>
+</a>
+<a class="text-zinc-500 dark:text-zinc-400 flex flex-col items-center gap-1 active:scale-90 duration-150" href="admin.html">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="text-[10px] uppercase tracking-widest font-medium">Account</span>
+</a>
+</div>
+</nav>
+</body></html>

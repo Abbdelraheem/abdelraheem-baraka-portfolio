@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #131315;
+        }
+        .glass-panel {
+            background: rgba(28, 28, 30, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-surface-variant": "#c4c7c7",
+                      "on-tertiary": "#002e69",
+                      "outline-variant": "#444748",
+                      "error-container": "#93000a",
+                      "secondary-fixed": "#ffe088",
+                      "surface": "#131315",
+                      "secondary-fixed-dim": "#e9c349",
+                      "primary-fixed": "#e5e2e1",
+                      "on-tertiary-container": "#0075f4",
+                      "surface-container": "#1f1f21",
+                      "on-secondary-container": "#342800",
+                      "on-secondary-fixed-variant": "#574500",
+                      "on-error-container": "#ffdad6",
+                      "on-primary-fixed": "#1c1b1b",
+                      "tertiary": "#adc6ff",
+                      "on-surface": "#e4e2e4",
+                      "error": "#ffb4ab",
+                      "surface-bright": "#39393b",
+                      "on-secondary": "#3c2f00",
+                      "on-primary-container": "#7b7979",
+                      "inverse-primary": "#5f5e5e",
+                      "primary-container": "#0a0a0a",
+                      "inverse-on-surface": "#303032",
+                      "tertiary-fixed": "#d8e2ff",
+                      "tertiary-fixed-dim": "#adc6ff",
+                      "on-primary-fixed-variant": "#474646",
+                      "on-secondary-fixed": "#241a00",
+                      "inverse-surface": "#e4e2e4",
+                      "primary-fixed-dim": "#c9c6c5",
+                      "background": "#131315",
+                      "outline": "#8e9192",
+                      "surface-container-highest": "#353437",
+                      "on-primary": "#313030",
+                      "on-background": "#e4e2e4",
+                      "primary": "#c9c6c5",
+                      "tertiary-container": "#00091f",
+                      "surface-container-low": "#1b1b1d",
+                      "secondary": "#e9c349",
+                      "surface-container-lowest": "#0e0e10",
+                      "on-tertiary-fixed-variant": "#004493",
+                      "on-error": "#690005",
+                      "on-tertiary-fixed": "#001a41",
+                      "surface-tint": "#c9c6c5",
+                      "surface-dim": "#131315",
+                      "surface-variant": "#353437",
+                      "secondary-container": "#af8d11",
+                      "surface-container-high": "#2a2a2c"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "stack-md": "24px",
+                      "stack-lg": "48px",
+                      "margin-mobile": "16px",
+                      "unit": "8px",
+                      "gutter": "24px",
+                      "stack-sm": "12px",
+                      "container-max-width": "1440px",
+                      "margin-desktop": "80px"
+              },
+              "fontFamily": {
+                      "label-sm": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "display-xl": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "body-md": ["Inter"]
+              },
+              "fontSize": {
+                      "label-sm": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                      "display-xl": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "headline-lg": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+      </script>
+</head>
+<body class="bg-background text-on-background selection:bg-on-tertiary-container selection:text-white">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-zinc-950/90 backdrop-blur-xl border-b border-zinc-800/50 shadow-2xl shadow-black/40">
+<nav class="flex justify-between items-center px-10 py-4 max-w-[1440px] mx-auto font-sans antialiased tracking-tight">
+<div class="flex items-center gap-12">
+<a class="text-2xl font-bold tracking-tighter text-zinc-50 dark:text-white" href="index.html">ElectroLux</a>
+<div class="hidden md:flex gap-8">
+<a class="text-blue-500 dark:text-blue-400 font-semibold transition-colors duration-300" href="catalog.html">Collections</a>
+<a class="text-zinc-400 dark:text-zinc-500 hover:text-blue-500 dark:hover:text-blue-400 transition-colors duration-300" href="#">New Arrivals</a>
+<a class="text-zinc-400 dark:text-zinc-500 hover:text-blue-500 dark:hover:text-blue-400 transition-colors duration-300" href="#">Support</a>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative hidden lg:block">
+<input class="bg-surface-container border-none text-on-surface text-label-sm px-4 py-2 rounded-lg w-64 focus:ring-1 focus:ring-blue-500 placeholder-zinc-500" placeholder="Search products..." type="text"/>
+</div>
+<div class="flex items-center gap-4">
+<a class="text-zinc-400 hover:text-blue-500 transition-colors duration-300 active:scale-95" href="cart.html">
+<span class="material-symbols-outlined">shopping_cart</span>
+</a>
+<a class="text-zinc-400 hover:text-blue-500 transition-colors duration-300 active:scale-95" href="profile.html">
+<span class="material-symbols-outlined">person</span>
+</a>
+</div>
+</div>
+</nav>
+</header>
+<main class="pt-32 pb-24 px-8 md:px-20 max-w-[1440px] mx-auto min-h-screen">
+<div class="flex flex-col lg:flex-row gap-12">
+<!-- Sidebar Filters -->
+<aside class="w-full lg:w-64 space-y-8">
+<div>
+<h2 class="font-headline-md text-headline-md mb-6 text-on-surface">Filters</h2>
+<div class="space-y-6">
+<!-- Category Filter -->
+<div class="border-b border-zinc-800 pb-6">
+<h3 class="font-label-sm text-label-sm uppercase tracking-widest text-zinc-500 mb-4">Category</h3>
+<div class="space-y-3">
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="w-4 h-4 rounded border-zinc-700 bg-zinc-900 text-blue-600 focus:ring-blue-500" type="checkbox"/>
+<span class="font-body-md text-body-md text-zinc-300 group-hover:text-white transition-colors">Audio Hubs</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="w-4 h-4 rounded border-zinc-700 bg-zinc-900 text-blue-600 focus:ring-blue-500" type="checkbox"/>
+<span class="font-body-md text-body-md text-zinc-300 group-hover:text-white transition-colors">Visual Systems</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input checked="" class="w-4 h-4 rounded border-zinc-700 bg-zinc-900 text-blue-600 focus:ring-blue-500" type="checkbox"/>
+<span class="font-body-md text-body-md text-zinc-300 group-hover:text-white transition-colors">Power Core</span>
+</label>
+</div>
+</div>
+<!-- Price Range -->
+<div class="border-b border-zinc-800 pb-6">
+<h3 class="font-label-sm text-label-sm uppercase tracking-widest text-zinc-500 mb-4">Price Range</h3>
+<input class="w-full h-1 bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-blue-600" max="5000" min="0" type="range"/>
+<div class="flex justify-between mt-2 font-label-sm text-label-sm text-zinc-500">
+<span>$0</span>
+<span>$5,000</span>
+</div>
+</div>
+<!-- Availability -->
+<div>
+<h3 class="font-label-sm text-label-sm uppercase tracking-widest text-zinc-500 mb-4">Status</h3>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-zinc-900 text-zinc-400 font-label-sm text-label-sm rounded-full border border-zinc-800 hover:border-blue-500 cursor-pointer transition-colors">In Stock</span>
+<span class="px-3 py-1 bg-zinc-900 text-zinc-400 font-label-sm text-label-sm rounded-full border border-zinc-800 hover:border-blue-500 cursor-pointer transition-colors">Pre-order</span>
+</div>
+</div>
+</div>
+</div>
+</aside>
+<!-- Product Grid -->
+<section class="flex-1">
+<div class="flex justify-between items-end mb-10">
+<div>
+<h1 class="font-display-xl text-display-xl text-zinc-50">Catalog</h1>
+<p class="font-body-lg text-body-lg text-zinc-500 mt-2">Showing 12 of 48 precise engineering units.</p>
+</div>
+<div class="flex items-center gap-4">
+<span class="font-label-sm text-label-sm text-zinc-500 uppercase tracking-widest">Sort by:</span>
+<select class="bg-transparent border-none font-label-sm text-label-sm text-on-surface focus:ring-0 cursor-pointer">
+<option>Latest Release</option>
+<option>Price: High to Low</option>
+<option>Performance Tier</option>
+</select>
+</div>
+</div>
+<!-- Bento Grid Layout for Products -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+<!-- Product Card 1 -->
+<div class="group relative bg-surface-container rounded-xl overflow-hidden hover:shadow-2xl hover:shadow-black/60 transition-all duration-500">
+<div class="absolute top-4 left-4 z-10">
+<span class="px-2 py-1 bg-blue-600 text-white font-label-sm text-[10px] rounded uppercase tracking-tighter">Discount 20%</span>
+</div>
+<div class="aspect-square bg-zinc-900 flex items-center justify-center p-12 overflow-hidden">
+<img class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700" data-alt="A high-end, matte black wireless headphone set floating in a dark, minimalist studio space. The lighting is focused and dramatic, highlighting the sleek curves and premium leather textures. The aesthetic is ultra-modern and corporate, using deep blacks and subtle blue ambient glows to emphasize technical mastery and luxury audio performance." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1klJ04NS2f3FgbsFzpiSvuAftthBZbpQc-u3Z9AMfS5_pPzVTbzWOht9amSaR24FsZqvIB-l7tSAWOovRpVEBXETEmadnb6HOYTIb6fekJTaBDfL12vbzfOnvUy7wrfeBcU0NkJqntAOt2KI9sDEIoawm2nSR6gutGcBGqZ-DRzPFrcZR2fAR9dp7D05Qo9KQ9cWzZ7IfsYA8YDaRfDYBlj84cpULpbeYo7cgl6PrilhV09syE8GqLkzhPOabUv2-6oHRq9FkzPeb"/>
+</div>
+<div class="p-8">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-headline-md text-zinc-50">Sonic Core Pro</h3>
+<span class="font-label-sm text-label-sm text-blue-400">$399</span>
+</div>
+<p class="font-body-md text-body-md text-zinc-500 mb-6">Ultra-low latency reference monitors with carbon-fiber acoustics.</p>
+<div class="flex gap-4">
+<a class="flex-1 text-center py-3 border border-zinc-700 rounded-lg font-label-sm text-label-sm uppercase tracking-widest hover:bg-white hover:text-black transition-all" href="product.html">Details</a>
+<button class="px-4 py-3 bg-blue-600 text-white rounded-lg active:scale-95 transition-transform" onclick="addToCart(1, 'Sonic Core Pro', 399, 'https://lh3.googleusercontent.com/aida-public/AB6AXuB1klJ04NS2f3FgbsFzpiSvuAftthBZbpQc-u3Z9AMfS5_pPzVTbzWOht9amSaR24FsZqvIB-l7tSAWOovRpVEBXETEmadnb6HOYTIb6fekJTaBDfL12vbzfOnvUy7wrfeBcU0NkJqntAOt2KI9sDEIoawm2nSR6gutGcBGqZ-DRzPFrcZR2fAR9dp7D05Qo9KQ9cWzZ7IfsYA8YDaRfDYBlj84cpULpbeYo7cgl6PrilhV09syE8GqLkzhPOabUv2-6oHRq9FkzPeb')">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Product Card 2 -->
+<div class="group relative bg-surface-container rounded-xl overflow-hidden hover:shadow-2xl hover:shadow-black/60 transition-all duration-500">
+<div class="absolute top-4 left-4 z-10">
+<span class="px-2 py-1 bg-amber-500 text-black font-label-sm text-[10px] rounded uppercase tracking-tighter">Limited Stock</span>
+</div>
+<div class="aspect-square bg-zinc-900 flex items-center justify-center p-12 overflow-hidden">
+<img class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700" data-alt="A sophisticated mechanical keyboard with translucent keycaps and subtle electric blue backlighting, resting on a polished dark obsidian surface. The setting is an ultra-modern executive workspace with soft, diffused atmospheric lighting. The image emphasizes high-performance engineering and premium tactile design through sharp focus and a moody, monochromatic color palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCECsqzFktYqBG03JoabSUXxpUWBDKBXkekcdQKLM7ZsjoGa1mqDLjcpDj4w8E0B3hCBGHdtIm47bW1YhbfrQcqOICU_Rh0wBrmOYWhamPHR-2e9d291qcg-yns9Wco4L1am17eJSI4-od-r7wLjKlxsKeGzD-IUeawHLmA0LEi62C1PaTmYzX87AfdUZhbsohurMkr9Iw924qgdpjpEbgF9sbTU2bucYIEBv2BYJkQtftwhefCZ724RKpsnccmWaw2vswitgIERpMA"/>
+</div>
+<div class="p-8">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-headline-md text-zinc-50">Apex Hub T9</h3>
+<span class="font-label-sm text-label-sm text-blue-400">$1,250</span>
+</div>
+<p class="font-body-md text-body-md text-zinc-500 mb-6">Centralized automation node with military-grade encryption.</p>
+<div class="flex gap-4">
+<a class="flex-1 text-center py-3 border border-zinc-700 rounded-lg font-label-sm text-label-sm uppercase tracking-widest hover:bg-white hover:text-black transition-all" href="product.html">Details</a>
+<button class="px-4 py-3 bg-blue-600 text-white rounded-lg active:scale-95 transition-transform" onclick="addToCart(2, 'Apex Hub T9', 1250, 'https://lh3.googleusercontent.com/aida-public/AB6AXuCECsqzFktYqBG03JoabSUXxpUWBDKBXkekcdQKLM7ZsjoGa1mqDLjcpDj4w8E0B3hCBGHdtIm47bW1YhbfrQcqOICU_Rh0wBrmOYWhamPHR-2e9d291qcg-yns9Wco4L1am17eJSI4-od-r7wLjKlxsKeGzD-IUeawHLmA0LEi62C1PaTmYzX87AfdUZhbsohurMkr9Iw924qgdpjpEbgF9sbTU2bucYIEBv2BYJkQtftwhefCZ724RKpsnccmWaw2vswitgIERpMA')">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Product Card 3 -->
+<div class="group relative bg-surface-container rounded-xl overflow-hidden hover:shadow-2xl hover:shadow-black/60 transition-all duration-500">
+<div class="aspect-square bg-zinc-900 flex items-center justify-center p-12 overflow-hidden">
+<img class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700" data-alt="A sleek, metallic silver tablet with an edge-to-edge liquid retina display showing complex technical schematics. The device is placed in a minimalist, high-tech lab environment characterized by clean lines and neutral tones. Cold, precise studio lighting reflects off the brushed aluminum casing, conveying a sense of professional durability and cutting-edge silicon technology." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDxmPux0zz79z9PhsDc4ecF7j-abc8DTXYIBSAQ6MV9sUrInqcCybMqajb5jbcUuJC7LFNF7es474fLNWlDPwqV7aFHL8J3OPUjT1nR_d5gxsNZ19Sm4hUzkQ8VEAF9ecZ3WEZqOiG0BSLxefasP3sqFzT7Nj_fQFiqxoTpHyelPUzex79N3BN1TW_u-yv7i8vGugmRvmNohGOFZQA5rGUYCUcAiymu0A_hdb0xUFe0aw5wNturFtZ8F_Z4RV20zFr6xlqYEFf5gdz"/>
+</div>
+<div class="p-8">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-headline-md text-zinc-50">Vision Slab X</h3>
+<span class="font-label-sm text-label-sm text-blue-400">$899</span>
+</div>
+<p class="font-body-md text-body-md text-zinc-500 mb-6">The ultimate creative canvas with 120Hz liquid crystal precision.</p>
+<div class="flex gap-4">
+<a class="flex-1 text-center py-3 border border-zinc-700 rounded-lg font-label-sm text-label-sm uppercase tracking-widest hover:bg-white hover:text-black transition-all" href="product.html">Details</a>
+<button class="px-4 py-3 bg-blue-600 text-white rounded-lg active:scale-95 transition-transform" onclick="addToCart(3, 'Vision Slab X', 899, 'https://lh3.googleusercontent.com/aida-public/AB6AXuBDxmPux0zz79z9PhsDc4ecF7j-abc8DTXYIBSAQ6MV9sUrInqcCybMqajb5jbcUuJC7LFNF7es474fLNWlDPwqV7aFHL8J3OPUjT1nR_d5gxsNZ19Sm4hUzkQ8VEAF9ecZ3WEZqOiG0BSLxefasP3sqFzT7Nj_fQFiqxoTpHyelPUzex79N3BN1TW_u-yv7i8vGugmRvmNohGOFZQA5rGUYCUcAiymu0A_hdb0xUFe0aw5wNturFtZ8F_Z4RV20zFr6xlqYEFf5gdz')">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Product Card 4 -->
+<div class="group relative bg-surface-container rounded-xl overflow-hidden hover:shadow-2xl hover:shadow-black/60 transition-all duration-500">
+<div class="aspect-square bg-zinc-900 flex items-center justify-center p-12 overflow-hidden">
+<img class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700" data-alt="A high-performance workstation laptop featuring a carbon fiber chassis and a vibrant 4K display. The laptop is set against a dark, architecturally interesting background with subtle blue rim lighting. The composition is sleek and professional, highlighting the thin profile and industrial design language of high-end corporate electronics." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvi6mLx3jnug8sCQ_qNjokE1WO51punBZyuCSrlqaynkju1tZIiGlOChNGOayKOb3qEoTR4xmbqqmX20IPw8a6JS-hABDV0Z8cgHa9w23bHXHF903HrjZHvYgUaC3c7s4dbGRSkodW47DbpoQSRVu1_qT0B_iWd1zRA9654eC98J2-eok3QlYgS0Xh6f6bBmoseMJSohtBpLaBA6oS080eJzdFDXY0eV5qGjfdpUG9ENPosh1cosg2OW5_ifwhwtpJaovj1Ha0Ixb7"/>
+</div>
+<div class="p-8">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-headline-md text-zinc-50">Titan Book 16</h3>
+<span class="font-label-sm text-label-sm text-blue-400">$2,499</span>
+</div>
+<p class="font-body-md text-body-md text-zinc-500 mb-6">Desktop-class performance in a vanishingly thin obsidian frame.</p>
+<div class="flex gap-4">
+<a class="flex-1 text-center py-3 border border-zinc-700 rounded-lg font-label-sm text-label-sm uppercase tracking-widest hover:bg-white hover:text-black transition-all" href="product.html">Details</a>
+<button class="px-4 py-3 bg-blue-600 text-white rounded-lg active:scale-95 transition-transform" onclick="addToCart(4, 'Titan Book 16', 2499, 'https://lh3.googleusercontent.com/aida-public/AB6AXuAvi6mLx3jnug8sCQ_qNjokE1WO51punBZyuCSrlqaynkju1tZIiGlOChNGOayKOb3qEoTR4xmbqqmX20IPw8a6JS-hABDV0Z8cgHa9w23bHXHF903HrjZHvYgUaC3c7s4dbGRSkodW47DbpoQSRVu1_qT0B_iWd1zRA9654eC98J2-eok3QlYgS0Xh6f6bBmoseMJSohtBpLaBA6oS080eJzdFDXY0eV5qGjfdpUG9ENPosh1cosg2OW5_ifwhwtpJaovj1Ha0Ixb7')">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Product Card 5 -->
+<div class="group relative bg-surface-container rounded-xl overflow-hidden hover:shadow-2xl hover:shadow-black/60 transition-all duration-500">
+<div class="aspect-square bg-zinc-900 flex items-center justify-center p-12 overflow-hidden">
+<img class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700" data-alt="Professional-grade noise-cancelling earbuds in a sculptural charging case. The case has a matte charcoal finish and rests on a slab of dark marble. Soft light hits the metallic accents of the buds, creating a high-contrast, premium aesthetic. The vibe is quiet luxury and technical precision, fitting for a minimalist high-end boutique electronics brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7pDk4d3L6Ak4Bv4LAaDjZlpt6v3ewEl1D81HnL7zpTuq3O2Vwa2LEUyEAfj1p5ZJysVTMAVRTWYCQV6vz_8UPKXzrQbqMmwc1in6G4Bs9_qwdPRMJYCPd6-cV3SzqxiVWQ3MifAE2t9-eXAuT65g50OrZUbi0_-IwfHrtBTlkgjdIB7NELqbcQxvl7WTNsW-LHJooLpt0Fgb-Z2neye6E4quw6E8gVRTr2jS_rP4-pNqTh6xgsEgs44jjQdCCdooyXg4a9XBl0qmc"/>
+</div>
+<div class="p-8">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-headline-md text-zinc-50">Flux Buds Z</h3>
+<span class="font-label-sm text-label-sm text-blue-400">$199</span>
+</div>
+<p class="font-body-md text-body-md text-zinc-500 mb-6">Adaptive transparency and spatial audio for total immersion.</p>
+<div class="flex gap-4">
+<a class="flex-1 text-center py-3 border border-zinc-700 rounded-lg font-label-sm text-label-sm uppercase tracking-widest hover:bg-white hover:text-black transition-all" href="product.html">Details</a>
+<button class="px-4 py-3 bg-blue-600 text-white rounded-lg active:scale-95 transition-transform" onclick="addToCart(5, 'Flux Buds Z', 199, 'https://lh3.googleusercontent.com/aida-public/AB6AXuA7pDk4d3L6Ak4Bv4LAaDjZlpt6v3ewEl1D81HnL7zpTuq3O2Vwa2LEUyEAfj1p5ZJysVTMAVRTWYCQV6vz_8UPKXzrQbqMmwc1in6G4Bs9_qwdPRMJYCPd6-cV3SzqxiVWQ3MifAE2t9-eXAuT65g50OrZUbi0_-IwfHrtBTlkgjdIB7NELqbcQxvl7WTNsW-LHJooLpt0Fgb-Z2neye6E4quw6E8gVRTr2jS_rP4-pNqTh6xgsEgs44jjQdCCdooyXg4a9XBl0qmc')">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Product Card 6 -->
+<div class="group relative bg-surface-container rounded-xl overflow-hidden hover:shadow-2xl hover:shadow-black/60 transition-all duration-500">
+<div class="absolute top-4 left-4 z-10">
+<span class="px-2 py-1 bg-blue-600 text-white font-label-sm text-[10px] rounded uppercase tracking-tighter">Discount 15%</span>
+</div>
+<div class="aspect-square bg-zinc-900 flex items-center justify-center p-12 overflow-hidden">
+<img class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700" data-alt="A smartphone with a stunning OLED display showing a vibrant cosmic nebula. The phone is held at a slight angle to catch the light on its titanium side rails. The background is a dark, out-of-focus tech environment. The image communicates pure premium quality and high-fidelity visual technology through extreme clarity and rich black levels." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBheJp2EirkiDWBuA6BBSIAxY5uzWu6h7PVczD6oFmTs4eX68oY6E0jtWhEPUL2DYgt4831uvxMysLapsnL9l5ypB8EFeTiRdlOdrMt3QGZLBJJzXTWNuFkIO0eAupXxCtPLPHV6xxNSIsNjijYHq2qF0jPCUjPFx78_OmjIO17k2z37YNuYcJRr09a-zxAOEs1GlcYNMjEkwJ23GuOCgi5J571hrqGdr4O90BJoNyf-te5rotxzFGJGsOgcTIU8Azqb5UBAOilhLru"/>
+</div>
+<div class="p-8">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-headline-md text-zinc-50">Lumina Phone Pro</h3>
+<span class="font-label-sm text-label-sm text-blue-400">$1,099</span>
+</div>
+<p class="font-body-md text-body-md text-zinc-500 mb-6">Computational photography redefined with a 200MP sensor array.</p>
+<div class="flex gap-4">
+<a class="flex-1 text-center py-3 border border-zinc-700 rounded-lg font-label-sm text-label-sm uppercase tracking-widest hover:bg-white hover:text-black transition-all" href="product.html">Details</a>
+<button class="px-4 py-3 bg-blue-600 text-white rounded-lg active:scale-95 transition-transform" onclick="addToCart(6, 'Lumina Phone Pro', 1099, 'https://lh3.googleusercontent.com/aida-public/AB6AXuBheJp2EirkiDWBuA6BBSIAxY5uzWu6h7PVczD6oFmTs4eX68oY6E0jtWhEPUL2DYgt4831uvxMysLapsnL9l5ypB8EFeTiRdlOdrMt3QGZLBJJzXTWNuFkIO0eAupXxCtPLPHV6xxNSIsNjijYHq2qF0jPCUjPFx78_OmjIO17k2z37YNuYcJRr09a-zxAOEs1GlcYNMjEkwJ23GuOCgi5J571hrqGdr4O90BJoNyf-te5rotxzFGJGsOgcTIU8Azqb5UBAOilhLru')">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Pagination -->
+<div class="mt-20 flex justify-center items-center gap-4">
+<button class="w-12 h-12 flex items-center justify-center border border-zinc-800 rounded-full text-zinc-500 hover:text-white hover:border-blue-500 transition-all">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<div class="flex gap-2">
+<button class="w-12 h-12 flex items-center justify-center bg-blue-600 text-white rounded-full font-label-sm text-label-sm">1</button>
+<button class="w-12 h-12 flex items-center justify-center border border-zinc-800 text-zinc-500 rounded-full font-label-sm text-label-sm hover:text-white transition-all hover:bg-zinc-800 transition-colors">2</button>
+<button class="w-12 h-12 flex items-center justify-center border border-zinc-800 text-zinc-500 rounded-full font-label-sm text-label-sm hover:text-white transition-all hover:bg-zinc-800 transition-colors">3</button>
+</div>
+<button class="w-12 h-12 flex items-center justify-center border border-zinc-800 rounded-full text-zinc-500 hover:text-white hover:border-blue-500 transition-all">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</section>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 rounded-t-2xl bg-zinc-900/95 backdrop-blur-lg border-t border-zinc-800 shadow-[0_-10px_30px_rgba(0,0,0,0.5)] flex justify-around items-center h-20 pb-4">
+<div class="text-blue-500 dark:text-blue-400 flex flex-col items-center gap-1 font-medium text-[10px] uppercase tracking-widest">
+<span class="material-symbols-outlined">storefront</span>
+<span>Shop</span>
+</div>
+<div class="text-zinc-500 dark:text-zinc-400 flex flex-col items-center gap-1 font-medium text-[10px] uppercase tracking-widest">
+<span class="material-symbols-outlined">search</span>
+<span>Search</span>
+</div>
+<div class="text-zinc-500 dark:text-zinc-400 flex flex-col items-center gap-1 font-medium text-[10px] uppercase tracking-widest">
+<span class="material-symbols-outlined">shopping_bag</span>
+<span>Cart</span>
+</div>
+<div class="text-zinc-500 dark:text-zinc-400 flex flex-col items-center gap-1 font-medium text-[10px] uppercase tracking-widest">
+<span class="material-symbols-outlined">person</span>
+<span>Account</span>
+</div>
+</nav>
+<!-- Footer -->
+<footer class="w-full py-12 bg-zinc-950 border-t border-zinc-900">
+<div class="max-w-[1440px] mx-auto flex flex-col md:flex-row justify-between items-center px-20 gap-8">
+<div class="text-lg font-black tracking-tighter text-zinc-300">ElectroLux</div>
+<div class="flex gap-8">
+<a class="text-xs font-light text-zinc-600 hover:text-blue-400 underline-offset-4 hover:underline transition-opacity" href="#">Privacy Policy</a>
+<a class="text-xs font-light text-zinc-600 hover:text-blue-400 underline-offset-4 hover:underline transition-opacity" href="#">Terms of Service</a>
+<a class="text-xs font-light text-zinc-600 hover:text-blue-400 underline-offset-4 hover:underline transition-opacity" href="#">Warranty</a>
+</div>
+<div class="text-xs font-light text-zinc-500">© 2024 ElectroLux Global. All rights reserved.</div>
+</div>
+</footer>
+</body></html>

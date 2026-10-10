@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ElectroLux | Admin Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(28, 28, 30, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface-variant": "#c4c7c7",
+                        "on-tertiary": "#002e69",
+                        "outline-variant": "#444748",
+                        "error-container": "#93000a",
+                        "secondary-fixed": "#ffe088",
+                        "surface": "#131315",
+                        "secondary-fixed-dim": "#e9c349",
+                        "primary-fixed": "#e5e2e1",
+                        "on-tertiary-container": "#0075f4",
+                        "surface-container": "#1f1f21",
+                        "on-secondary-container": "#342800",
+                        "on-secondary-fixed-variant": "#574500",
+                        "on-error-container": "#ffdad6",
+                        "on-primary-fixed": "#1c1b1b",
+                        "tertiary": "#adc6ff",
+                        "on-surface": "#e4e2e4",
+                        "error": "#ffb4ab",
+                        "surface-bright": "#39393b",
+                        "on-secondary": "#3c2f00",
+                        "on-primary-container": "#7b7979",
+                        "inverse-primary": "#5f5e5e",
+                        "primary-container": "#0a0a0a",
+                        "inverse-on-surface": "#303032",
+                        "tertiary-fixed": "#d8e2ff",
+                        "tertiary-fixed-dim": "#adc6ff",
+                        "on-primary-fixed-variant": "#474646",
+                        "on-secondary-fixed": "#241a00",
+                        "inverse-surface": "#e4e2e4",
+                        "primary-fixed-dim": "#c9c6c5",
+                        "background": "#131315",
+                        "outline": "#8e9192",
+                        "surface-container-highest": "#353437",
+                        "on-primary": "#313030",
+                        "on-background": "#e4e2e4",
+                        "primary": "#c9c6c5",
+                        "tertiary-container": "#00091f",
+                        "surface-container-low": "#1b1b1d",
+                        "secondary": "#e9c349",
+                        "surface-container-lowest": "#0e0e10",
+                        "on-tertiary-fixed-variant": "#004493",
+                        "on-error": "#690005",
+                        "on-tertiary-fixed": "#001a41",
+                        "surface-tint": "#c9c6c5",
+                        "surface-dim": "#131315",
+                        "surface-variant": "#353437",
+                        "secondary-container": "#af8d11",
+                        "surface-container-high": "#2a2a2c"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-md": "24px",
+                        "stack-lg": "48px",
+                        "margin-mobile": "16px",
+                        "unit": "8px",
+                        "gutter": "24px",
+                        "stack-sm": "12px",
+                        "container-max-width": "1440px",
+                        "margin-desktop": "80px"
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface">
+<div class="flex min-h-screen">
+<!-- SideNavBar Component (Shared Component Implementation) -->
+<aside class="bg-[#1C1C1E] h-screen sticky left-0 w-72 border-r border-white/5 shadow-[inset_-1px_0_0_0_rgba(255,255,255,0.05)] flex flex-col h-full py-8">
+<div class="px-8 mb-10">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-blue-500 text-3xl" data-icon="bolt">bolt</span>
+<h1 class="text-blue-500 font-black tracking-widest uppercase text-xl">ElectroLux</h1>
+</div>
+<p class="text-slate-500 text-xs mt-1 font-medium">Enterprise Admin</p>
+</div>
+<nav class="flex-1">
+<a class="bg-blue-600/10 text-blue-400 border-r-2 border-blue-500 flex items-center gap-3 px-6 py-4 transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="font-['Inter'] text-sm font-medium">Products</span>
+</a>
+<a class="text-slate-500 flex items-center gap-3 px-6 py-4 hover:bg-white/5 hover:text-slate-200 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+<span class="font-['Inter'] text-sm font-medium">Orders</span>
+</a>
+<a class="text-slate-500 flex items-center gap-3 px-6 py-4 hover:bg-white/5 hover:text-slate-200 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-['Inter'] text-sm font-medium">Settings</span>
+</a>
+</nav>
+<div class="mt-auto border-t border-white/5 pt-4">
+<a class="text-slate-500 flex items-center gap-3 px-6 py-4 hover:bg-white/5 hover:text-slate-200 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="font-['Inter'] text-sm font-medium">Support</span>
+</a>
+<a class="text-slate-500 flex items-center gap-3 px-6 py-4 hover:bg-white/5 hover:text-slate-200 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-['Inter'] text-sm font-medium">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 flex flex-col bg-background">
+<!-- TopNavBar Component (Shared Component Implementation) -->
+<header class="bg-[#0A0A0A]/90 backdrop-blur-[20px] docked full-width top-0 sticky z-50 border-b border-white/10 shadow-2xl shadow-black/50 flex items-center justify-between px-10 h-16 w-full">
+<div class="flex items-center gap-6">
+<span class="text-slate-200 font-medium text-sm">Dashboard / Products</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-slate-500 text-lg" data-icon="search">search</span>
+<input class="bg-white/5 border border-white/10 rounded-lg pl-10 pr-4 py-1.5 text-sm text-slate-300 focus:outline-none focus:border-blue-500 w-64 transition-all" placeholder="Search catalog..." type="text"/>
+</div>
+<div class="flex items-center gap-4 border-l border-white/10 pl-6">
+<button class="text-slate-400 hover:text-blue-400 transition-all active:scale-95">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="text-slate-400 hover:text-blue-400 transition-all active:scale-95">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<div class="h-8 w-8 rounded-full overflow-hidden border border-white/20">
+<img class="h-full w-full object-cover" data-alt="Close-up professional portrait of a tech executive wearing a dark designer suit, set against a blurred high-end corporate office background. The lighting is dramatic and moody with a cool color temperature to match the dark UI aesthetic, emphasizing precision and professional leadership. The image has a polished, high-fidelity commercial feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2A9i5Egl9cq327X1XmALEZOP5Fos6ZszBEkvev0_he24gsKmAG5DOt5JUIuvMojHQ-jBsy07QJ8JvrmDq4zoNxpCxOhffEceML7yYRlImLs8NfhBOuf7hVM30TVV4JjZUb6PIin9J663ZAv7Ca_BmPXI4RA0alAQFLB9MwfOc5mDSPvm1QWyVd1fnYRb1A2mU98Hm-CQ0nf1j4hSWzCnqTnomlCk6F664DnP1Oc5ho8dtdZxgSt-bUu_IOfF6YztYzzkHYqtAyyrR"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Dashboard Content -->
+<div class="p-10 space-y-stack-lg">
+<!-- Summary Stats (Bento Style) -->
+<div class="grid grid-cols-12 gap-gutter">
+<div class="col-span-8 glass-panel p-8 rounded-xl flex items-center justify-between">
+<div>
+<h3 class="text-slate-400 font-label-sm text-label-sm mb-2">LIVE INVENTORY SYNC</h3>
+<div class="flex items-baseline gap-3">
+<span class="text-4xl font-bold tracking-tight text-white">4,291</span>
+<span class="text-emerald-500 text-sm font-semibold flex items-center">
+<span class="material-symbols-outlined text-sm mr-1" data-icon="trending_up">trending_up</span>
+                                    +12% vs last month
+                                </span>
+</div>
+</div>
+<div class="h-16 w-1/3 bg-blue-600/5 rounded-lg border border-blue-500/20 flex items-center justify-center">
+<span class="text-blue-400 text-sm font-medium">Real-time API connected</span>
+</div>
+</div>
+<div class="col-span-4 glass-panel p-8 rounded-xl">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-slate-400 font-label-sm text-label-sm">GLOBAL COUPONS</h3>
+<div class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-slate-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+</div>
+</div>
+<p class="text-3xl font-bold text-white">OFF-FALL24</p>
+<p class="text-slate-500 text-xs mt-1">25% Sitewide Discount Active</p>
+</div>
+</div>
+<!-- Product Management Table Section -->
+<div class="glass-panel rounded-xl overflow-hidden">
+<div class="p-6 border-b border-white/5 flex items-center justify-between">
+<div>
+<h2 class="text-xl font-bold text-white tracking-tight">Product Catalog</h2>
+<p class="text-slate-500 text-sm">Manage inventory and pricing sync via api.php</p>
+</div>
+<div class="flex gap-4">
+<button class="bg-white/5 border border-white/10 text-slate-300 px-4 py-2 rounded-lg text-sm font-medium hover:bg-white/10 transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-lg" data-icon="filter_list">filter_list</span>
+                                Filter
+                            </button>
+<button class="bg-blue-600 text-white px-5 py-2 rounded-lg text-sm font-bold hover:bg-blue-500 transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-lg" data-icon="add">add</span>
+                                Add Product
+                            </button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-white/5 text-slate-400 text-xs font-bold uppercase tracking-wider">
+<tr>
+<th class="px-8 py-4">Product</th>
+<th class="px-8 py-4">Category</th>
+<th class="px-8 py-4">Price</th>
+<th class="px-8 py-4">Status</th>
+<th class="px-8 py-4">Discount</th>
+<th class="px-8 py-4 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-white/5">
+<tr class="hover:bg-white/5 transition-colors group">
+<td class="px-8 py-6">
+<div class="flex items-center gap-4">
+<div class="h-12 w-12 rounded bg-[#0A0A0A] border border-white/10 flex items-center justify-center">
+<img class="h-8 w-8 object-contain" data-alt="A premium, sleek minimal white watch with a silver metallic bezel resting on a dark matte gray surface. The lighting is soft and directional, creating elegant long shadows and highlighting the brushed metal textures. The background is a clean, out-of-focus dark office environment, emphasizing a luxurious and technical product aesthetic that fits a high-end electronics brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCk3sKOWv9XCNkxQJYNKvivf_Z3OXz8TJeJdptOi7vqyrffEeOmNb-erPtVLPmEitvXN93rkW-ulkax6OyIPEKlCif6vHdkMp4XLZ580azY-IYvmTM393zQixVbO5gtGYPNNYX4KM_Vtq-vY6VCBvZfXPPYWJ3jABXt1YajhTuU61JWNajYFZX8_u5ksr2Cwx_7JLMYqVysLSNgONFWIzNu7Zo8ahvlRTH19FSdX9bGmAsQ3zsQqX8zjZ1bqih-LtKQO1g-mpPtLvn1"/>
+</div>
+<div>
+<div class="text-sm font-bold text-white">Chronos Gen 4</div>
+<div class="text-xs text-slate-500">SKU: ELX-742-CW</div>
+</div>
+</div>
+</td>
+<td class="px-8 py-6">
+<span class="text-xs bg-slate-800 text-slate-300 px-2 py-1 rounded">Wearables</span>
+</td>
+<td class="px-8 py-6 font-medium text-white">$429.00</td>
+<td class="px-8 py-6">
+<div class="flex items-center gap-2">
+<span class="h-2 w-2 rounded-full bg-emerald-500"></span>
+<span class="text-xs font-medium text-slate-300">In Stock</span>
+</div>
+</td>
+<td class="px-8 py-6">
+<div class="flex items-center gap-2">
+<span class="text-xs text-blue-400 font-bold">15% OFF</span>
+<button class="text-slate-600 hover:text-slate-300">
+<span class="material-symbols-outlined text-sm" data-icon="edit">edit</span>
+</button>
+</div>
+</td>
+<td class="px-8 py-6 text-right">
+<div class="flex items-center justify-end gap-3 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="text-slate-400 hover:text-blue-500"><span class="material-symbols-outlined text-xl" data-icon="edit_square">edit_square</span></button>
+<button class="text-slate-400 hover:text-red-500"><span class="material-symbols-outlined text-xl" data-icon="delete">delete</span></button>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-white/5 transition-colors group">
+<td class="px-8 py-6">
+<div class="flex items-center gap-4">
+<div class="h-12 w-12 rounded bg-[#0A0A0A] border border-white/10 flex items-center justify-center">
+<img class="h-8 w-8 object-contain" data-alt="A professional close-up shot of a dark charcoal gray smartwatch with a black silicone band. The watch face shows a detailed health tracking interface with vibrant blue and neon highlights. The product is shot against a dark obsidian background with subtle rim lighting that defines its ergonomic curves and high-quality build materials. The mood is sophisticated and futuristic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBps1wukKPuQoncCpPJQ1fbQTSwfgRpbmVzFe4im8MuEnh9i-itKSgZgBul9Onb_dzZdBJkH5AY3bLo4FAVJwoSa62ErwIz9mWY2nopH8DTiTv1-ecI5IQ70IzqHv3uRwN5h5JpfY49XstOG_b56h9N5gEhfbl3kWDMW3O4Bvw5c9p6Y-x_so0f8k_h8RCvyZaUpZexhZQjC34cqaeCJS2s3yUtcasq7BuDTruEWmc22XKWr_t8eX1lF3fJo7fvS0EnjclipesKyblT"/>
+</div>
+<div>
+<div class="text-sm font-bold text-white">Evo Stealth X</div>
+<div class="text-xs text-slate-500">SKU: ELX-901-SX</div>
+</div>
+</div>
+</td>
+<td class="px-8 py-6">
+<span class="text-xs bg-slate-800 text-slate-300 px-2 py-1 rounded">Wearables</span>
+</td>
+<td class="px-8 py-6 font-medium text-white">$599.00</td>
+<td class="px-8 py-6">
+<div class="flex items-center gap-2">
+<span class="h-2 w-2 rounded-full bg-red-500"></span>
+<span class="text-xs font-medium text-slate-300">Limited</span>
+</div>
+</td>
+<td class="px-8 py-6">
+<div class="flex items-center gap-2">
+<span class="text-xs text-slate-600">None</span>
+<button class="text-slate-600 hover:text-slate-300">
+<span class="material-symbols-outlined text-sm" data-icon="add_circle">add_circle</span>
+</button>
+</div>
+</td>
+<td class="px-8 py-6 text-right">
+<div class="flex items-center justify-end gap-3 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="text-slate-400 hover:text-blue-500"><span class="material-symbols-outlined text-xl" data-icon="edit_square">edit_square</span></button>
+<button class="text-slate-400 hover:text-red-500"><span class="material-symbols-outlined text-xl" data-icon="delete">delete</span></button>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-white/5 transition-colors group">
+<td class="px-8 py-6">
+<div class="flex items-center gap-4">
+<div class="h-12 w-12 rounded bg-[#0A0A0A] border border-white/10 flex items-center justify-center">
+<img class="h-8 w-8 object-contain" data-alt="High-end professional over-ear noise-cancelling headphones in a matte black finish with metallic chrome accents. They are displayed on a specialized designer headphone stand in a minimalist, darkened home studio. The lighting is low-key, featuring a single softbox from the side to create deep gradients and professional-grade highlights on the leather ear pads and metal headband. The atmosphere is premium and audiophile-focused." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXGu7MTFpYYFVY4Jc6ei1Bc7UgSH1YQKGfpw401V8NfGkCNKKMKvTx8VeoGh8Zby6DHaaTqc3JRLkIwYgpkcae6q7kRvn58JEU7bV9qTlXG8rD_EAoCAtxfpt47dcFA1MHSmd_GskTMyaumB3yDKwV1Kq1qida1-MEK6iLZH8veqtZQZr4gTBbFs5Z9DVpHyicWLhD8tgHGZkPa9EhCMdEXfeZq5aI4PeaVOO18_NK6xQECeEPHAmiRWHhiFd5pbj3MdklEdMha49d"/>
+</div>
+<div>
+<div class="text-sm font-bold text-white">Audio One Ultra</div>
+<div class="text-xs text-slate-500">SKU: ELX-220-AU</div>
+</div>
+</div>
+</td>
+<td class="px-8 py-6">
+<span class="text-xs bg-slate-800 text-slate-300 px-2 py-1 rounded">Audio</span>
+</td>
+<td class="px-8 py-6 font-medium text-white">$299.00</td>
+<td class="px-8 py-6">
+<div class="flex items-center gap-2">
+<span class="h-2 w-2 rounded-full bg-emerald-500"></span>
+<span class="text-xs font-medium text-slate-300">In Stock</span>
+</div>
+</td>
+<td class="px-8 py-6">
+<div class="flex items-center gap-2">
+<span class="text-xs text-blue-400 font-bold">SALE ACTIVE</span>
+<button class="text-slate-600 hover:text-slate-300">
+<span class="material-symbols-outlined text-sm" data-icon="edit">edit</span>
+</button>
+</div>
+</td>
+<td class="px-8 py-6 text-right">
+<div class="flex items-center justify-end gap-3 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="text-slate-400 hover:text-blue-500"><span class="material-symbols-outlined text-xl" data-icon="edit_square">edit_square</span></button>
+<button class="text-slate-400 hover:text-red-500"><span class="material-symbols-outlined text-xl" data-icon="delete">delete</span></button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-6 border-t border-white/5 flex items-center justify-between">
+<p class="text-slate-500 text-xs">Showing 1-10 of 4,291 products</p>
+<div class="flex gap-2">
+<button class="h-8 w-8 rounded border border-white/10 flex items-center justify-center text-slate-400 hover:bg-white/5"><span class="material-symbols-outlined text-sm" data-icon="chevron_left">chevron_left</span></button>
+<button class="h-8 w-8 rounded bg-blue-600 flex items-center justify-center text-white text-xs font-bold">1</button>
+<button class="h-8 w-8 rounded border border-white/10 flex items-center justify-center text-slate-400 hover:bg-white/5 text-xs">2</button>
+<button class="h-8 w-8 rounded border border-white/10 flex items-center justify-center text-slate-400 hover:bg-white/5 text-xs">3</button>
+<button class="h-8 w-8 rounded border border-white/10 flex items-center justify-center text-slate-400 hover:bg-white/5"><span class="material-symbols-outlined text-sm" data-icon="chevron_right">chevron_right</span></button>
+</div>
+</div>
+</div>
+<!-- Integration Status & Logs -->
+<div class="grid grid-cols-12 gap-gutter">
+<div class="col-span-12 glass-panel p-8 rounded-xl">
+<div class="flex items-center justify-between mb-8">
+<h3 class="text-lg font-bold text-white">System Integration Sync</h3>
+<div class="flex items-center gap-4">
+<span class="text-xs text-emerald-500 font-bold bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20">API Status: Stable</span>
+</div>
+</div>
+<div class="space-y-4">
+<div class="flex items-center justify-between py-3 border-b border-white/5">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-blue-500" data-icon="database">database</span>
+<div>
+<p class="text-sm font-medium text-slate-200">products.json updated</p>
+<p class="text-xs text-slate-500">Manual overwrite successful via Dashboard</p>
+</div>
+</div>
+<span class="text-xs text-slate-500">2 minutes ago</span>
+</div>
+<div class="flex items-center justify-between py-3 border-b border-white/5">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-slate-500" data-icon="sync">sync</span>
+<div>
+<p class="text-sm font-medium text-slate-200">Full Catalog Sync</p>
+<p class="text-xs text-slate-500">Automatic routine triggered by api.php</p>
+</div>
+</div>
+<span class="text-xs text-slate-500">1 hour ago</span>
+</div>
+<div class="flex items-center justify-between py-3">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-amber-500" data-icon="warning">warning</span>
+<div>
+<p class="text-sm font-medium text-slate-200">Failed Webhook Attempt</p>
+<p class="text-xs text-slate-500">Retrying connection to External Warehouse 4</p>
+</div>
+</div>
+<span class="text-xs text-slate-500">4 hours ago</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

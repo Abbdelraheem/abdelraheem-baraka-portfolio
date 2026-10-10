@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>كشف Kashf — محرك الأمن السيبراني والتدقيق المعماري</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cyber-black: #040805;
+    --cyber-black-2: #09100b;
+    --cyber-card: #0d1710;
+    --cyber-card-border: rgba(0, 255, 102, 0.22);
+    --cyber-green: #00ff66;
+    --cyber-green-dim: #00cc52;
+    --cyber-green-glow: rgba(0, 255, 102, 0.35);
+    --cyber-green-subtle: rgba(0, 255, 102, 0.08);
+    --cyber-text: #e2fbe8;
+    --cyber-muted: #7aa584;
+    --cyber-danger: #ff3344;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background-color: var(--cyber-black);
+    color: var(--cyber-text);
+    font-family: 'Cairo', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+  }
+  code, .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+  /* Scanline CRT overlay */
+  body::before {
+    content: " ";
+    display: block;
+    position: fixed;
+    top: 0; left: 0; bottom: 0; right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+                linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+    z-index: 99;
+    background-size: 100% 3px, 6px 100%;
+    pointer-events: none;
+  }
+
+  /* Matrix radial glow backdrop */
+  .cyber-bg {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background-image:
+      radial-gradient(circle at 50% 15%, rgba(0, 255, 102, 0.12) 0%, transparent 65%),
+      linear-gradient(rgba(0, 255, 102, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 255, 102, 0.04) 1px, transparent 1px);
+    background-size: 100% 100%, 36px 36px, 36px 36px;
+  }
+
+  .wrap { position: relative; z-index: 2; max-width: 1140px; margin: 0 auto; padding: 24px; }
+
+  /* Top Bar */
+  .topbar {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 16px 24px; border-radius: 14px;
+    background: rgba(9, 16, 11, 0.9); border: 1px solid var(--cyber-card-border);
+    backdrop-filter: blur(12px); box-shadow: 0 0 30px rgba(0, 255, 102, 0.08);
+    margin-bottom: 28px;
+  }
+  .brand { display: flex; align-items: center; gap: 14px; }
+  .logo-box {
+    width: 38px; height: 38px; border-radius: 8px;
+    background: var(--cyber-green); color: #040805;
+    font-family: 'JetBrains Mono'; font-weight: 900; font-size: 1.3rem;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 0 16px var(--cyber-green-glow);
+  }
+  .brand-text strong {
+    font-size: 1.25rem; font-weight: 900; letter-spacing: 0.04em;
+    color: #fff; font-family: 'JetBrains Mono';
+  }
+  .brand-text strong span { color: var(--cyber-green); }
+  .brand-text small { display: block; font-size: 0.76rem; color: var(--cyber-muted); font-weight: 600; }
+
+  .status-pill {
+    display: flex; align-items: center; gap: 8px;
+    font-family: 'JetBrains Mono'; font-size: 0.75rem; font-weight: 700;
+    color: var(--cyber-green); background: var(--cyber-green-subtle);
+    padding: 6px 14px; border-radius: 100px; border: 1px solid var(--cyber-card-border);
+  }
+  .status-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--cyber-green); box-shadow: 0 0 8px var(--cyber-green);
+    animation: pulse 1.6s infinite;
+  }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+  /* Grid Layout */
+  .dash-grid {
+    display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 24px;
+  }
+  @media (max-width: 900px) {
+    .dash-grid { grid-template-columns: 1fr; }
+  }
+
+  .cyber-card {
+    background: var(--cyber-card);
+    border: 1px solid var(--cyber-card-border);
+    border-radius: 16px; padding: 26px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+    position: relative; overflow: hidden;
+  }
+  .cyber-card::after {
+    content: ""; position: absolute; top: 0; right: 0; left: 0; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--cyber-green), transparent);
+  }
+
+  .card-header {
+    display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;
+    border-bottom: 1px solid rgba(0, 255, 102, 0.12); padding-bottom: 12px;
+  }
+  .card-header h2 { font-size: 1.25rem; font-weight: 800; color: #fff; display: flex; align-items: center; gap: 8px; }
+  .card-header .badge {
+    font-family: 'JetBrains Mono'; font-size: 0.72rem; color: var(--cyber-green);
+    background: var(--cyber-green-subtle); padding: 3px 10px; border-radius: 6px;
+    border: 1px solid var(--cyber-card-border);
+  }
+
+  /* Form Controls */
+  .form-group { margin-bottom: 18px; }
+  .form-group label {
+    display: block; font-size: 0.85rem; font-weight: 700; color: var(--cyber-text);
+    margin-bottom: 8px;
+  }
+  .cyber-input {
+    width: 100%; background: #060c08; border: 1px solid rgba(0, 255, 102, 0.25);
+    border-radius: 10px; padding: 12px 16px; color: var(--cyber-green);
+    font-family: 'JetBrains Mono'; font-size: 0.9rem; outline: none;
+    transition: all 0.2s;
+  }
+  .cyber-input:focus {
+    border-color: var(--cyber-green);
+    box-shadow: 0 0 16px var(--cyber-green-glow);
+  }
+
+  /* 17 Vectors Grid */
+  .checks-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 18px 0;
+  }
+  .check-pill {
+    background: #08120a; border: 1px solid rgba(0, 255, 102, 0.15);
+    padding: 10px 14px; border-radius: 8px; font-size: 0.8rem; font-weight: 700;
+    display: flex; align-items: center; gap: 8px; cursor: pointer;
+    transition: all 0.2s;
+  }
+  .check-pill input { accent-color: var(--cyber-green); cursor: pointer; }
+  .check-pill:hover { border-color: var(--cyber-green); background: rgba(0, 255, 102, 0.05); }
+
+  .cyber-btn {
+    width: 100%; background: var(--cyber-green); color: #040805;
+    border: none; border-radius: 12px; padding: 14px 24px;
+    font-family: 'JetBrains Mono'; font-weight: 900; font-size: 0.95rem;
+    cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px;
+    box-shadow: 0 4px 25px var(--cyber-green-glow); transition: all 0.2s;
+  }
+  .cyber-btn:hover {
+    background: #22ff77; transform: translateY(-1px);
+    box-shadow: 0 6px 35px rgba(0, 255, 102, 0.55);
+  }
+
+  /* Live Terminal Logs */
+  .terminal-box {
+    background: #020403; border: 1px solid rgba(0, 255, 102, 0.3);
+    border-radius: 12px; padding: 18px; font-family: 'JetBrains Mono';
+    font-size: 0.78rem; line-height: 1.6; color: var(--cyber-green);
+    height: 380px; overflow-y: auto; direction: ltr; text-align: left;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.8);
+  }
+  .terminal-box .dim { color: var(--cyber-muted); }
+  .terminal-box .pass { color: var(--cyber-green); font-weight: 700; }
+  .terminal-box .warn { color: #f59e0b; }
+  .terminal-box .crit { color: var(--cyber-danger); font-weight: 800; }
+
+  /* Previous Audits Table */
+  .table-box { width: 100%; margin-top: 24px; }
+  .audit-item {
+    display: flex; justify-content: space-between; align-items: center;
+    background: #08120a; border: 1px solid rgba(0, 255, 102, 0.12);
+    border-radius: 10px; padding: 14px 18px; margin-bottom: 10px;
+    font-size: 0.85rem; transition: border-color 0.2s;
+  }
+  .audit-item:hover { border-color: var(--cyber-green); }
+  .audit-target { font-family: 'JetBrains Mono'; font-weight: 700; color: #fff; }
+  .audit-grade {
+    background: rgba(0, 255, 102, 0.15); border: 1px solid var(--cyber-green);
+    color: var(--cyber-green); font-family: 'JetBrains Mono'; font-weight: 900;
+    padding: 3px 10px; border-radius: 6px; font-size: 0.8rem;
+  }
+</style>
+</head>
+<body>
+
+<div class="cyber-bg"></div>
+
+<div class="wrap">
+  <!-- Topbar -->
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo-box">K</div>
+      <div class="brand-text">
+        <strong>KASHF // <span>DEVSECOPS</span></strong>
+        <small>محرك التدقيق الأمني وفحص ثغرات الـ CVE ونماذج الـ AI</small>
+      </div>
+    </div>
+    <div class="status-pill">
+      <span class="status-dot"></span>
+      <span>17 ENGINE MODULES: ARMED</span>
+    </div>
+  </header>
+
+  <!-- Main Grid -->
+  <div class="dash-grid">
+    <!-- Audit Launch Console -->
+    <div class="cyber-card">
+      <div class="card-header">
+        <h2>⚡ إطلاق فحص تدقيق أمني جديد</h2>
+        <span class="badge">PoC DETERMINISTIC</span>
+      </div>
+
+      <form id="auditForm" onsubmit="event.preventDefault(); startAudit();">
+        <div class="form-group">
+          <label>رابط الدومين / الـ API المستهدف (Target Scope)</label>
+          <input type="text" id="targetUrl" class="cyber-input" value="https://api.gateway.secure-enterprise.sa/v1/" />
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+          <div class="form-group">
+            <label>اسم المنظمة / المشروع</label>
+            <input type="text" id="clientName" class="cyber-input" value="شركة الأفق للأنظمة الرقمية" />
+          </div>
+          <div class="form-group">
+            <label>بريد التقرير السري (CISO Email)</label>
+            <input type="email" id="clientEmail" class="cyber-input" value="ciso@secure-enterprise.sa" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>وحدات الفحص الأمني الـ 17 المدمجة</label>
+          <div class="checks-grid">
+            <label class="check-pill"><input type="checkbox" checked /> فحص اختراق SSRF الهجومي</label>
+            <label class="check-pill"><input type="checkbox" checked /> تدقيق Prompt Injection بالـ AI</label>
+            <label class="check-pill"><input type="checkbox" checked /> اختبار حقن القواعد (SQLi / NoSQL)</label>
+            <label class="check-pill"><input type="checkbox" checked /> عزل المستأجرين (Tenant Leak)</label>
+            <label class="check-pill"><input type="checkbox" checked /> ثغرات فك التسلسل (Deserialization)</label>
+            <label class="check-pill"><input type="checkbox" checked /> تجاوز كسر الـ Rate Limit</label>
+          </div>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:20px;">
+          <div class="form-group">
+            <label>عدد خيوط الفحص (Threads)</label>
+            <input type="number" class="cyber-input" value="16" min="1" max="32" />
+          </div>
+          <div class="form-group">
+            <label>وضع الفحص الشامل</label>
+            <input type="text" class="cyber-input" value="AGGRESSIVE // FULL DEPTH" readonly style="color:#00ff66;" />
+          </div>
+        </div>
+
+        <button type="submit" id="btnLaunchAudit" class="cyber-btn">
+          <span>⚡ EXECUTE PENETRATION AUDIT</span>
+        </button>
+      </form>
+    </div>
+
+    <!-- Live Terminal Stream -->
+    <div class="cyber-card">
+      <div class="card-header">
+        <h2>💻 كونسول العمليات المباشر</h2>
+        <span class="badge">/dev/pts/kashf0</span>
+      </div>
+
+      <div id="terminalStream" class="terminal-box">
+        <span class="dim">[root@kashf-node-01 ~]#</span> kashf-engine --target https://api.gateway.secure-enterprise.sa/v1/ --aggressive<br/>
+        <span class="pass">[+] 17 Security Modules Loaded into memory buffer.</span><br/>
+        <span class="dim">[*] ThreadPool: 16 Workers Initialized.</span><br/>
+        <span class="dim">[*] DNS Resolution &amp; WAF fingerprinting in progress...</span><br/>
+        <span class="pass">[✔] Cloudflare Enterprise WAF detected (Proxy mode).</span><br/>
+        <span class="dim">[*] Testing Module 01: SSRF Egress Sanitization...</span><br/>
+        <span class="pass">[✔] SSRF: PASS (Internal loopback blocked 127.0.0.1 / 169.254.169.254)</span><br/>
+        <span class="dim">[*] Testing Module 02: AI LLM Prompt Injection &amp; Jailbreak...</span><br/>
+        <span class="pass">[✔] LLM Guard: PASS (System prompt shielded against bypass)</span><br/>
+        <span class="dim">[*] Testing Module 03: Multi-tenant DB Isolation &amp; RBAC...</span><br/>
+        <span class="pass">[✔] Tenant Isolation: PASS (Zero row-level leakage)</span><br/>
+        <span class="dim">[*] Testing Module 04: Serialization &amp; SSTI Templates...</span><br/>
+        <span class="pass">[✔] SSTI: PASS (Expressions strictly escaped)</span><br/>
+        <span class="dim">[*] Testing Module 05: Cryptographic Token Entropy...</span><br/>
+        <span class="pass">[✔] Entropy: PASS (256-bit secure SHA-256 HMAC)</span><br/>
+        <span class="pass">====================================================</span><br/>
+        <span class="pass">[★] AUDIT COMPLETE: ZERO CRITICAL VULNERABILITIES FOUND</span><br/>
+        <span class="pass">[★] Executive Bilingual PDF Report Generated &amp; Signed</span><br/>
+        <span class="dim">[root@kashf-node-01 ~]#</span> <span class="pass">_</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Historical Audits -->
+  <div class="table-box">
+    <div class="card-header" style="margin-bottom:14px;">
+      <h2>📋 سجل الفحوصات والشهادات الأمنية الصادرة</h2>
+      <span class="badge">AUDIT REPOSITORY</span>
+    </div>
+    <div class="audit-item">
+      <div>
+        <span class="audit-target">https://gateway.secure-enterprise.sa</span>
+        <div style="font-size:0.75rem; color:var(--cyber-muted); margin-top:3px;">شركة الأفق للأنظمة • 17 وحدة فحص مكتملة</div>
+      </div>
+      <div style="display:flex; align-items:center; gap:12px;">
+        <span class="audit-grade">GRADE A+ (99.8%)</span>
+        <button class="cyber-btn" style="padding:6px 14px; font-size:0.75rem; width:auto;">تحميل تقرير الـ PDF ↗</button>
+      </div>
+    </div>
+    <div class="audit-item">
+      <div>
+        <span class="audit-target">https://core.fintech-payment.ae</span>
+        <div style="font-size:0.75rem; color:var(--cyber-muted); margin-top:3px;">بوابة الدفع الإلكتروني • فحص SSRF و Token Leakage</div>
+      </div>
+      <div style="display:flex; align-items:center; gap:12px;">
+        <span class="audit-grade">GRADE A (97.4%)</span>
+        <button class="cyber-btn" style="padding:6px 14px; font-size:0.75rem; width:auto;">تحميل تقرير الـ PDF ↗</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function startAudit() {
+    const btn = document.getElementById('btnLaunchAudit');
+    const term = document.getElementById('terminalStream');
+    const target = document.getElementById('targetUrl').value;
+    btn.textContent = 'RUNNING 17-MODULE PEN-TEST... ⏳';
+    btn.style.background = '#00cc52';
+
+    term.innerHTML += `<br/><span class="crit">[!] INITIALIZING NEW TARGET AUDIT: ${target}</span><br/>`;
+    term.scrollTop = term.scrollHeight;
+
+    setTimeout(() => {
+      term.innerHTML += `<span class="dim">[*] Scanning endpoints via 16 async workers...</span><br/>`;
+      term.innerHTML += `<span class="pass">[✔] Direct PoC verified: Target hardened with zero exploitable CVEs.</span><br/>`;
+      term.innerHTML += `<span class="pass">[★] Executive Report Dispatched to CISO Email.</span><br/>`;
+      term.scrollTop = term.scrollHeight;
+      btn.textContent = '✔ AUDIT EXECUTED SUCCESSFULLY';
+      btn.style.background = '#00ff66';
+    }, 1200);
+  }
+</script>
+</body>
+</html>
