@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Abdelraheem Baraka | Systems &amp; Cloud Architect</title>
+  <meta name="description" content="Eng. Abdelraheem Baraka — Cloud SaaS Platforms, Automated AI Video Pipelines, and Enterprise DevSecOps Penetration Auditing. Resilient architecture engineered for scale.">
+  <meta name="theme-color" content="#059669">
+
+  <!-- Hybrid Stylesheet (Clean White & Emerald Green + Editorial System) -->
+  <link rel="stylesheet" href="css/hybrid-style.css">
+
+  <!-- Three.js (r128) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+
+  <!-- Subtle Geometric Background Dot Grid -->
+  <div class="bg-grid-dots"></div>
+
+  <!-- Scroll Progress Indicator -->
+  <div class="scroll-progress"></div>
+
+  <!-- Custom Cursor (Desktop Only) -->
+  <div class="cursor-dot"></div>
+  <div class="cursor-ring"></div>
+
+  <!-- Smooth Preloader -->
+  <div class="preloader">
+    <div class="preloader-inner">
+      <div class="preloader-brand">
+        BARAKA <span>ARCHITECT</span>
+      </div>
+      <div class="preloader-bar"><span id="preloaderFill"></span></div>
+      <div class="preloader-num"><span id="preloaderNum">00</span>% INITIALIZING</div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       TOP NAVIGATION BAR
+       ============================================================ -->
+  <header class="site-nav">
+    <!-- Pure Typographic Brand (Zero Logo Mark, Zero Symbol) -->
+    <a href="#hero" class="brand">
+      <div class="brand-text">
+        ABDELRAHEEM <span>BARAKA</span>
+      </div>
+    </a>
+
+    <nav class="nav-links">
+      <a href="#problem" data-i18n="navProblem">The Problem</a>
+      <a href="#about" data-i18n="navPhilosophy">Philosophy</a>
+      <a href="#method" data-i18n="navMethod">The Method</a>
+      <a href="#cases" data-i18n="navCases">Systems</a>
+      <a href="#pricing" data-i18n="navPricing">Investment</a>
+      <a href="#contact" data-i18n="navContact">Consultation</a>
+    </nav>
+
+    <div style="display: flex; align-items: center; gap: 1rem;">
+      <!-- Language Switcher (En Primary / Ar Secondary) -->
+      <button id="langToggleBtn" class="btn btn-ghost btn-sm lang-toggle-btn" aria-label="Toggle language" title="Switch Language">
+        <strong style="color:var(--green)">English</strong> <span style="color:var(--muted)">/</span> <span style="opacity:0.65">العربية</span>
+      </button>
+
+      <!-- Main CTA Button -->
+      <a href="#contact" class="btn btn-lime btn-sm" data-i18n="navCta">
+        Book Architecture Call
+      </a>
+
+      <!-- Mobile Hamburger -->
+      <button id="navToggle" class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Slide Menu -->
+  <div id="mobileMenu" class="mobile-menu">
+    <nav>
+      <a href="#problem"><span class="mono">01</span> <span data-i18n="navProblem">The Problem</span></a>
+      <a href="#about"><span class="mono">02</span> <span data-i18n="navPhilosophy">Philosophy</span></a>
+      <a href="#method"><span class="mono">03</span> <span data-i18n="navMethod">The Method</span></a>
+      <a href="#cases"><span class="mono">04</span> <span data-i18n="navCases">Systems</span></a>
+      <a href="#pricing"><span class="mono">05</span> <span data-i18n="navPricing">Investment</span></a>
+      <a href="#contact"><span class="mono">06</span> <span data-i18n="navContact">Consultation</span></a>
+    </nav>
+    <div style="display: flex; flex-direction: column; gap: 0.8rem;">
+      <button class="btn btn-ghost lang-toggle-btn" aria-label="Toggle language">
+        <strong style="color:var(--green)">English</strong> <span style="color:var(--muted)">/</span> <span style="opacity:0.65">العربية</span>
+      </button>
+      <a href="https://wa.me/?text=Hello%20Eng.%20Abdelraheem,%20I%20would%20like%20to%20discuss%20a%20new%20project." target="_blank" class="btn btn-lime" data-i18n="navWa">
+        Direct WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <main>
+    <!-- ============================================================
+         HERO SECTION: 3D GEOMETRIC SCULPTURE CENTERPIECE
+         ============================================================ -->
+    <section id="hero" class="hero">
+      
+      <!-- 3D Geometric Interactive Canvas (Full Background Scene) -->
+      <div id="hero-3d-scene">
+        <canvas id="hero-3d-canvas"></canvas>
+      </div>
+
+      <!-- Radial Emerald Glow Background -->
+      <div class="hero-glow"></div>
+
+      <!-- Hero Narrative Foreground Content -->
+      <div class="hero-content">
+        <div class="hero-eyebrow">
+          <span class="eyebrow-dash"></span>
+          <span class="micro" data-i18n="eyebrow">Advanced Cloud &amp; Systems Engineering</span>
+        </div>
+
+        <h1 class="hero-title">
+          <span class="hero-line" data-i18n="heroT1">Software</span>
+          <span class="hero-line" data-i18n="heroT2">is not just</span>
+          <span class="hero-line accent-text" data-i18n="heroT3">code.</span>
+        </h1>
+
+        <p class="hero-sub" data-i18n="heroSub">
+          Behind every scalable platform is a <strong>rock-solid architecture.</strong>
+        </p>
+
+        <p class="hero-para" data-i18n="heroPara">
+          Eng. Abdelraheem Baraka architects enterprise SaaS platforms, automated AI video pipelines, and advanced cybersecurity audits — built strictly to withstand traffic and drive business revenue.
+        </p>
+
+        <div class="hero-actions">
+          <a href="https://wa.me/?text=Hello%20Eng.%20Abdelraheem,%20I%20would%20like%20to%20discuss%20a%20new%20project." target="_blank" class="btn btn-lime" data-i18n="heroBtn1">
+            Book Architecture Call
+          </a>
+          <a href="#cases" class="btn btn-ghost" data-i18n="heroBtn2">
+            Explore Systems
+          </a>
+        </div>
+      </div>
+
+      <!-- Hero Bottom Numbers Bar -->
+      <div class="hero-foot">
+        <div class="hero-stats">
+          <div class="hs-item">
+            <strong data-count="7" data-suffix="+">7+</strong>
+            <span data-i18n="stat1Lbl">Cloud SaaS Platforms Built</span>
+          </div>
+          <div class="hs-item">
+            <strong data-count="17">17</strong>
+            <span data-i18n="stat2Lbl">Vulnerability Scanning Engines</span>
+          </div>
+          <div class="hs-item">
+            <strong data-count="99.9" data-decimals="1" data-suffix="%">99.9%</strong>
+            <span data-i18n="stat3Lbl">Infrastructure Uptime SLA</span>
+          </div>
+          <div class="hs-item">
+            <strong data-count="100" data-suffix="%">100%</strong>
+            <span data-i18n="stat4Lbl">Milestone Execution Rate</span>
+          </div>
+        </div>
+
+        <div class="scroll-cue">
+          <span data-i18n="scrollCue">Scroll</span>
+          <i></i>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         TRUST BAR / RUNNING MARQUEE
+         ============================================================ -->
+    <div class="trustbar">
+      <div class="marquee">
+        <div class="marquee-track">
+          <span>AI VIDEO ENGINE</span><i>/</i>
+          <span>DISTRIBUTED ARCHITECTURE</span><i>/</i>
+          <span>ZERO-API LOAD INGESTION</span><i>/</i>
+          <span>DEVSECOPS &amp; PENETRATION AUDIT</span><i>/</i>
+          <span>OFFLINE-FIRST MOBILE</span><i>/</i>
+          <span>ENTERPRISE NEXT.JS 15</span><i>/</i>
+          <span>FASTIFY &amp; REDIS QUEUES</span><i>/</i>
+          <span>CLOUDFLARE R2 &amp; S3 STREAMING</span><i>/</i>
+          <span>AI VIDEO ENGINE</span><i>/</i>
+          <span>DISTRIBUTED ARCHITECTURE</span><i>/</i>
+          <span>ZERO-API LOAD INGESTION</span><i>/</i>
+          <span>DEVSECOPS &amp; PENETRATION AUDIT</span><i>/</i>
+          <span>OFFLINE-FIRST MOBILE</span><i>/</i>
+          <span>ENTERPRISE NEXT.JS 15</span><i>/</i>
+          <span>FASTIFY &amp; REDIS QUEUES</span><i>/</i>
+          <span>CLOUDFLARE R2 &amp; S3 STREAMING</span><i>/</i>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================
+         SECTION 01: THE PROBLEM
+         ============================================================ -->
+    <section id="problem" class="section">
+      <div class="sec-head">
+        <span class="sec-num" data-i18n="probSec">01 // THE PROBLEM</span>
+      </div>
+
+      <h2 class="sec-title">
+        <span data-i18n="probTitle1">Your issue isn't finding a programmer.</span><br>
+        <span class="accent-text" data-i18n="probTitle2">Your issue is paying for code that crashes under load or stays unfinished.</span>
+      </h2>
+
+      <p class="sec-lead" data-i18n="probLead">
+        You invest thousands and wait months, only to get a sluggish app, critical security loopholes, or spaghetti code that can never scale. The gap between naive scripts and production systems begins here.
+      </p>
+
+      <div class="problem-grid">
+        <!-- Card 1 -->
+        <div class="p-card">
+          <div class="p-card-top">
+            <span class="micro" data-i18n="p1Tag">01 // ARCHITECTURE</span>
+          </div>
+          <h3 class="p-title" data-i18n="p1Title">Building Without Architecture</h3>
+          <p class="p-desc" data-i18n="p1Desc">Developers jumping straight into writing code without modeling data flow, concurrency bottlenecks, or future scale.</p>
+          <div class="p-gap">
+            <span data-i18n="p1Gap">Appearance vs Reality</span>
+            <b data-i18n="p1Before">UI looks pretty on Day 1</b>
+            <i data-i18n="p1After">System crashes at the first 1,000 concurrent users</i>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="p-card">
+          <div class="p-card-top">
+            <span class="micro" data-i18n="p2Tag">02 // INTEGRATION</span>
+          </div>
+          <h3 class="p-title" data-i18n="p2Title">Superficial AI</h3>
+          <p class="p-desc" data-i18n="p2Desc">Hooking raw LLM APIs directly in synchronous request loops without worker queues, caching, or cost circuit-breakers.</p>
+          <div class="p-gap">
+            <span data-i18n="p2Gap">Appearance vs Reality</span>
+            <b data-i18n="p2Before">AI feature works in isolated testing</b>
+            <i data-i18n="p2After">Skyrocketing token bills and server timeouts under load</i>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="p-card">
+          <div class="p-card-top">
+            <span class="micro" data-i18n="p3Tag">03 // SECURITY</span>
+          </div>
+          <h3 class="p-title" data-i18n="p3Title">Security As An Afterthought</h3>
+          <p class="p-desc" data-i18n="p3Desc">Postponing penetration testing until release day, leaving SSRF, SQLi, and data exfiltration vectors wide open.</p>
+          <div class="p-gap">
+            <span data-i18n="p3Gap">Appearance vs Reality</span>
+            <b data-i18n="p3Before">App seems operational without visible bugs</b>
+            <i data-i18n="p3After">Catastrophic breach destroys your reputation and investment</i>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 02: THE ARCHITECT & PHILOSOPHY
+         ============================================================ -->
+    <section id="about" class="section" style="background: var(--bg-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);">
+      <div class="sec-head">
+        <span class="sec-num" data-i18n="archSec">02 // THE ARCHITECT</span>
+      </div>
+
+      <div class="about">
+        <!-- Frame Left -->
+        <div class="about-frame">
+          <div class="micro" style="margin-bottom: 0.6rem;" data-i18n="archBadge">LEAD SYSTEMS ENGINEER</div>
+          <h3 style="font-size: 2.2rem; font-weight: 700; color: var(--ink); margin-bottom: 0.4rem;" data-i18n="archName">Eng. Abdelraheem Baraka</h3>
+          <p style="color: var(--green); font-weight: 600; font-size: 1.05rem; margin-bottom: 1.8rem;" data-i18n="archRole">Systems &amp; Cloud Architect</p>
+          
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.8; text-align: start; margin-bottom: 1.6rem;" data-i18n="archBio">
+            I engineer software as resilient mission-critical systems, not disposable code. Every design decision serves system availability, data integrity, and low infrastructure costs over the long run.
+          </p>
+
+          <div class="about-tags">
+            <span class="tag">Distributed Systems</span>
+            <span class="tag">AI Pipelines</span>
+            <span class="tag">DevSecOps</span>
+            <span class="tag">Next.js 15</span>
+            <span class="tag">Fastify &amp; BullMQ</span>
+            <span class="tag">Cloudflare R2</span>
+            <span class="tag">Flutter Clean Arch</span>
+          </div>
+        </div>
+
+        <!-- Right: Pillars -->
+        <div>
+          <h2 class="sec-title" style="font-size: clamp(1.8rem, 3.8vw, 3rem); margin-bottom: 1.2rem;" data-i18n="pillarsTitle">
+            Three foundational pillars govern every line of code I ship.
+          </h2>
+          <p class="sec-lead" style="margin-bottom: 2rem;" data-i18n="pillarsLead">
+            Production stability is never an accident — it is the result of strict architectural discipline.
+          </p>
+
+          <div class="about-pillars">
+            <div class="ap-item">
+              <span class="ap-num">01</span>
+              <div>
+                <h3 data-i18n="pil1Title">Architecture Before Code</h3>
+                <p data-i18n="pil1Desc">Data flow modeling, bottleneck profiling, and choosing the right stack before writing the first line of code.</p>
+              </div>
+            </div>
+
+            <div class="ap-item">
+              <span class="ap-num">02</span>
+              <div>
+                <h3 data-i18n="pil2Title">Security by Design</h3>
+                <p data-i18n="pil2Desc">Sanitization, least-privilege scoping, and strict threat isolation built natively into every endpoint and storage bucket.</p>
+              </div>
+            </div>
+
+            <div class="ap-item">
+              <span class="ap-num">03</span>
+              <div>
+                <h3 data-i18n="pil3Title">Observable Performance</h3>
+                <p data-i18n="pil3Desc">Sub-second response SLAs, low memory footprint, and comprehensive real-time telemetry.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 03: THE METHOD (5 PHASES)
+         ============================================================ -->
+    <section id="method" class="section">
+      <div class="sec-head">
+        <span class="sec-num" data-i18n="methodSec">03 // THE METHOD</span>
+      </div>
+
+      <h2 class="sec-title" data-i18n="methodTitle">
+        How we build your system from blueprint to resilient production.
+      </h2>
+      <p class="sec-lead" data-i18n="methodLead">
+        A 5-phase engineering methodology with documented execution and zero delays.
+      </p>
+
+      <div class="method-grid">
+        <div class="method-step">
+          <div>
+            <div class="ms-num">01</div>
+            <div class="ms-body">
+              <h3 data-i18n="m1Title">Decomposition &amp; Analysis</h3>
+              <p data-i18n="m1Desc">Deconstructing business logic, edge cases, and architectural risk points.</p>
+            </div>
+          </div>
+          <span class="micro" style="margin-top: 1rem; color: var(--green);" data-i18n="m1Tag">REQUIREMENTS DECOMPOSITION</span>
+        </div>
+
+        <div class="method-step">
+          <div>
+            <div class="ms-num">02</div>
+            <div class="ms-body">
+              <h3 data-i18n="m2Title">System Blueprint</h3>
+              <p data-i18n="m2Desc">Database schemas, microservice contracts, and high-availability blueprints.</p>
+            </div>
+          </div>
+          <span class="micro" style="margin-top: 1rem; color: var(--green);" data-i18n="m2Tag">SYSTEM BLUEPRINT</span>
+        </div>
+
+        <div class="method-step">
+          <div>
+            <div class="ms-num">03</div>
+            <div class="ms-body">
+              <h3 data-i18n="m3Title">Core Implementation</h3>
+              <p data-i18n="m3Desc">Writing high-throughput Clean Architecture domain code and asynchronous job queues.</p>
+            </div>
+          </div>
+          <span class="micro" style="margin-top: 1rem; color: var(--green);" data-i18n="m3Tag">CORE IMPLEMENTATION</span>
+        </div>
+
+        <div class="method-step">
+          <div>
+            <div class="ms-num">04</div>
+            <div class="ms-body">
+              <h3 data-i18n="m4Title">DevSecOps Audit</h3>
+              <p data-i18n="m4Desc">17-module penetration testing, load testing, and deterministic vulnerability validation.</p>
+            </div>
+          </div>
+          <span class="micro" style="margin-top: 1rem; color: var(--green);" data-i18n="m4Tag">DEVSECOPS AUDIT</span>
+        </div>
+
+        <div class="method-step">
+          <div>
+            <div class="ms-num">05</div>
+            <div class="ms-body">
+              <h3 data-i18n="m5Title">Deployment &amp; SLA</h3>
+              <p data-i18n="m5Desc">Cloud infrastructure provisioning, automated CI/CD pipelines, and 24/7 telemetry monitoring.</p>
+            </div>
+          </div>
+          <span class="micro" style="margin-top: 1rem; color: var(--green);" data-i18n="m5Tag">DEPLOYMENT &amp; SLA</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 04: CASE STUDIES (THE 7 APPROVED PROJECTS ONLY)
+         ============================================================ -->
+    <section id="cases" class="section" style="background: var(--bg-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);">
+      <div class="sec-head">
+        <span class="sec-num" data-i18n="casesSec">04 // CASE STUDIES</span>
+      </div>
+
+      <h2 class="sec-title" data-i18n="casesTitle">
+        Systems speak in metrics.
+      </h2>
+      <p class="sec-lead" data-i18n="casesLead">
+        Documented case studies of real-world running software platforms — architecture, business impact, and tech stack.
+      </p>
+
+      <div class="cases-list">
+
+        <!-- Case 1: Clipzila -->
+        <article class="case-card">
+          <div class="case-top">
+            <span class="case-tag" data-i18n="c1Tag">AI VIDEO PIPELINE</span>
+            <span class="micro" data-i18n="c1Sub">CLIPZILA SAAS</span>
+          </div>
+          <h3 class="case-title" data-i18n="c1Title">Clipzila — One video in. A week of clips out.</h3>
+          <div class="case-nums">
+            <div class="cn-box">
+              <span class="cn-label" data-i18n="c1Lbl1">Manual Editing Saved</span>
+              <div class="cn-big accent-text">95%</div>
+              <span class="cn-note" data-i18n="c1Note1">Automated framing &amp; tracking</span>
+            </div>
+            <div class="cn-box">
+              <span class="cn-label" data-i18n="c1Lbl2">Processing Latency</span>
+              <div class="cn-big">&lt;90<span>s</span></div>
+              <span class="cn-note" data-i18n="c1Note2">Per 1 hour of video footage</span>
+            </div>
+            <div class="cn-box">
+              <span class="cn-label" data-i18n="c1Lbl3">Pipeline Defense</span>
+              <div class="cn-big">100%</div>
+              <span class="cn-note" data-i18n="c1Note3">SSRF protection &amp; bucket isolation</span>
+            </div>
+          </div>
+          <p class="case-change">
+            <span data-i18n="c1Arch">Architecture:</span> <span data-i18n="c1ArchText">Decoupled worker queue uniting Groq Whisper, InsightFace speaker tracking, and accelerated FFmpeg, writing directly to Cloudflare R2 with Paddle automated billing.</span>
+          </p>
+          <p class="case-result">
+            <span data-i18n="c1Imp">Business Impact:</span> <span data-i18n="c1ImpText">Converts long video production into an automated pipeline with zero human intervention — production-ready for global subscribers.</span>
+          </p>
+          <div class="case-actions">
+            <button class="btn btn-lime btn-sm" data-open-preview="clipzila" data-i18n="btnPreview">
+              Interactive UI Preview
+            </button>
+            <button class="btn btn-ghost btn-sm" data-open-arch="clipzila" data-i18n="btnArch">
+              Architecture &amp; Solution
+            </button>
+          </div>
+        </article>
+
+        <!-- Case 2: RecFlow -->
+        <article class="case-card">
+          <div class="case-top">
+            <span class="case-tag" data-i18n="c2Tag">DISTRIBUTED MEDIA SAAS</span>
+            <span class="micro" data-i18n="c2Sub">HIGH-LOAD RECORDING</span>
+          </div>
+          <h3 class="case-title" data-i18n="c2Title">RecFlow — Distributed Cloud Media &amp; Screen Recording SaaS</h3>
+          <div class="case-nums">
+            <div class="cn-box">
+              <span class="cn-label" data-i18n="c2Lbl1">API Bandwidth Drain</span>
+              <div class="cn-big accent-text">0%</div>
+              <span class="cn-note" data-i18n="c2Note1">Zero-API-Load Ingestion</span>
+            </div>
+            <div class="cn-box">
+              <span class="cn-label" data-i18n="c2Lbl2">Concurrent Sessions</span>
+              <div class="cn-big">10,000+</div>
+              <span class="cn-note" data-i18n="c2Note2">Handled by BullMQ &amp; Redis</span>
+            </div>
+            <div class="cn-box">
+              <span class="cn-label" data-i18n="c2Lbl3">Transcoding Speedup</span>
+              <div class="cn-big">4x</div>
+              <span class="cn-note" data-i18n="c2Note3">Compared to traditional servers</span>
+            </div>
+          </div>
+          <p class="case-change">
+            <span data-i18n="c2Arch">Architecture:</span> <span data-i18n="c2ArchText">Chunked direct client uploads to S3/R2 storage buckets via presigned multi-part URLs, completely bypassing the web server with Fastify 5 and Redis background queues.</span>
+          </p>
+          <p class="case-result">
+            <span data-i18n="c2Imp">Business Impact:</span> <span data-i18n="c2ImpText">Cuts infrastructure data transfer costs by over 85% while delivering infinite scaling under concurrent streaming loads.</span>
+          </p>
+          <div class="case-actions">
+            <button class="btn btn-lime btn-sm" data-open-preview="recflow" data-i18n="btnPreview">
+              Interactive UI Preview
+            </button>
+            <button class="btn btn-ghost btn-sm" data-open-arch="recflow" data-i18n="btnArch">
+              Architecture &amp; Solution
+            </button>
+          </div>
+        </article>
+
+        <!-- Case 3: Kashf -->
+        <article class="case-card">
+          <div class="case-top">
+            <span class="case-tag" data-i18n="c3Tag">ENTERPRISE SECURITY SCANNER</span>
+            <span class="micro" data-i18n="c3Sub">DEVSECOPS &amp; AUDITING</span>
+          </div>
+          <h3 class="case-title" data-i18n="c3Title">Kashf — Enterprise Cybersecurity &amp; Vulnerability Scanner</h3>
+          <div class="case-nums">
+            <div class="cn-box">
+              <span class="cn-label" data-i18n="c3Lbl1">Security Audit Modules</span>
+              <div class="cn-big accent-text">17</div>
+              <span class="cn-note" data-i18n="c3Note1">Includes AI Prompt Injection tests</span>
+            </div>
+            <div class="cn-box">
+              <span class="cn-label" data-i18n="c3Lbl2">False Positives</span>
+              <div class="cn-big">0</div>
+              <span class="cn-note" data-i18n="c3Note2">Automated PoC Validation</span>
+            </div>
+            <div class="cn-box">
+              <span class="cn-label" data-i18n="c3Lbl3">Executive Reports</span>
+              <div class="cn-big">100%</div>
+              <span class="cn-note" data-i18n="c3Note3">Bilingual compliance summaries</span>
+            </div>
+          </div>
+          <p class="case-change">
+            <span data-i18n="c3Arch">Architecture:</span> <span data-i18n="c3ArchText">Deep scanning engine auditing 17 vulnerability vectors (SQLi, SSRF, Deserialization, SSTI) with an LLM security barrier and deterministic proof-of-concept validation.</span>
+          </p>
+          <p class="case-result">
+            <span data-i18n="c3Imp">Business Impact:</span> <span data-i18n="c3ImpText">Prevents critical data breaches and regulatory compliance fines before software deployment to production.</span>
+          </p>
+          <div class="case-actions">
+            <button class="btn btn-lime btn-sm" data-open-preview="kashf" data-i18n="btnPreview">
+              Interactive UI Preview
+            </button>
+            <button class="btn btn-ghost btn-sm" data-open-arch="kashf" data-i18n="btnArch">
+              Architecture &amp; Solution
+            </button>
+          </div>
+        </article>
+
+        <!-- Case 4: Yad Biyad -->
+        <article class="case-card">
+          <div class="case-top">
+            <span class="case-tag" data-i18n="c4Tag">LIVE PRODUCTION PLATFORM</span>
+            <span class="micro" data-i18n="c4Sub">HUMANITARIAN RELIEF</span>
+          </div>
+          <h3 class="case-title" data-i18n="c4Title">Yad Biyad — Live Field Relief Portal (handbyhandps.com)</h3>
+          <div class="case-nums">
+            <div class="cn-box">
+              <span class="cn-label" data-i18n="c4Lbl1">Deployment State</span>
+              <div class="cn-big accent-text">LIVE</div>
+              <span class="cn-note" data-i18n="c4Note1">Active on live official domain</span>
+            </div>
+            <div class="cn-box">
+              <span class="cn-label" data-i18n="c4Lbl2">Uptime on Constrained Networks</span>
+              <div class="cn-big">99.9%</div>
+              <span class="cn-note" data-i18n="c4Note2">Ultra-resilient lightweight stack</span>
+            </div>
+            <div class="cn-box">
+              <span class="cn-label" data-i18n="c4Lbl3">Audit Transparency</span>
+              <div class="cn-big">100%</div>
+              <span class="cn-note" data-i18n="c4Note3">Instant campaign documentation</span>
+            </div>
+          </div>
+          <p class="case-change">
+            <span data-i18n="c4Arch">Architecture:</span> <span data-i18n="c4ArchText">High-efficiency platform engineered for zero latency under severe mobile connectivity constraints with dedicated CMS for relief disbursements.</span>
+          </p>
+          <p class="case-result">
+            <span data-i18n="c4Imp">Humanitarian Impact:</span> <span data-i18n="c4ImpText">Powers transparent, verified disaster relief fundraising and transparent aid distribution for thousands of real beneficiaries.</span>
+          </p>
+          <div class="case-actions">
+            <button class="btn btn-lime btn-sm" data-open-preview="yadbiyad" data-i18n="btnPreview">
+              Interactive UI Preview
+            </button>
+            <button class="btn btn-ghost btn-sm" data-open-arch="yadbiyad" data-i18n="btnArch">
+              Architecture &amp; Solution
+            </button>
+          </div>
+        </article>
+
+
+        <!-- Case 6: Wasalny -->
+        <article class="case-card">
+          <div class="case-top">
+            <span class="case-tag" data-i18n="c6Tag">MOBILE SYSTEMS</span>
+            <span class="micro" data-i18n="c6Sub">OFFLINE-FIRST LOGISTICS</span>
+          </div>
+          <h3 class="case-title" data-i18n="c6Title">Wasalny — Cross-Platform Field Logistics App</h3>
+          <div class="case-nums">
+            <div class="cn-box">
+              <span class="cn-label" data-i18n="c6Lbl1">Offline Operation</span>
+              <div class="cn-big accent-text">100%</div>
+              <span class="cn-note" data-i18n="c6Note1">Automated sync upon reconnect</span>
+            </div>
+            <div class="cn-box">
+              <span class="cn-label" data-i18n="c6Lbl2">UI Smoothness</span>
+              <div class="cn-big">60<span>FPS</span></div>
+              <span class="cn-note" data-i18n="c6Note2">Clean Architecture on Flutter</span>
+            </div>
+            <div class="cn-box">
+              <span class="cn-label" data-i18n="c6Lbl3">Manifest Data Loss</span>
+              <div class="cn-big">0%</div>
+              <span class="cn-note" data-i18n="c6Note3">Protected local SQLite ledger</span>
+            </div>
+          </div>
+          <p class="case-change">
+            <span data-i18n="c6Arch">Architecture:</span> <span data-i18n="c6ArchText">Cross-platform mobile application (Android &amp; iOS) designed with Flutter Clean Architecture, featuring an offline-first SQLite cache layer.</span>
+          </p>
+          <p class="case-result">
+            <span data-i18n="c6Imp">Business Impact:</span> <span data-i18n="c6ImpText">Eliminates field delivery downtime in remote dead zones and ensures zero lost shipment records.</span>
+          </p>
+          <div class="case-actions">
+            <button class="btn btn-lime btn-sm" data-open-preview="wasalny" data-i18n="btnPreview">
+              Interactive UI Preview
+            </button>
+            <button class="btn btn-ghost btn-sm" data-open-arch="wasalny" data-i18n="btnArch">
+              Architecture &amp; Solution
+            </button>
+          </div>
+        </article>
+
+        <!-- Case 7: ElectroLux -->
+        <article class="case-card">
+          <div class="case-top">
+            <span class="case-tag" data-i18n="c7Tag">HIGH-CONVERTING E-COMMERCE</span>
+            <span class="micro" data-i18n="c7Sub">REACTIVE SPA STORE</span>
+          </div>
+          <h3 class="case-title" data-i18n="c7Title">ElectroLux — Luxury Precision E-Commerce Platform</h3>
+          <div class="case-nums">
+            <div class="cn-box">
+              <span class="cn-label" data-i18n="c7Lbl1">Catalog Response Time</span>
+              <div class="cn-big accent-text">&lt;0.8<span>s</span></div>
+              <span class="cn-note" data-i18n="c7Note1">Sub-second reactive filtering</span>
+            </div>
+            <div class="cn-box">
+              <span class="cn-label" data-i18n="c7Lbl2">Cart Conversion Lift</span>
+              <div class="cn-big">+40%</div>
+              <span class="cn-note" data-i18n="c7Note2">Frictionless multi-step funnel</span>
+            </div>
+            <div class="cn-box">
+              <span class="cn-label" data-i18n="c7Lbl3">Mobile Readiness</span>
+              <div class="cn-big">100%</div>
+              <span class="cn-note" data-i18n="c7Note3">Fully responsive luxury layout</span>
+            </div>
+          </div>
+          <p class="case-change">
+            <span data-i18n="c7Arch">Architecture:</span> <span data-i18n="c7ArchText">Single-page reactive storefront built with React and Tailwind CSS delivering instantaneous client-side transitions and fluid cart state.</span>
+          </p>
+          <p class="case-result">
+            <span data-i18n="c7Imp">Business Impact:</span> <span data-i18n="c7ImpText">Drives higher cart completion rates and presents a prestigious digital shopping experience.</span>
+          </p>
+          <div class="case-actions">
+            <button class="btn btn-lime btn-sm" data-open-preview="electrolux" data-i18n="btnPreview">
+              Interactive UI Preview
+            </button>
+            <button class="btn btn-ghost btn-sm" data-open-arch="electrolux" data-i18n="btnArch">
+              Architecture &amp; Solution
+            </button>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 05: PRICING & INVESTMENT (ACCESSIBLE ARAB MARKET RATES)
+         ============================================================ -->
+    <section id="pricing" class="section">
+      <div class="sec-head">
+        <span class="sec-num" data-i18n="pricingSec">05 // INVESTMENT &amp; PACKAGES</span>
+      </div>
+
+      <h2 class="sec-title" data-i18n="pricingTitle">
+        Transparent engineering investments tailored for ambitious teams.
+      </h2>
+      <p class="sec-lead" data-i18n="pricingLead">
+        Realistic regional market rates designed for startups, founders, and growing enterprises in the Arab world and Gulf region.
+      </p>
+
+      <div class="pricing-grid">
+        <!-- Tier 1: Security & Architecture Audit -->
+        <div class="pricing-card">
+          <div class="pricing-badge" data-i18n="p1Badge">SECURITY &amp; RESILIENCE</div>
+          <h3 class="pricing-name" data-i18n="p1Title">Security &amp; Architecture Audit</h3>
+          <p class="pricing-desc" data-i18n="p1Desc">Comprehensive vulnerability assessment, bottleneck profiling, and production hardening.</p>
+          <div class="pricing-price">
+            <span class="p-currency">$</span>
+            <span class="p-val">350 – 650</span>
+          </div>
+          <div class="pricing-alt-curr" data-i18n="p1AltCurr">~ 1,300 – 2,400 SAR / AED</div>
+          <ul class="pricing-features">
+            <li data-i18n="p1F1">17-Module Vulnerability Scan</li>
+            <li data-i18n="p1F2">Database &amp; API Bottleneck Profiling</li>
+            <li data-i18n="p1F3">Official DevSecOps Architecture Report</li>
+            <li data-i18n="p1F4">Remediation Blueprint &amp; Code Review</li>
+          </ul>
+          <button type="button" class="btn btn-ghost btn-sm pricing-select-btn" data-service="audit" data-budget="$350 – $650 (~1,300 – 2,400 SAR/AED)" data-i18n="btnSelectPkg">
+            Select This Package
+          </button>
+        </div>
+
+        <!-- Tier 2: AI Video & Automation Pipeline -->
+        <div class="pricing-card">
+          <div class="pricing-badge" data-i18n="p2Badge">HIGH-ROI AUTOMATION</div>
+          <h3 class="pricing-name" data-i18n="p2Title">AI &amp; Automation Pipelines</h3>
+          <p class="pricing-desc" data-i18n="p2Desc">Custom autonomous AI workflows, automated video rendering, and serverless background workers.</p>
+          <div class="pricing-price">
+            <span class="p-currency">$</span>
+            <span class="p-val">600 – 1,200</span>
+          </div>
+          <div class="pricing-alt-curr" data-i18n="p2AltCurr">~ 2,250 – 4,500 SAR / AED</div>
+          <ul class="pricing-features">
+            <li data-i18n="p2F1">Whisper / LLM / FFmpeg Automation</li>
+            <li data-i18n="p2F2">Worker Queue &amp; Cloud Storage Sync</li>
+            <li data-i18n="p2F3">Webhook &amp; Third-Party API Connectors</li>
+            <li data-i18n="p2F4">Automated Retry &amp; Dead-Letter Queues</li>
+          </ul>
+          <button type="button" class="btn btn-ghost btn-sm pricing-select-btn" data-service="ai-pipeline" data-budget="$600 – $1,200 (~2,250 – 4,500 SAR/AED)" data-i18n="btnSelectPkg">
+            Select This Package
+          </button>
+        </div>
+
+        <!-- Tier 3: Mobile & Reactive Web Applications -->
+        <div class="pricing-card">
+          <div class="pricing-badge" data-i18n="p3Badge">OFFLINE-FIRST &amp; FLUID UI</div>
+          <h3 class="pricing-name" data-i18n="p3Title">Mobile &amp; Reactive Platforms</h3>
+          <p class="pricing-desc" data-i18n="p3Desc">Cross-platform mobile apps (Flutter) or high-performance single-page web applications.</p>
+          <div class="pricing-price">
+            <span class="p-currency">$</span>
+            <span class="p-val">750 – 1,400</span>
+          </div>
+          <div class="pricing-alt-curr" data-i18n="p3AltCurr">~ 2,800 – 5,250 SAR / AED</div>
+          <ul class="pricing-features">
+            <li data-i18n="p3F1">Flutter Clean Architecture or React SPA</li>
+            <li data-i18n="p3F2">Offline SQLite / Local Storage Sync</li>
+            <li data-i18n="p3F3">Bilingual Arabic/English RTL Readiness</li>
+            <li data-i18n="p3F4">Smooth 60FPS Micro-Interactions</li>
+          </ul>
+          <button type="button" class="btn btn-ghost btn-sm pricing-select-btn" data-service="mobile-web" data-budget="$750 – $1,400 (~2,800 – 5,250 SAR/AED)" data-i18n="btnSelectPkg">
+            Select This Package
+          </button>
+        </div>
+
+        <!-- Tier 4: Cloud SaaS MVP Architecture -->
+        <div class="pricing-card featured-tier">
+          <div class="pricing-badge" style="background:var(--green); color:#fff; border-color:var(--green);" data-i18n="p4Badge">COMPLETE PLATFORM BUILD</div>
+          <h3 class="pricing-name" data-i18n="p4Title">Cloud SaaS Platform (MVP)</h3>
+          <p class="pricing-desc" data-i18n="p4Desc">Full-cycle system engineering from database schemas to multi-tenant billing and production deployment.</p>
+          <div class="pricing-price">
+            <span class="p-currency">$</span>
+            <span class="p-val">950 – 1,800</span>
+          </div>
+          <div class="pricing-alt-curr" data-i18n="p4AltCurr">~ 3,550 – 6,750 SAR / AED</div>
+          <ul class="pricing-features">
+            <li data-i18n="p4F1">Enterprise Node / Python / Go Architecture</li>
+            <li data-i18n="p4F2">Role-Based Auth &amp; Multi-Tenant Schemas</li>
+            <li data-i18n="p4F3">Paddle / Stripe Subscription Billing</li>
+            <li data-i18n="p4F4">Docker CI/CD &amp; Cloudflare CDN Deployment</li>
+          </ul>
+          <button type="button" class="btn btn-lime btn-sm pricing-select-btn" data-service="saas-mvp" data-budget="$950 – $1,800 (~3,550 – 6,750 SAR/AED)" data-i18n="btnSelectPkg">
+            Select This Package
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 06: DIRECT CONSULTATION & PROJECT ORDER FORM
+         ============================================================ -->
+    <section id="contact" class="section">
+      <div class="sec-head">
+        <span class="sec-num" data-i18n="contactSec">06 // DIRECT CONSULTATION &amp; ORDER</span>
+      </div>
+
+      <div class="cons-card">
+        <div class="cons-card-inner">
+          <span class="micro" style="color: var(--green); margin-bottom: 0.8rem;" data-i18n="consBadge">STRATEGIC ENGINEERING PARTNERSHIP</span>
+          <h2 class="sec-title" style="margin: 0.8rem auto 1.2rem; font-size: clamp(2rem, 4vw, 3.2rem);" data-i18n="contactTitle">
+            Ready to build your next significant system?
+          </h2>
+          <p class="sec-lead" style="margin: 0 auto 2rem;" data-i18n="contactLead">
+            Fill out the project details below to dispatch your request directly via WhatsApp (+970594369446) or Email (Abbdelraheem@gmail.com).
+          </p>
+
+          <ul class="cons-points">
+            <li data-i18n="consPoint1">In-depth Architectural Assessment</li>
+            <li data-i18n="consPoint2">Documented Milestone Deliveries</li>
+            <li data-i18n="consPoint3">Dedicated Support &amp; SLA</li>
+          </ul>
+
+          <!-- Direct Order / Consultation Form -->
+          <form id="projectOrderForm" class="order-form" onsubmit="return false;">
+            <div class="form-grid">
+              <div class="form-field">
+                <label for="orderName" data-i18n="formNameLbl">Your Name / Organization</label>
+                <input type="text" id="orderName" class="form-input" placeholder="e.g. Faisal Al-Otaibi / Tech Ventures" required>
+              </div>
+
+              <div class="form-field">
+                <label for="orderContact" data-i18n="formContactLbl">WhatsApp Number or Email</label>
+                <input type="text" id="orderContact" class="form-input" placeholder="e.g. +966 50 123 4567 or email@domain.com" required>
+              </div>
+
+              <div class="form-field">
+                <label for="orderService" data-i18n="formServiceLbl">Required System / Service</label>
+                <select id="orderService" class="form-select">
+                  <option value="saas-mvp" data-i18n="optSaas">Cloud SaaS Platform (MVP Architecture)</option>
+                  <option value="ai-pipeline" data-i18n="optAi">AI Video &amp; Automation Pipeline</option>
+                  <option value="mobile-web" data-i18n="optMobile">Mobile App or Reactive Web Platform</option>
+                  <option value="audit" data-i18n="optAudit">Security Audit &amp; Architecture Review</option>
+                  <option value="custom" data-i18n="optCustom">Custom System Consultation</option>
+                </select>
+              </div>
+
+              <div class="form-field">
+                <label for="orderBudget" data-i18n="formBudgetLbl">Target Investment / Budget Range</label>
+                <select id="orderBudget" class="form-select">
+                  <option value="$350 – $650 (~1,300 – 2,400 SAR/AED)">$350 – $650 (~ 1,300 – 2,400 SAR/AED)</option>
+                  <option value="$600 – $1,200 (~2,250 – 4,500 SAR/AED)">$600 – $1,200 (~ 2,250 – 4,500 SAR/AED)</option>
+                  <option value="$750 – $1,400 (~2,800 – 5,250 SAR/AED)">$750 – $1,400 (~ 2,800 – 5,250 SAR/AED)</option>
+                  <option value="$950 – $1,800 (~3,550 – 6,750 SAR/AED)" selected>$950 – $1,800 (~ 3,550 – 6,750 SAR/AED)</option>
+                  <option value="$2,000+ (Enterprise Multi-Phase)">$2,000+ (Enterprise Multi-Phase)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-field" style="margin-top: 1.2rem;">
+              <label for="orderBrief" data-i18n="formBriefLbl">Project Brief &amp; Key Requirements</label>
+              <textarea id="orderBrief" class="form-textarea" rows="4" placeholder="Briefly describe the system goals, traffic expectations, and required timeline..." required></textarea>
+            </div>
+
+            <div class="order-form-actions">
+              <button type="button" id="btnSendWhatsApp" class="btn btn-lime">
+                <span data-i18n="btnSendWa">Send Request via WhatsApp</span>
+              </button>
+              <button type="button" id="btnSendEmail" class="btn btn-ghost">
+                <span data-i18n="btnSendMail">Send Request via Email</span>
+              </button>
+            </div>
+
+            <p class="order-form-note" data-i18n="formNote">
+              Requests are dispatched immediately to Eng. Abdelraheem's direct channels. Guaranteed response within 12 business hours.
+            </p>
+          </form>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="footer">
+    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; max-width: 1200px; margin: 0 auto;">
+      <div style="font-weight: 700; color: var(--ink);">
+        <span data-i18n="footerTitle">Eng. Abdelraheem Baraka</span> <span style="font-weight: 400; color: var(--muted); font-size: 0.85rem;" data-i18n="footerRole">— Cloud &amp; Systems Architecture</span>
+      </div>
+      <div data-i18n="footerCopy">
+        © 2026 Abdelraheem Baraka. All systems engineered with precision.
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       SYSTEM PREVIEW & ARCHITECTURE IN-PAGE MODAL
+       ============================================================ -->
+  <div id="archModal" class="arch-modal-overlay" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="arch-modal-dialog">
+      <!-- Browser-like Window Header Bar -->
+      <div class="modal-window-bar">
+        <div class="modal-window-controls">
+          <span class="m-dot m-dot-red"></span>
+          <span class="m-dot m-dot-yellow"></span>
+          <span class="m-dot m-dot-green"></span>
+        </div>
+        <div class="modal-url-bar">
+          <span class="m-url-lock">🔒</span>
+          <span id="modalUrlDisplay" class="m-url-text">https://cliptica.app/studio</span>
+        </div>
+        <button id="modalClose" class="modal-close" aria-label="Close modal" data-i18n="modalClose">Close</button>
+      </div>
+
+      <div class="modal-head">
+        <div>
+          <span id="modalCat" class="case-tag">SYSTEM TAG</span>
+          <h3 id="modalTitle" style="font-size: 1.4rem; font-weight: 700; color: var(--ink); margin-top: 0.5rem;">System Title</h3>
+        </div>
+        <!-- Modal Tab Switcher -->
+        <div class="modal-tabs">
+          <button type="button" class="modal-tab-btn is-active" data-tab="preview" data-i18n="tabPreview">
+            Live UI Preview
+          </button>
+          <button type="button" class="modal-tab-btn" data-tab="styles" data-i18n="tabStyles">
+            Original Style Code (CSS)
+          </button>
+          <button type="button" class="modal-tab-btn" data-tab="arch" data-i18n="tabArch">
+            Architecture Blueprint
+          </button>
+        </div>
+      </div>
+
+      <!-- Tab Content 1: Real Complete Website Live Preview in Responsive Browser Viewport -->
+      <div id="tabContentPreview" class="modal-tab-pane is-active">
+        <div class="browser-viewport-frame">
+          <div class="browser-viewport-toolbar">
+            <div class="browser-toolbar-left">
+              <span class="m-dot m-dot-red"></span>
+              <span class="m-dot m-dot-yellow"></span>
+              <span class="m-dot m-dot-green"></span>
+              <span id="previewSiteName" class="browser-toolbar-sitename">Cliptica Live Studio</span>
+            </div>
+            <div class="browser-toolbar-url">
+              <span class="m-url-lock">🔒</span>
+              <span id="previewUrlBar" class="m-url-text">http://localhost:3000/previews/cliptica/</span>
+            </div>
+            <div class="browser-toolbar-actions">
+              <a id="btnExternalPreview" href="#" target="_blank" class="btn-external-link" data-i18n="btnOpenExternal">
+                ↗ Open in Full Tab
+              </a>
+            </div>
+          </div>
+          <div class="browser-viewport-body">
+            <iframe id="projectLiveIframe" src="" class="preview-live-iframe" title="Live Project Preview" allow="clipboard-write; fullscreen"></iframe>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab Content 2: Original Style Code & CSS Design Tokens -->
+      <div id="tabContentStyles" class="modal-tab-pane">
+        <div id="modalStyleCodeContainer" class="style-code-container">
+          <!-- Populated dynamically by JS with authentic CSS source code and tokens -->
+        </div>
+      </div>
+
+      <!-- Tab Content 3: Architecture & Solution Blueprint -->
+      <div id="tabContentArch" class="modal-tab-pane">
+        <div class="modal-section-title" data-i18n="modalSec1">System Overview</div>
+        <div id="modalOverview" class="modal-box"></div>
+
+        <div class="modal-section-title" data-i18n="modalSec2">Architecture &amp; Solution</div>
+        <div id="modalSolution" class="modal-box"></div>
+
+        <div class="modal-section-title" data-i18n="modalSec3">Technology Stack</div>
+        <div id="modalStack" class="modal-tags"></div>
+
+        <div class="modal-section-title" data-i18n="modalSec4">Business Impact</div>
+        <div id="modalImpact" class="modal-impact"></div>
+      </div>
+    </div>
+  </div>
+
+    <!-- Main Hybrid Application Script -->
+  <script src="js/hybrid-main.js"></script>
+</body>
+</html>

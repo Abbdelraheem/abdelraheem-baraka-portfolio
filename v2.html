@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Abdelraheem Baraka | Systems Architect</title>
+  <meta name="description" content="Senior Software & Cloud Systems Architect. High-throughput distributed platforms, AI video pipelines, and cybersecurity engineering.">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              main: '#0a0c10',
+              surface: '#10141d',
+              elevated: '#161c28',
+              amber: '#f59e0b',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Precision Custom Stylesheet & Google Fonts -->
+  <link rel="stylesheet" href="css/v2-style.css">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Three.js (r128) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body class="bg-[#0a0c10] text-[#f8fafc] selection:bg-amber-500/20 selection:text-amber-300">
+
+  <!-- Architectural 3D WebGL Canvas Layer -->
+  <canvas id="v2-webgl-canvas"></canvas>
+
+  <!-- Top Minimalist Utility Bar -->
+  <div class="fixed top-0 left-0 right-0 z-50 bg-[#0a0c10]/90 backdrop-blur-md hairline-b">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      
+      <!-- Pure Typographical Name Branding (No Logo Box) -->
+      <a href="#v2-hero" class="text-sm font-bold tracking-widest uppercase text-white hover:text-amber-400 transition-colors font-mono-prec flex items-center gap-2">
+        <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+        <span>ABDELRAHEEM BARAKA</span>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="hidden md:flex items-center gap-7 text-xs font-mono-prec text-slate-400">
+        <a href="#v2-projects" data-i18n="navProjects" class="hover:text-white transition-colors">المشاريع</a>
+        <a href="#v2-philosophy" data-i18n="navEngineering" class="hover:text-white transition-colors">فلسفة العمل</a>
+        <a href="#v2-skills" data-i18n="navSkills" class="hover:text-white transition-colors">الترسانة التقنية</a>
+        <a href="#v2-calculator" data-i18n="navEstimate" class="hover:text-white transition-colors">حاسبة المشروع</a>
+        <a href="#v2-contact" data-i18n="navContact" class="hover:text-white transition-colors">تواصل معي</a>
+      </nav>
+
+      <!-- Action Controls: Language Switcher & V1/V2 Switcher -->
+      <div class="flex items-center gap-3">
+        
+        <!-- Language Switcher Button (AR / EN) -->
+        <button id="lang-switch-btn" class="px-3 py-1.5 rounded text-xs font-mono-prec border border-white/10 hover:border-white/30 bg-white/5 transition-all flex items-center gap-1.5" title="Toggle Language">
+          <span class="text-white font-bold">AR</span>
+          <span class="text-slate-500">|</span>
+          <span class="text-slate-400">EN</span>
+        </button>
+
+        <!-- Version 1 Link -->
+        <a href="index.html" class="hidden sm:inline-flex px-3 py-1.5 rounded text-xs font-mono-prec border border-amber-500/20 text-amber-400/90 hover:bg-amber-500/10 transition-colors" data-i18n="navSwitchVersion">
+          التصميم V1
+        </a>
+
+        <!-- CTA Direct Contact -->
+        <a href="#v2-contact" class="px-4 py-1.5 rounded bg-white text-black font-bold text-xs tracking-wide hover:bg-slate-200 transition-colors font-mono-prec">
+          HIRE / CONTRACT
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section id="v2-hero" class="relative pt-36 pb-24 md:pt-48 md:pb-36 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto z-10">
+    <div class="max-w-4xl">
+      
+      <!-- System Architect Spec Eyebrow -->
+      <div class="inline-flex items-center gap-2 mb-6 font-mono-prec text-xs text-amber-400 bg-amber-400/10 px-3 py-1 rounded border border-amber-400/20">
+        <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+        <span data-i18n="badgeTitle">مهندس برمجيات ونظم سحابية معتمدة</span>
+      </div>
+
+      <!-- Hero Title -->
+      <h1 class="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-[1.2] mb-6" data-i18n="heroHeadline">
+        أنظمة برمجية سحابية وبنية تحتية عالية التحمل
+      </h1>
+
+      <!-- Hero Subhead -->
+      <p class="text-slate-300 text-base sm:text-lg max-w-2xl leading-relaxed mb-10 font-normal" data-i18n="heroSubheadline">
+        أبني منصات الـ SaaS والأنظمة الموزعة المعقدة وحلول الذكاء الاصطناعي مع تحصين أمني سيبراني صارم، موجهة لخدمة أهداف الأعمال وتوليد الإيرادات.
+      </p>
+
+      <!-- Primary Action Buttons -->
+      <div class="flex flex-wrap items-center gap-4 mb-16">
+        <a href="#v2-projects" class="px-6 py-3 rounded bg-white text-black font-bold text-sm hover:bg-slate-200 transition-colors flex items-center gap-2 font-mono-prec" data-i18n="btnExploreProjects">
+          استعراض المشاريع والنظم
+        </a>
+        <a href="#v2-calculator" class="px-6 py-3 rounded border border-white/15 text-slate-200 hover:border-white/40 hover:bg-white/5 font-bold text-sm transition-colors flex items-center gap-2 font-mono-prec" data-i18n="btnCalculateScope">
+          تقدير تكلفة مشروعك
+        </a>
+      </div>
+
+      <!-- Precision Stats Metric Grid -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 pt-8 hairline-t">
+        <div>
+          <div class="text-2xl sm:text-3xl font-bold text-white font-mono-prec" data-i18n="stat1Number">+6</div>
+          <div class="text-xs text-slate-400 mt-1" data-i18n="stat1Label">منصات SaaS سحابية من الصفر</div>
+        </div>
+        <div>
+          <div class="text-2xl sm:text-3xl font-bold text-white font-mono-prec" data-i18n="stat2Number">17+</div>
+          <div class="text-xs text-slate-400 mt-1" data-i18n="stat2Label">موديول فحص أمني وتدقيق ثغرات</div>
+        </div>
+        <div>
+          <div class="text-2xl sm:text-3xl font-bold text-amber-400 font-mono-prec" data-i18n="stat3Number">99.9%</div>
+          <div class="text-xs text-slate-400 mt-1" data-i18n="stat3Label">توافر واستقرار البنية التحتية</div>
+        </div>
+        <div>
+          <div class="text-2xl sm:text-3xl font-bold text-white font-mono-prec" data-i18n="stat4Number">100%</div>
+          <div class="text-xs text-slate-400 mt-1" data-i18n="stat4Label">التزام بالمواعيد ومواصفات الكود</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="v2-projects" class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative z-10 hairline-t">
+    
+    <!-- Section Header & Filter Controls -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+      <div>
+        <span class="text-xs font-mono-prec text-amber-400 uppercase tracking-widest block mb-2">SYSTEMS PORTFOLIO</span>
+        <h2 class="text-2xl sm:text-3xl font-bold text-white" data-i18n="sectionProjectsTitle">سجل المشاريع الهندسية</h2>
+        <p class="text-slate-400 text-sm mt-1 max-w-xl" data-i18n="sectionProjectsSubtitle">دراسات حالة موثقة لحلول برمجية معقدة تم تسليمها وتشغيلها بكفاءة عالية.</p>
+      </div>
+
+      <!-- Filter Tabs -->
+      <div class="flex flex-wrap items-center gap-2">
+        <button class="v2-filter-btn active" data-filter="all" data-i18n="filterAll">الكل</button>
+        <button class="v2-filter-btn" data-filter="ai-saas" data-i18n="filterAiSaas">SaaS والذكاء الاصطناعي</button>
+        <button class="v2-filter-btn" data-filter="cybersecurity" data-i18n="filterCyber">الأمن السيبراني</button>
+        <button class="v2-filter-btn" data-filter="live-platform" data-i18n="filterLive">منصات حية وتجارة</button>
+        <button class="v2-filter-btn" data-filter="mobile" data-i18n="filterMobile">تطبيقات الهواتف</button>
+      </div>
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- Card 1: Cliptica -->
+      <div class="arch-card rounded-lg p-6 flex flex-col justify-between" data-category="ai-saas" data-project-card="cliptica">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="tag-pill text-amber-300">AI VIDEO SAAS</span>
+            <span class="text-xs font-mono-prec text-slate-500">01</span>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2 project-card-title">Cliptica</h3>
+          <span class="block text-xs font-mono-prec text-slate-400 mb-3 project-card-cat">ذكاء اصطناعي ومنصات سحابية</span>
+          <p class="text-slate-300 text-sm leading-relaxed mb-6 project-card-tagline">
+            تحويل الفيديوهات الطويلة إلى مقاطع 9:16 تلقائياً بنماذج الرؤية الحاسوبية وتتبع حركة الوجه والترجمة الحركية.
+          </p>
+          <div class="flex flex-wrap gap-1.5 mb-6">
+            <span class="tag-pill">Next.js</span>
+            <span class="tag-pill">Groq Whisper</span>
+            <span class="tag-pill">InsightFace</span>
+            <span class="tag-pill">FFmpeg</span>
+            <span class="tag-pill">Postgres</span>
+          </div>
+        </div>
+        <button data-open-modal="cliptica" class="w-full py-2.5 px-4 rounded border border-white/10 hover:border-amber-400/50 hover:bg-white/5 text-slate-200 text-xs font-mono-prec font-bold flex items-center justify-center gap-2 transition-all">
+          <span data-i18n="btnViewArch">مخطط وسير المعمارية</span>
+          <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+        </button>
+      </div>
+
+      <!-- Card 2: RecFlow -->
+      <div class="arch-card rounded-lg p-6 flex flex-col justify-between" data-category="ai-saas" data-project-card="recflow">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="tag-pill text-slate-300">DISTRIBUTED SAAS</span>
+            <span class="text-xs font-mono-prec text-slate-500">02</span>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2 project-card-title">RecFlow</h3>
+          <span class="block text-xs font-mono-prec text-slate-400 mb-3 project-card-cat">أنظمة وسائط موزعة</span>
+          <p class="text-slate-300 text-sm leading-relaxed mb-6 project-card-tagline">
+            تسجيل الشاشة والبث المباشر فوراً من المتصفح برفع مباشر مجزأ إلى R2/S3 ومعالجة عبر عمال BullMQ.
+          </p>
+          <div class="flex flex-wrap gap-1.5 mb-6">
+            <span class="tag-pill">Next.js 15</span>
+            <span class="tag-pill">Fastify 5</span>
+            <span class="tag-pill">BullMQ</span>
+            <span class="tag-pill">FFmpeg</span>
+            <span class="tag-pill">Stripe</span>
+          </div>
+        </div>
+        <button data-open-modal="recflow" class="w-full py-2.5 px-4 rounded border border-white/10 hover:border-amber-400/50 hover:bg-white/5 text-slate-200 text-xs font-mono-prec font-bold flex items-center justify-center gap-2 transition-all">
+          <span data-i18n="btnViewArch">مخطط وسير المعمارية</span>
+          <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+        </button>
+      </div>
+
+      <!-- Card 3: Kashf -->
+      <div class="arch-card rounded-lg p-6 flex flex-col justify-between" data-category="cybersecurity" data-project-card="kashf">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="tag-pill text-emerald-300">CYBERSECURITY</span>
+            <span class="text-xs font-mono-prec text-slate-500">03</span>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2 project-card-title">Kashf (كشف)</h3>
+          <span class="block text-xs font-mono-prec text-slate-400 mb-3 project-card-cat">الأمن السيبراني والـ DevSecOps</span>
+          <p class="text-slate-300 text-sm leading-relaxed mb-6 project-card-tagline">
+            ماسح أمني متقدم وتدقيق اختراق شامل بـ 17 موديول مع فحص ثغرات نماذج الـ AI وتقارير رسمية للشركات.
+          </p>
+          <div class="flex flex-wrap gap-1.5 mb-6">
+            <span class="tag-pill">Python 3.11</span>
+            <span class="tag-pill">17 Audits</span>
+            <span class="tag-pill">LLM Guard</span>
+            <span class="tag-pill">Automated PoC</span>
+          </div>
+        </div>
+        <button data-open-modal="kashf" class="w-full py-2.5 px-4 rounded border border-white/10 hover:border-amber-400/50 hover:bg-white/5 text-slate-200 text-xs font-mono-prec font-bold flex items-center justify-center gap-2 transition-all">
+          <span data-i18n="btnViewArch">مخطط وسير المعمارية</span>
+          <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+        </button>
+      </div>
+
+      <!-- Card 4: Yad Biyad -->
+      <div class="arch-card rounded-lg p-6 flex flex-col justify-between" data-category="live-platform" data-project-card="yadbiyad">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="tag-pill text-amber-300">LIVE PRODUCTION</span>
+            <span class="text-xs font-mono-prec text-slate-500">04</span>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2 project-card-title">منصة يد بيد (Yad Biyad)</h3>
+          <span class="block text-xs font-mono-prec text-slate-400 mb-3 project-card-cat">منصات حية وتأثير مجتمعي</span>
+          <p class="text-slate-300 text-sm leading-relaxed mb-6 project-card-tagline">
+            منصة إنسانية وخيرية تعمل أونلاين لإدارة الحملات والمشاريع الإغاثية والقصص الميدانية والتبرعات.
+          </p>
+          <div class="flex flex-wrap gap-1.5 mb-6">
+            <span class="tag-pill">PHP</span>
+            <span class="tag-pill">MySQL</span>
+            <span class="tag-pill">Secure CMS</span>
+            <span class="tag-pill">Live Server</span>
+          </div>
+        </div>
+        <button data-open-modal="yadbiyad" class="w-full py-2.5 px-4 rounded border border-white/10 hover:border-amber-400/50 hover:bg-white/5 text-slate-200 text-xs font-mono-prec font-bold flex items-center justify-center gap-2 transition-all">
+          <span data-i18n="btnViewArch">مخطط وسير المعمارية</span>
+          <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+        </button>
+      </div>
+
+      <!-- Card 5: NeonArcade -->
+      <div class="arch-card rounded-lg p-6 flex flex-col justify-between" data-category="live-platform" data-project-card="neonarcade">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="tag-pill text-slate-300">FULL-STACK WEB</span>
+            <span class="text-xs font-mono-prec text-slate-500">05</span>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2 project-card-title">NeonArcade</h3>
+          <span class="block text-xs font-mono-prec text-slate-400 mb-3 project-card-cat">تطبيقات الويب التفاعلية</span>
+          <p class="text-slate-300 text-sm leading-relaxed mb-6 project-card-tagline">
+            منصة ألعاب متطورة بـ Next.js 14 تضم 50 لعبة تفاعلية بدون أي تثبيت مع لوحة تحكم ودعم لغتين.
+          </p>
+          <div class="flex flex-wrap gap-1.5 mb-6">
+            <span class="tag-pill">Next.js 14</span>
+            <span class="tag-pill">TypeScript</span>
+            <span class="tag-pill">Prisma</span>
+            <span class="tag-pill">MySQL</span>
+          </div>
+        </div>
+        <button data-open-modal="neonarcade" class="w-full py-2.5 px-4 rounded border border-white/10 hover:border-amber-400/50 hover:bg-white/5 text-slate-200 text-xs font-mono-prec font-bold flex items-center justify-center gap-2 transition-all">
+          <span data-i18n="btnViewArch">مخطط وسير المعمارية</span>
+          <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+        </button>
+      </div>
+
+      <!-- Card 6: Wasalny -->
+      <div class="arch-card rounded-lg p-6 flex flex-col justify-between" data-category="mobile" data-project-card="wasalny">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="tag-pill text-sky-300">MOBILE APP</span>
+            <span class="text-xs font-mono-prec text-slate-500">06</span>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2 project-card-title">Wasalny (وصلني)</h3>
+          <span class="block text-xs font-mono-prec text-slate-400 mb-3 project-card-cat">تطبيقات الهواتف الذكية</span>
+          <p class="text-slate-300 text-sm leading-relaxed mb-6 project-card-tagline">
+            تطبيق لوجستي متكامل لإدارة الشحنات والتوصيل الميداني وتتبع العمليات بنمط Clean Architecture.
+          </p>
+          <div class="flex flex-wrap gap-1.5 mb-6">
+            <span class="tag-pill">Flutter</span>
+            <span class="tag-pill">Dart</span>
+            <span class="tag-pill">Provider</span>
+            <span class="tag-pill">SQLite</span>
+          </div>
+        </div>
+        <button data-open-modal="wasalny" class="w-full py-2.5 px-4 rounded border border-white/10 hover:border-amber-400/50 hover:bg-white/5 text-slate-200 text-xs font-mono-prec font-bold flex items-center justify-center gap-2 transition-all">
+          <span data-i18n="btnViewArch">مخطط وسير المعمارية</span>
+          <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+        </button>
+      </div>
+
+      <!-- Card 7: ElectroLux -->
+      <div class="arch-card rounded-lg p-6 flex flex-col justify-between" data-category="live-platform" data-project-card="electrolux">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="tag-pill text-slate-300">E-COMMERCE</span>
+            <span class="text-xs font-mono-prec text-slate-500">07</span>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2 project-card-title">ElectroLux</h3>
+          <span class="block text-xs font-mono-prec text-slate-400 mb-3 project-card-cat">التجارة الإلكترونية المتقدمة</span>
+          <p class="text-slate-300 text-sm leading-relaxed mb-6 project-card-tagline">
+            تجربة تسوق إلكتروني متطورة للأجهزة والمعدات الدقيقة مع لوحة تحكم وسلة تسوق تفاعلية سريعة.
+          </p>
+          <div class="flex flex-wrap gap-1.5 mb-6">
+            <span class="tag-pill">React</span>
+            <span class="tag-pill">JavaScript</span>
+            <span class="tag-pill">Tailwind CSS</span>
+            <span class="tag-pill">PHP API</span>
+          </div>
+        </div>
+        <button data-open-modal="electrolux" class="w-full py-2.5 px-4 rounded border border-white/10 hover:border-amber-400/50 hover:bg-white/5 text-slate-200 text-xs font-mono-prec font-bold flex items-center justify-center gap-2 transition-all">
+          <span data-i18n="btnViewArch">مخطط وسير المعمارية</span>
+          <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Engineering Philosophy -->
+  <section id="v2-philosophy" class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative z-10 hairline-t">
+    <div class="max-w-2xl mb-14">
+      <span class="text-xs font-mono-prec text-amber-400 uppercase tracking-widest block mb-2">RIGOROUS ENGINEERING</span>
+      <h2 class="text-2xl sm:text-3xl font-bold text-white mb-3" data-i18n="sectionPhilTitle">معايير التنفيذ الهندسي</h2>
+      <p class="text-slate-400 text-sm leading-relaxed" data-i18n="sectionPhilSubtitle">المبادئ الصارمة التي تضمن جودة كل سطر برمجي واستقرار كل خادم.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      
+      <!-- Pillar 1 -->
+      <div class="arch-card p-6 rounded-lg">
+        <div class="text-xs font-mono-prec text-amber-400 mb-4">01 // ROI</div>
+        <h4 class="text-base font-bold text-white mb-2" data-i18n="phil1Title">هندسة موجهة للعائد التجاري</h4>
+        <p class="text-xs text-slate-400 leading-relaxed" data-i18n="phil1Desc">
+          الأنظمة تُبنى لخدمة نموذج العمل: خفض تكاليف الخوادم، تسريع دورات المعالجة، ورفع معدلات تحويل المستخدمين.
+        </p>
+      </div>
+
+      <!-- Pillar 2 -->
+      <div class="arch-card p-6 rounded-lg">
+        <div class="text-xs font-mono-prec text-emerald-400 mb-4">02 // SEC</div>
+        <h4 class="text-base font-bold text-white mb-2" data-i18n="phil2Title">الأمان السيبراني المدمج</h4>
+        <p class="text-xs text-slate-400 leading-relaxed" data-i18n="phil2Desc">
+          من واقع خبرتي في بناء ماسحات الثغرات (نظام كشف)، كل سطر كود وكل نقطة اتصال API محمية ضد الاستغلال.
+        </p>
+      </div>
+
+      <!-- Pillar 3 -->
+      <div class="arch-card p-6 rounded-lg">
+        <div class="text-xs font-mono-prec text-sky-400 mb-4">03 // SCALE</div>
+        <h4 class="text-base font-bold text-white mb-2" data-i18n="phil3Title">بنية تحتية لتوسع فوري</h4>
+        <p class="text-xs text-slate-400 leading-relaxed" data-i18n="phil3Desc">
+          معمارية عمال موزعة (BullMQ/Redis) وقواعد بيانات متزامنة تتحمل طفرات حركة المرور والبيانات الضخمة.
+        </p>
+      </div>
+
+      <!-- Pillar 4 -->
+      <div class="arch-card p-6 rounded-lg">
+        <div class="text-xs font-mono-prec text-slate-300 mb-4">04 // DOCS</div>
+        <h4 class="text-base font-bold text-white mb-2" data-i18n="phil4Title">توثيق شامل وكود نظيف</h4>
+        <p class="text-xs text-slate-400 leading-relaxed" data-i18n="phil4Desc">
+          كود معياري نظيف بنمط Clean Architecture، مع توثيق شامل وسهولة تسليم لفريقك التقني المستقبلي.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Technical Arsenal -->
+  <section id="v2-skills" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative z-10 hairline-t">
+    <div class="max-w-xl mb-12">
+      <span class="text-xs font-mono-prec text-amber-400 uppercase tracking-widest block mb-2">SYSTEM CAPABILITIES</span>
+      <h2 class="text-2xl sm:text-3xl font-bold text-white" data-i18n="sectionSkillsTitle">الترسانة التقنية الأساسية</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 font-mono-prec text-xs">
+      
+      <!-- Col 1 -->
+      <div class="arch-card p-6 rounded-lg">
+        <div class="text-amber-400 font-bold mb-4 pb-2 hairline-b" data-i18n="skillsCol1">الذكاء الاصطناعي والوسائط</div>
+        <ul class="space-y-3 text-slate-300">
+          <li class="flex justify-between"><span>Groq Whisper</span><span class="text-slate-500">Audio ASR</span></li>
+          <li class="flex justify-between"><span>InsightFace</span><span class="text-slate-500">Tracking</span></li>
+          <li class="flex justify-between"><span>LLM Orchestration</span><span class="text-slate-500">Prompt Eng</span></li>
+          <li class="flex justify-between"><span>FFmpeg CLI</span><span class="text-slate-500">Transcoding</span></li>
+        </ul>
+      </div>
+
+      <!-- Col 2 -->
+      <div class="arch-card p-6 rounded-lg">
+        <div class="text-white font-bold mb-4 pb-2 hairline-b" data-i18n="skillsCol2">الأنظمة السحابية والـ Backend</div>
+        <ul class="space-y-3 text-slate-300">
+          <li class="flex justify-between"><span>Next.js 14/15</span><span class="text-slate-500">Full-Stack</span></li>
+          <li class="flex justify-between"><span>Fastify 5 / Node</span><span class="text-slate-500">High TPS</span></li>
+          <li class="flex justify-between"><span>BullMQ & Redis</span><span class="text-slate-500">Queues</span></li>
+          <li class="flex justify-between"><span>Cloudflare R2 / S3</span><span class="text-slate-500">Storage</span></li>
+        </ul>
+      </div>
+
+      <!-- Col 3 -->
+      <div class="arch-card p-6 rounded-lg">
+        <div class="text-emerald-400 font-bold mb-4 pb-2 hairline-b" data-i18n="skillsCol3">الأمن السيبراني والموبايل</div>
+        <ul class="space-y-3 text-slate-300">
+          <li class="flex justify-between"><span>17-Vector PenTest</span><span class="text-slate-500">Security</span></li>
+          <li class="flex justify-between"><span>Prompt Injection</span><span class="text-slate-500">Defense</span></li>
+          <li class="flex justify-between"><span>Flutter & Dart</span><span class="text-slate-500">iOS/Android</span></li>
+          <li class="flex justify-between"><span>Paddle / Stripe</span><span class="text-slate-500">Billing</span></li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Scope & Budget Calculator -->
+  <section id="v2-calculator" class="py-24 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto relative z-10 hairline-t">
+    <div class="arch-card p-8 sm:p-12 rounded-lg">
+      
+      <div class="mb-10">
+        <span class="text-xs font-mono-prec text-amber-400 uppercase tracking-widest block mb-2">ENGAGEMENT ESTIMATOR</span>
+        <h2 class="text-2xl sm:text-3xl font-bold text-white mb-2" data-i18n="calcTitle">حاسبة تقدير نطاق وتكلفة المشروع</h2>
+        <p class="text-slate-400 text-sm" data-i18n="calcSubtitle">حدد مواصفات نظامك واحصل على نطاق ميزانية تقديري شفاف ومباشر.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 text-xs font-mono-prec">
+        
+        <div>
+          <label class="block text-slate-300 mb-2 font-bold" data-i18n="calcTypeLabel">نوع النظام البرمجي:</label>
+          <select id="v2-calc-type" class="w-full p-3 rounded bg-black border border-white/10 text-slate-200 focus:border-amber-400 focus:outline-none">
+            <option value="saas" data-i18n="calcOptSaas">منصة SaaS سحابية متكاملة</option>
+            <option value="ai" data-i18n="calcOptAi">نظام معالجة وسائط وذكاء اصطناعي</option>
+            <option value="mobile" data-i18n="calcOptMobile">تطبيق هاتف ذكي (Flutter Cross-Platform)</option>
+            <option value="security" data-i18n="calcOptSecurity">تدقيق أمني شامل وفحص اختراق</option>
+            <option value="ecommerce" data-i18n="calcOptEcom">منصة تجارة إلكترونية فاخرة عالية التحويل</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-slate-300 mb-2 font-bold" data-i18n="calcScopeLabel">نطاق العمل ومستوى التوسع:</label>
+          <select id="v2-calc-scope" class="w-full p-3 rounded bg-black border border-white/10 text-slate-200 focus:border-amber-400 focus:outline-none">
+            <option value="mvp" data-i18n="calcScopeMvp">إطلاق أولي سريع (MVP)</option>
+            <option value="full" selected data-i18n="calcScopeFull">نظام إنتاجي متكامل (Full Production)</option>
+            <option value="enterprise" data-i18n="calcScopeEnt">نظام مؤسسي معقد (Enterprise Scale)</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-slate-300 mb-2 font-bold" data-i18n="calcTimelineLabel">الإطار الزمني المستهدف:</label>
+          <select id="v2-calc-speed" class="w-full p-3 rounded bg-black border border-white/10 text-slate-200 focus:border-amber-400 focus:outline-none">
+            <option value="standard" selected data-i18n="calcTimeStd">جدول زمني قياسي (3 - 5 أسابيع)</option>
+            <option value="express" data-i18n="calcTimeExp">أولوية قصوى وتسليم سريع (أسبوعين)</option>
+          </select>
+        </div>
+
+      </div>
+
+      <div class="bg-black/80 p-6 rounded border border-white/10 flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div>
+          <span class="text-xs font-mono-prec text-slate-400 block mb-1" data-i18n="calcEstBudget">الميزانية التقديرية المقترحة للمشروع:</span>
+          <div id="v2-calc-output" class="text-3xl font-bold text-white font-mono-prec">
+            $3,500 — $4,700
+          </div>
+          <span class="text-xs text-slate-500 mt-1 block" data-i18n="calcNotice">شاملة التصميم، المعمارية، الأمان، وإطلاق البنية التحتية.</span>
+        </div>
+
+        <a id="v2-calc-cta" href="#" target="_blank" class="w-full sm:w-auto px-6 py-3 rounded bg-amber-400 text-black font-bold text-xs font-mono-prec hover:bg-amber-300 transition-colors flex items-center justify-center gap-2">
+          <i data-lucide="message-square" class="w-4 h-4"></i>
+          <span data-i18n="btnDiscussProject">ناقش تفاصيل هذا المشروع الآن</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="v2-contact" class="py-24 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto relative z-10 hairline-t text-center">
+    <span class="text-xs font-mono-prec text-amber-400 uppercase tracking-widest block mb-3">GET IN TOUCH</span>
+    <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4" data-i18n="contactTitle">جاهز لبدء مشروعك القادم؟</h2>
+    <p class="text-slate-400 text-sm max-w-xl mx-auto mb-8 leading-relaxed" data-i18n="contactSubtitle">
+      أنا متاح للتعاقد مع الشركات الناشئة ورواد الأعمال لتنفيذ أنظمة معقدة بأعلى المعايير.
+    </p>
+
+    <div class="flex flex-wrap items-center justify-center gap-4 font-mono-prec text-xs">
+      <a href="https://wa.me/?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D9%85.%20%D8%B9%D8%A8%D8%AF%D8%A7%D9%84%D8%B1%D8%AD%D9%8A%D9%85%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D9%85%D9%86%D8%A7%D9%82%D8%B4%D8%A9%20%D9%85%D8%B4%D8%B1%D9%88%D8%B9%20%D8%AC%D8%AF%D9%8A%D8%AF." target="_blank" class="px-6 py-3 rounded bg-white text-black font-bold hover:bg-slate-200 transition-colors flex items-center gap-2" data-i18n="btnWhatsApp">
+        <i data-lucide="phone-call" class="w-4 h-4"></i>
+        <span>محادثة عمل مباشرة</span>
+      </a>
+      <a href="mailto:abdelraheem.eng@gmail.com" class="px-6 py-3 rounded border border-white/20 text-slate-200 hover:border-white/50 hover:bg-white/5 transition-colors flex items-center gap-2" data-i18n="btnEmail">
+        <i data-lucide="mail" class="w-4 h-4"></i>
+        <span>مراسلة عبر البريد الإلكتروني</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Minimalist Footer -->
+  <footer class="hairline-t py-8 px-4 sm:px-6 lg:px-8 text-center text-xs text-slate-500 font-mono-prec relative z-10">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div data-i18n="footerRights">
+        © 2026 م. عبدالرحيم بركة (Abdelraheem Baraka). جميع الحقوق محفوظة.
+      </div>
+      <div class="text-slate-400" data-i18n="footerStack">
+        معمارية هندسية نقية | بدون قوالب AI
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal Case Study Detail -->
+  <div id="v2-project-modal" class="v2-modal-overlay fixed inset-0 z-50 bg-black/85 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 hidden opacity-0 transition-opacity">
+    <div class="v2-modal-box arch-card border border-white/20 w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-lg p-6 sm:p-8 transform scale-95 transition-all bg-[#0d1118]">
+      
+      <!-- Modal Header -->
+      <div class="flex items-start justify-between gap-4 hairline-b pb-5 mb-6">
+        <div>
+          <div class="flex items-center gap-2 mb-2 font-mono-prec text-xs">
+            <span id="v2-modal-badge" class="tag-pill text-amber-300"></span>
+            <span id="v2-modal-category" class="text-slate-400"></span>
+          </div>
+          <h3 id="v2-modal-title" class="text-2xl font-bold text-white"></h3>
+          <p id="v2-modal-tagline" class="text-xs text-amber-400 font-mono-prec mt-1"></p>
+        </div>
+        <button id="v2-close-modal-btn" class="p-2 text-slate-400 hover:text-white rounded border border-white/10 hover:border-white/30">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="space-y-6 text-slate-300 text-xs leading-relaxed">
+        
+        <div>
+          <h4 class="text-white font-bold text-sm mb-2 font-mono-prec" data-i18n="modalOverviewHead">نظرة عامة على النظام:</h4>
+          <p id="v2-modal-overview" class="bg-black/40 p-4 rounded border border-white/5 text-slate-300"></p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="p-4 rounded border border-white/10 bg-black/40">
+            <h5 class="text-slate-200 font-bold mb-1 font-mono-prec" data-i18n="modalChallengeHead">التحدي الهندسي:</h5>
+            <p id="v2-modal-challenge" class="text-slate-400"></p>
+          </div>
+          <div class="p-4 rounded border border-white/10 bg-black/40">
+            <h5 class="text-amber-400 font-bold mb-1 font-mono-prec" data-i18n="modalSolutionHead">الحل والمعمارية المعتمدة:</h5>
+            <p id="v2-modal-solution" class="text-slate-400"></p>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="text-white font-bold text-sm mb-2 font-mono-prec" data-i18n="modalArchHead">مسار وسير البيانات (Data Pipeline):</h4>
+          <ul id="v2-modal-arch" class="space-y-1 bg-black/60 p-4 rounded border border-white/5 font-mono-prec"></ul>
+        </div>
+
+        <div>
+          <h4 class="text-white font-bold text-sm mb-2 font-mono-prec" data-i18n="modalTechHead">حزمة التقنيات (Tech Stack):</h4>
+          <div id="v2-modal-tech" class="flex flex-wrap gap-2"></div>
+        </div>
+
+        <div class="p-4 rounded border border-amber-400/20 bg-amber-400/5">
+          <h5 class="text-amber-400 font-bold mb-1 font-mono-prec" data-i18n="modalImpactHead">الأثر والقيمة العائدة للأعمال:</h5>
+          <p id="v2-modal-impact" class="text-slate-300"></p>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/v2-three.js"></script>
+  <script src="js/v2-main.js"></script>
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>

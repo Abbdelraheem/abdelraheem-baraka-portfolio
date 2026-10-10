@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>عبدالرحيم بركة | لينير تِك: هندسة برمجية فائقة الدقة</title>
+  <meta name="description" content="معرض أعمال م. عبدالرحيم بركة — أسلوب تقني هندسي حديث، دقة عالية، 3D هولوجرافيك.">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Tech Stylesheet -->
+  <link rel="stylesheet" href="css/tech-style.css">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Three.js (r128) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body class="bg-[#06080d] text-[#f8fafc]">
+
+  <!-- Grid Pattern -->
+  <div class="tech-grid-bg"></div>
+
+  <!-- Top Style Selector Bar (For Easy Comparison) -->
+  <div class="style-switch-bar fixed top-0 left-0 right-0 z-[60] bg-[#0b0f17]/95 backdrop-blur-md border-b border-white/10 py-2 px-4">
+    <div class="max-w-6xl mx-auto flex items-center justify-between flex-wrap gap-2 text-xs">
+      <div class="flex items-center gap-2 text-slate-400">
+        <span class="w-2 h-2 rounded-full bg-[#38bdf8] animate-pulse"></span>
+        <span class="font-bold text-white">اختر الستايل للمعاينة:</span>
+      </div>
+      <div class="flex items-center gap-2 overflow-x-auto">
+        <a href="index.html" class="style-pill">
+          <span>💎</span>
+          <span>1. دارك ولايم (عويص الفاخر)</span>
+        </a>
+        <a href="style-editorial.html" class="style-pill">
+          <span>🌿</span>
+          <span>2. زيتي وبيج (ستوديو هادئ)</span>
+        </a>
+        <a href="style-minimal-tech.html" class="style-pill active">
+          <span>⚡</span>
+          <span>3. لينير تِك (مينيمال ودقة هندسية)</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="fixed top-[41px] left-0 right-0 z-50 bg-[#06080d]/90 backdrop-blur-md border-b border-white/10 transition-all">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Typographic Name -->
+      <a href="#hero" class="flex flex-col group">
+        <span class="text-xl font-bold tracking-tight text-white group-hover:text-cyan transition-colors">
+          عبدالرحيم بركة
+        </span>
+        <span class="text-[0.68rem] tracking-wider uppercase text-slate-400 font-mono-tag" data-i18n="roleSub">
+          مهندس برمجيات ونظم سحابية
+        </span>
+      </a>
+
+      <!-- Desktop Links -->
+      <nav class="hidden md:flex items-center gap-8 text-xs font-mono-tag text-slate-300">
+        <a href="#work" data-i18n="navWork" class="hover:text-white transition-colors">المشاريع</a>
+        <a href="#capabilities" data-i18n="navCapabilities" class="hover:text-white transition-colors">القدرات الهندسية</a>
+        <a href="#contact" data-i18n="navContact" class="hover:text-white transition-colors">تواصل معي</a>
+      </nav>
+
+      <!-- Controls -->
+      <div class="flex items-center gap-3">
+        <!-- Language Switcher -->
+        <button id="lang-toggle-btn" class="px-3.5 py-1.5 rounded-full text-xs font-mono-tag border border-white/15 hover:border-white/40 bg-white/5 transition-all flex items-center gap-2">
+          <span class="text-white font-bold">العربية</span>
+          <span class="text-slate-600">/</span>
+          <span class="text-slate-400">EN</span>
+        </button>
+
+        <!-- CTA Button -->
+        <a href="#contact" class="hidden sm:inline-flex btn-cyan text-xs font-mono-tag py-2 px-5">
+          <span data-i18n="btnHire">تواصل للتعاقد</span>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="hero" class="pt-44 pb-16 md:pt-52 md:pb-24 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      
+      <!-- Column 1: Typography -->
+      <div class="lg:col-span-7">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full badge-clean badge-cyan text-xs font-mono-tag mb-6">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#38bdf8] animate-pulse"></span>
+          <span data-i18n="heroBadge">هندسة سحابية ونظم ذكاء اصطناعي</span>
+        </div>
+
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-[1.2] mb-6">
+          <span class="block" data-i18n="heroTitle1">أبني منصات برمجية</span>
+          <span class="cyan-gradient block" data-i18n="heroTitle2">حقيقية ومحصنة.</span>
+        </h1>
+
+        <p class="text-slate-300 text-base sm:text-lg leading-relaxed mb-8 max-w-xl font-normal" data-i18n="heroDesc">
+          مهندس برمجيات متخصص في بناء منصات الـ SaaS السحابية، خطوط معالجة الفيديو بالذكاء الاصطناعي، والتدقيق الأمني السيبراني المتقدم — حلول عملية تخدم أهدافك التجارية وتحقق إيرادات.
+        </p>
+
+        <!-- Action Buttons -->
+        <div class="flex flex-wrap items-center gap-4 mb-12">
+          <a href="#work" class="btn-cyan text-sm font-mono-tag" data-i18n="btnWork">
+            استكشف المشاريع
+          </a>
+          <a href="#contact" class="btn-ghost text-sm font-mono-tag" data-i18n="btnHire">
+            تواصل للتعاقد
+          </a>
+        </div>
+
+        <!-- 4 Stats in One Row -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-8 border-t border-white/10 font-mono-tag">
+          <div>
+            <div class="text-2xl sm:text-3xl font-bold text-white" data-i18n="stat1Num">+6</div>
+            <div class="text-[0.72rem] text-slate-400 mt-1" data-i18n="stat1Lbl">منصات SaaS سحابية من الصفر</div>
+          </div>
+          <div>
+            <div class="text-2xl sm:text-3xl font-bold text-white" data-i18n="stat2Num">17+</div>
+            <div class="text-[0.72rem] text-slate-400 mt-1" data-i18n="stat2Lbl">موديول فحص أمني وتدقيق ثغرات</div>
+          </div>
+          <div>
+            <div class="text-2xl sm:text-3xl font-bold text-cyan" data-i18n="stat3Num">99.9%</div>
+            <div class="text-[0.72rem] text-slate-400 mt-1" data-i18n="stat3Lbl">جاهزية واستقرار البنية التحتية</div>
+          </div>
+          <div>
+            <div class="text-2xl sm:text-3xl font-bold text-white" data-i18n="stat4Num">100%</div>
+            <div class="text-[0.72rem] text-slate-400 mt-1" data-i18n="stat4Lbl">التزام كامل بالمواعيد والمواصفات</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Column 2: Tech 3D Box -->
+      <div class="lg:col-span-5">
+        <div id="tech-3d-box">
+          <canvas id="tech-3d-canvas"></canvas>
+          <div class="absolute bottom-4 right-4 left-4 flex justify-between items-center text-[0.68rem] text-slate-400 font-mono-tag px-3.5 py-1.5 rounded-full bg-black/75 backdrop-blur-md border border-white/10">
+            <span>HOLOGRAPHIC 3D MATRIX</span>
+            <span class="text-cyan">● 60 FPS</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Marquee Trust Bar -->
+  <section class="trustbar" aria-label="أرقام موثقة">
+    <div class="marquee-track">
+      <div class="marquee-item"><span class="dot">◆</span><span>بناء منصات SaaS موزعة من الصفر</span></div>
+      <div class="marquee-item"><span class="dot">◆</span><span>17 موديول فحص وتدقيق أمني سيبراني متقدم (نظام كشف)</span></div>
+      <div class="marquee-item"><span class="dot">◆</span><span>خطوط معالجة وسائط وفيديو بالذكاء الاصطناعي (Cliptica & RecFlow)</span></div>
+      <div class="marquee-item"><span class="dot">◆</span><span>منصات إنتاجية حية على الإنترنت وموثوقة</span></div>
+      <div class="marquee-item"><span class="dot">◆</span><span>تطبيقات هواتف ذكية سريعة بنمط Clean Architecture</span></div>
+      <div class="marquee-item"><span class="dot">◆</span><span>بناء منصات SaaS موزعة من الصفر</span></div>
+      <div class="marquee-item"><span class="dot">◆</span><span>17 موديول فحص وتدقيق أمني سيبراني متقدم (نظام كشف)</span></div>
+      <div class="marquee-item"><span class="dot">◆</span><span>خطوط معالجة وسائط وفيديو بالذكاء الاصطناعي (Cliptica & RecFlow)</span></div>
+      <div class="marquee-item"><span class="dot">◆</span><span>منصات إنتاجية حية على الإنترنت وموثوقة</span></div>
+      <div class="marquee-item"><span class="dot">◆</span><span>تطبيقات هواتف ذكية سريعة بنمط Clean Architecture</span></div>
+    </div>
+  </section>
+
+  <!-- Section 01: Projects -->
+  <section id="work" class="py-24 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+      <div>
+        <span class="text-xs font-mono-tag text-cyan uppercase tracking-widest block mb-2" data-i18n="sectionWorkPre">
+          01 // المشاريع المعتمدة
+        </span>
+        <h2 class="text-3xl font-bold text-white" data-i18n="sectionWorkTitle">
+          أعمال برمجية تثبت الكفاءة
+        </h2>
+      </div>
+
+      <!-- Clean Filter Pills -->
+      <div class="flex flex-wrap items-center gap-2">
+        <button class="filter-pill active px-4 py-1.5 rounded-full text-xs font-mono-tag bg-white/5 text-slate-300 border border-white/10 hover:border-white/30 transition-all" data-f="all" data-i18n="filterAll">الكل</button>
+        <button class="filter-pill px-4 py-1.5 rounded-full text-xs font-mono-tag bg-white/5 text-slate-300 border border-white/10 hover:border-white/30 transition-all" data-f="ai" data-i18n="filterAi">SaaS والذكاء الاصطناعي</button>
+        <button class="filter-pill px-4 py-1.5 rounded-full text-xs font-mono-tag bg-white/5 text-slate-300 border border-white/10 hover:border-white/30 transition-all" data-f="sec" data-i18n="filterSec">الأمن السيبراني</button>
+        <button class="filter-pill px-4 py-1.5 rounded-full text-xs font-mono-tag bg-white/5 text-slate-300 border border-white/10 hover:border-white/30 transition-all" data-f="live" data-i18n="filterLive">منصات حية وتجارة</button>
+        <button class="filter-pill px-4 py-1.5 rounded-full text-xs font-mono-tag bg-white/5 text-slate-300 border border-white/10 hover:border-white/30 transition-all" data-f="mob" data-i18n="filterMob">تطبيقات الموبايل</button>
+      </div>
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- Project 1: Cliptica -->
+      <div class="tech-card p-6 flex flex-col justify-between" data-cat-group="ai" data-project-key="cliptica">
+        <div>
+          <div class="flex justify-between items-center mb-4">
+            <span class="badge-clean badge-cyan">AI VIDEO SAAS</span>
+            <span class="text-xs font-mono-tag text-slate-500">01</span>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-1.5 p-title">Cliptica</h3>
+          <span class="block text-xs font-mono-tag text-slate-400 mb-3 p-cat">منصة ذكاء اصطناعي ومعالجة وسائط</span>
+          <p class="text-slate-300 text-sm leading-relaxed mb-6 p-tag">
+            تحويل الفيديوهات الطويلة إلى مقاطع Shorts/Reels مقاس 9:16 بنماذج الرؤية الحاسوبية وتتبع حركة الوجه.
+          </p>
+          <div class="flex flex-wrap gap-1.5 mb-6">
+            <span class="badge-clean">Next.js</span>
+            <span class="badge-clean">Groq Whisper</span>
+            <span class="badge-clean">InsightFace</span>
+            <span class="badge-clean">FFmpeg</span>
+          </div>
+        </div>
+        <button data-open-modal="cliptica" class="w-full py-2.5 px-4 rounded-full btn-ghost text-xs font-mono-tag font-bold flex items-center justify-center gap-2">
+          <span data-i18n="btnDetails">تفاصيل المعمارية</span>
+          <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+        </button>
+      </div>
+
+      <!-- Project 2: RecFlow -->
+      <div class="tech-card p-6 flex flex-col justify-between" data-cat-group="ai" data-project-key="recflow">
+        <div>
+          <div class="flex justify-between items-center mb-4">
+            <span class="badge-clean text-slate-300">DISTRIBUTED SAAS</span>
+            <span class="text-xs font-mono-tag text-slate-500">02</span>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-1.5 p-title">RecFlow</h3>
+          <span class="block text-xs font-mono-tag text-slate-400 mb-3 p-cat">أنظمة وسائط سحابية موزعة</span>
+          <p class="text-slate-300 text-sm leading-relaxed mb-6 p-tag">
+            تسجيل الشاشة والبث المباشر فوراً من المتصفح بدون تثبيت أي برنامج برفع مباشر إلى R2/S3.
+          </p>
+          <div class="flex flex-wrap gap-1.5 mb-6">
+            <span class="badge-clean">Next.js 15</span>
+            <span class="badge-clean">Fastify 5</span>
+            <span class="badge-clean">BullMQ</span>
+            <span class="badge-clean">Stripe</span>
+          </div>
+        </div>
+        <button data-open-modal="recflow" class="w-full py-2.5 px-4 rounded-full btn-ghost text-xs font-mono-tag font-bold flex items-center justify-center gap-2">
+          <span data-i18n="btnDetails">تفاصيل المعمارية</span>
+          <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+        </button>
+      </div>
+
+      <!-- Project 3: Kashf -->
+      <div class="tech-card p-6 flex flex-col justify-between" data-cat-group="sec" data-project-key="kashf">
+        <div>
+          <div class="flex justify-between items-center mb-4">
+            <span class="badge-clean badge-cyan">CYBERSECURITY</span>
+            <span class="text-xs font-mono-tag text-slate-500">03</span>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-1.5 p-title">Kashf (كشف)</h3>
+          <span class="block text-xs font-mono-tag text-slate-400 mb-3 p-cat">الأمن السيبراني والـ DevSecOps</span>
+          <p class="text-slate-300 text-sm leading-relaxed mb-6 p-tag">
+            ماسح أمني متقدم وتدقيق اختراق شامل بـ 17 موديول مع فحص ثغرات نماذج الـ AI وتقارير رسمية.
+          </p>
+          <div class="flex flex-wrap gap-1.5 mb-6">
+            <span class="badge-clean">Python 3.11</span>
+            <span class="badge-clean">17 Audits</span>
+            <span class="badge-clean">LLM Guard</span>
+          </div>
+        </div>
+        <button data-open-modal="kashf" class="w-full py-2.5 px-4 rounded-full btn-ghost text-xs font-mono-tag font-bold flex items-center justify-center gap-2">
+          <span data-i18n="btnDetails">تفاصيل المعمارية</span>
+          <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+        </button>
+      </div>
+
+      <!-- Project 4: Yad Biyad -->
+      <div class="tech-card p-6 flex flex-col justify-between" data-cat-group="live" data-project-key="yadbiyad">
+        <div>
+          <div class="flex justify-between items-center mb-4">
+            <span class="badge-clean text-amber-300">LIVE PRODUCTION</span>
+            <span class="text-xs font-mono-tag text-slate-500">04</span>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-1.5 p-title">منصة يد بيد</h3>
+          <span class="block text-xs font-mono-tag text-slate-400 mb-3 p-cat">منصات حية وتأثير مجتمعي</span>
+          <p class="text-slate-300 text-sm leading-relaxed mb-6 p-tag">
+            منصة إنسانية وخيرية تعمل أونلاين لإدارة الحملات والمشاريع الإغاثية والتبرعات (handbyhandps.com).
+          </p>
+          <div class="flex flex-wrap gap-1.5 mb-6">
+            <span class="badge-clean">PHP</span>
+            <span class="badge-clean">MySQL</span>
+            <span class="badge-clean">Custom CMS</span>
+          </div>
+        </div>
+        <button data-open-modal="yadbiyad" class="w-full py-2.5 px-4 rounded-full btn-ghost text-xs font-mono-tag font-bold flex items-center justify-center gap-2">
+          <span data-i18n="btnDetails">تفاصيل المعمارية</span>
+          <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+        </button>
+      </div>
+
+      <!-- Project 5: NeonArcade -->
+      <div class="tech-card p-6 flex flex-col justify-between" data-cat-group="live" data-project-key="neonarcade">
+        <div>
+          <div class="flex justify-between items-center mb-4">
+            <span class="badge-clean text-slate-300">WEB GAMING</span>
+            <span class="text-xs font-mono-tag text-slate-500">05</span>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-1.5 p-title">NeonArcade</h3>
+          <span class="block text-xs font-mono-tag text-slate-400 mb-3 p-cat">تطبيقات الويب التفاعلية</span>
+          <p class="text-slate-300 text-sm leading-relaxed mb-6 p-tag">
+            منصة ألعاب متطورة بـ Next.js 14 تضم 50 لعبة تفاعلية بدون أي تثبيت مع لوحة تحكم ودعم لغتين.
+          </p>
+          <div class="flex flex-wrap gap-1.5 mb-6">
+            <span class="badge-clean">Next.js 14</span>
+            <span class="badge-clean">TypeScript</span>
+            <span class="badge-clean">Prisma</span>
+          </div>
+        </div>
+        <button data-open-modal="neonarcade" class="w-full py-2.5 px-4 rounded-full btn-ghost text-xs font-mono-tag font-bold flex items-center justify-center gap-2">
+          <span data-i18n="btnDetails">تفاصيل المعمارية</span>
+          <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+        </button>
+      </div>
+
+      <!-- Project 6: Wasalny -->
+      <div class="tech-card p-6 flex flex-col justify-between" data-cat-group="mob" data-project-key="wasalny">
+        <div>
+          <div class="flex justify-between items-center mb-4">
+            <span class="badge-clean text-sky-400">MOBILE APP</span>
+            <span class="text-xs font-mono-tag text-slate-500">06</span>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-1.5 p-title">Wasalny (وصلني)</h3>
+          <span class="block text-xs font-mono-tag text-slate-400 mb-3 p-cat">تطبيقات الهواتف الذكية</span>
+          <p class="text-slate-300 text-sm leading-relaxed mb-6 p-tag">
+            تطبيق لوجستي متكامل لإدارة الشحنات والتوصيل الميداني وتتبع العمليات بنمط Clean Architecture.
+          </p>
+          <div class="flex flex-wrap gap-1.5 mb-6">
+            <span class="badge-clean">Flutter</span>
+            <span class="badge-clean">Dart</span>
+            <span class="badge-clean">SQLite</span>
+          </div>
+        </div>
+        <button data-open-modal="wasalny" class="w-full py-2.5 px-4 rounded-full btn-ghost text-xs font-mono-tag font-bold flex items-center justify-center gap-2">
+          <span data-i18n="btnDetails">تفاصيل المعمارية</span>
+          <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+        </button>
+      </div>
+
+      <!-- Project 7: ElectroLux -->
+      <div class="tech-card p-6 flex flex-col justify-between" data-cat-group="live" data-project-key="electrolux">
+        <div>
+          <div class="flex justify-between items-center mb-4">
+            <span class="badge-clean text-slate-300">E-COMMERCE</span>
+            <span class="text-xs font-mono-tag text-slate-500">07</span>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-1.5 p-title">ElectroLux</h3>
+          <span class="block text-xs font-mono-tag text-slate-400 mb-3 p-cat">التجارة الإلكترونية المتقدمة</span>
+          <p class="text-slate-300 text-sm leading-relaxed mb-6 p-tag">
+            تجربة تسوق إلكتروني متطورة للأجهزة والمعدات الدقيقة مع لوحة تحكم وسلة تسوق تفاعلية سريعة.
+          </p>
+          <div class="flex flex-wrap gap-1.5 mb-6">
+            <span class="badge-clean">React</span>
+            <span class="badge-clean">Tailwind CSS</span>
+            <span class="badge-clean">PHP API</span>
+          </div>
+        </div>
+        <button data-open-modal="electrolux" class="w-full py-2.5 px-4 rounded-full btn-ghost text-xs font-mono-tag font-bold flex items-center justify-center gap-2">
+          <span data-i18n="btnDetails">تفاصيل المعمارية</span>
+          <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Section 02: Capabilities -->
+  <section id="capabilities" class="py-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto border-t border-white/10">
+    <div class="max-w-2xl mb-12">
+      <span class="text-xs font-mono-tag text-cyan uppercase tracking-widest block mb-2" data-i18n="sectionCapPre">
+        02 // القدرات الهندسية
+      </span>
+      <h2 class="text-3xl font-bold text-white" data-i18n="sectionCapTitle">
+        ماذا أقدم لمشروعك؟
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      
+      <div class="tech-card p-6">
+        <div class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-5 text-cyan">
+          <i data-lucide="server" class="w-5 h-5"></i>
+        </div>
+        <h3 class="text-lg font-bold text-white mb-2" data-i18n="cap1Title">منصات الـ SaaS والأنظمة السحابية</h3>
+        <p class="text-sm text-slate-300 leading-relaxed" data-i18n="cap1Desc">
+          بناء تطبيقات ويب متكاملة من الصفر (Next.js / Node / Fastify) مع قواعد بيانات موزعة وطوابير عمال (BullMQ) تتحمل آلاف المستخدمين.
+        </p>
+      </div>
+
+      <div class="tech-card p-6">
+        <div class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-5 text-cyan">
+          <i data-lucide="cpu" class="w-5 h-5"></i>
+        </div>
+        <h3 class="text-lg font-bold text-white mb-2" data-i18n="cap2Title">معالجة الوسائط والذكاء الاصطناعي</h3>
+        <p class="text-sm text-slate-300 leading-relaxed" data-i18n="cap2Desc">
+          دمج نماذج الذكاء الاصطناعي (Whisper, LLMs, InsightFace) مع محركات FFmpeg لأتمتة معالجة الفيديو والصوت بدقة عالية.
+        </p>
+      </div>
+
+      <div class="tech-card p-6">
+        <div class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-5 text-cyan">
+          <i data-lucide="shield-check" class="w-5 h-5"></i>
+        </div>
+        <h3 class="text-lg font-bold text-white mb-2" data-i18n="cap3Title">الأمن السيبراني وتطبيقات الهاتف</h3>
+        <p class="text-sm text-slate-300 leading-relaxed" data-i18n="cap3Desc">
+          فحص وتأمين تطبيقات الويب ضد ثغرات الحقن والـ SSRF والـ AI (مطور نظام كشف)، وبرمجة تطبيقات هواتف ذكية سريعة بـ Flutter.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Section 03: Direct Contact -->
+  <section id="contact" class="py-24 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto border-t border-white/10 text-center">
+    <div class="tech-card p-10 sm:p-14">
+      <span class="text-xs font-mono-tag text-cyan uppercase tracking-widest block mb-3" data-i18n="sectionContactPre">
+        03 // تواصل مباشر
+      </span>
+      <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4" data-i18n="sectionContactTitle">
+        هل لديك فكرة أو نظام تريد تنفيذه؟
+      </h2>
+      <p class="text-slate-300 text-sm sm:text-base max-w-xl mx-auto mb-8 leading-relaxed font-normal" data-i18n="sectionContactDesc">
+        أنا متاح للتعاقد مع الشركات ورواد الأعمال الجادين لتنفيذ أنظمة برمجية بمستوى عالمي.
+      </p>
+
+      <div class="flex flex-wrap items-center justify-center gap-4 font-mono-tag text-xs">
+        <a href="https://wa.me/?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D9%85.%20%D8%B9%D8%A8%D8%AF%D8%A7%D9%84%D8%B1%D8%AD%D9%8A%D9%85%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D9%85%D9%86%D8%A7%D9%82%D8%B4%D8%A9%20%D9%85%D8%B4%D8%B1%D9%88%D8%B9%20%D8%AC%D8%AF%D9%8A%D8%AF." target="_blank" class="btn-cyan font-bold">
+          <i data-lucide="phone-call" class="w-4 h-4"></i>
+          <span data-i18n="btnWhatsApp">محادثة فورية عبر واتساب</span>
+        </a>
+        <a href="mailto:abdelraheem.eng@gmail.com" class="btn-ghost font-bold">
+          <i data-lucide="mail" class="w-4 h-4"></i>
+          <span data-i18n="btnEmail">مراسلة عبر البريد الإلكتروني</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-white/10 py-8 px-4 sm:px-6 lg:px-8 text-center text-xs text-slate-500 font-mono-tag">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div data-i18n="footerRights">
+        © 2026 م. عبدالرحيم بركة (Abdelraheem Baraka). جميع الحقوق محفوظة.
+      </div>
+      <div class="text-slate-400">
+        Senior Systems & Cloud Architect
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal -->
+  <div id="clean-modal" class="clean-modal-overlay fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 hidden opacity-0 transition-opacity">
+    <div class="clean-modal-box tech-card border border-white/20 w-full max-w-2xl max-h-[90vh] overflow-y-auto p-6 sm:p-8 bg-[#0b0f17]">
+      <div class="flex items-start justify-between gap-4 border-b border-white/10 pb-4 mb-6">
+        <div>
+          <span id="m-cat" class="text-xs font-mono-tag text-cyan block mb-1"></span>
+          <h3 id="m-title" class="text-2xl font-bold text-white"></h3>
+        </div>
+        <button id="m-close" class="p-2 text-slate-400 hover:text-white rounded-full border border-white/15 bg-black">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <div class="space-y-5 text-sm text-slate-300">
+        <div>
+          <h4 class="text-white font-bold text-xs font-mono-tag uppercase tracking-wider mb-2">النظرة العامة:</h4>
+          <p id="m-overview" class="leading-relaxed bg-black/40 p-4 rounded-xl border border-white/5"></p>
+        </div>
+        <div>
+          <h4 class="text-white font-bold text-xs font-mono-tag uppercase tracking-wider mb-2">الحل والمعمارية:</h4>
+          <p id="m-solution" class="leading-relaxed bg-black/40 p-4 rounded-xl border border-white/5"></p>
+        </div>
+        <div>
+          <h4 class="text-white font-bold text-xs font-mono-tag uppercase tracking-wider mb-2">التقنيات المستخدمة:</h4>
+          <div id="m-stack" class="flex flex-wrap gap-2"></div>
+        </div>
+        <div class="p-4 rounded-xl bg-cyan-500/10 border border-cyan-500/20 text-cyan text-xs">
+          <strong>القيمة التجارية: </strong>
+          <span id="m-impact" class="text-slate-200"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/tech-three.js"></script>
+  <script src="js/clean-main.js"></script>
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>

@@ -1,0 +1,160 @@
+/* V2 Style: Architectural Minimalist / Precision Engineering */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap');
+
+:root {
+  --bg-main: #0a0c10;
+  --bg-surface: #10141d;
+  --bg-surface-elevated: #161c28;
+  --border-hairline: rgba(255, 255, 255, 0.08);
+  --border-active: rgba(255, 255, 255, 0.22);
+  --text-primary: #f8fafc;
+  --text-muted: #8b95a5;
+  --accent-amber: #f59e0b;
+  --accent-amber-subtle: rgba(245, 158, 11, 0.12);
+  --accent-steel: #38bdf8;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+}
+
+body {
+  font-family: 'Space Grotesk', 'IBM Plex Sans Arabic', -apple-system, sans-serif;
+  overflow-x: hidden;
+  background-color: var(--bg-main);
+  background-image: 
+    radial-gradient(circle at 100% 0%, rgba(245, 158, 11, 0.03) 0%, transparent 40%),
+    radial-gradient(circle at 0% 100%, rgba(56, 189, 248, 0.02) 0%, transparent 40%);
+}
+
+/* Specific Font for Arabic Mode */
+html[lang="ar"] body {
+  font-family: 'IBM Plex Sans Arabic', 'Space Grotesk', sans-serif;
+}
+
+.font-mono-prec {
+  font-family: 'Space Mono', monospace;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0c10;
+}
+::-webkit-scrollbar-thumb {
+  background: #232936;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3b4559;
+}
+
+/* Three.js Background Canvas */
+#v2-webgl-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+/* Architectural Card & Surfaces */
+.arch-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-hairline);
+  transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.arch-card:hover {
+  border-color: var(--border-active);
+  transform: translateY(-3px);
+  box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.5);
+}
+
+.arch-card-elevated {
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-hairline);
+}
+
+/* Precision Hairline Dividers */
+.hairline-b {
+  border-bottom: 1px solid var(--border-hairline);
+}
+.hairline-t {
+  border-top: 1px solid var(--border-hairline);
+}
+.hairline-r {
+  border-right: 1px solid var(--border-hairline);
+}
+.hairline-l {
+  border-left: 1px solid var(--border-hairline);
+}
+
+/* Badge & Indicators */
+.tag-pill {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  padding: 0.25rem 0.65rem;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #cbd5e1;
+}
+
+/* Filter buttons */
+.v2-filter-btn {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.78rem;
+  padding: 0.45rem 1rem;
+  border-radius: 4px;
+  border: 1px solid var(--border-hairline);
+  color: var(--text-muted);
+  background: transparent;
+  transition: all 0.2s ease;
+}
+.v2-filter-btn:hover {
+  color: var(--text-primary);
+  border-color: var(--border-active);
+}
+.v2-filter-btn.active {
+  background: #ffffff;
+  color: #0a0c10;
+  font-weight: 700;
+  border-color: #ffffff;
+}
+
+/* Modal Overlay */
+.v2-modal-overlay {
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+.v2-modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+.v2-modal-box {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
+}
+.v2-modal-overlay.active .v2-modal-box {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+}
+
+/* Interactive Grid Background Pattern */
+.bg-grid-pattern {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+}
