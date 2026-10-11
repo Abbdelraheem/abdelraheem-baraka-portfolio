@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CLIPZILA — One video in. A week of clips out.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --onyx: #050507;
+    --onyx-2: #0a0a0e;
+    --surface: rgba(255, 255, 255, 0.04);
+    --surface-2: rgba(255, 255, 255, 0.02);
+    --pearl: #ffffff;
+    --mist: rgba(255, 255, 255, 0.78);
+    --mist-2: rgba(255, 255, 255, 0.52);
+    --champagne: #ff7a3d;
+    --gold: #ff5a1f;
+    --gold-2: #e8430a;
+    --emerald: #7c2d12;
+    --hair: rgba(255, 255, 255, 0.08);
+    --hair-orange: rgba(255, 90, 31, 0.35);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; background-color:var(--onyx); }
+  body {
+    background-color: var(--onyx);
+    color: var(--pearl);
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, .font-display { font-family: 'Manrope', sans-serif; }
+  code, .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+  /* Ambient terrain & forge orange glow */
+  .amb {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background-color: #050507;
+    background-image:
+      linear-gradient(to bottom, rgba(5,5,7,0.4) 0%, rgba(5,5,7,0.1) 45%, rgba(5,5,7,0.7) 100%),
+      radial-gradient(ellipse at 50% 45%, rgba(255, 90, 31, 0.18) 0%, transparent 60%),
+      radial-gradient(circle at 80% 20%, rgba(255, 122, 61, 0.12) 0%, transparent 40%),
+      url('images/bg-terrain.webp');
+    background-size: cover;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+  }
+
+  /* 3D Ring Stage */
+  .bgstage {
+    position: fixed; inset: 0; z-index: 1; pointer-events: none;
+    display: flex; align-items: center; justify-content: center;
+    perspective: 1400px; perspective-origin: 50% 46%; overflow: hidden;
+  }
+  .bgring {
+    position: relative; width: 1px; height: 1px;
+    transform-style: preserve-3d; animation: ringspin 36s linear infinite;
+  }
+  @keyframes ringspin {
+    from { transform: rotateX(-10deg) rotateY(0deg); }
+    to { transform: rotateX(-10deg) rotateY(360deg); }
+  }
+
+  .clipcard {
+    position: absolute; width: 160px; height: 260px; border-radius: 16px; overflow: hidden;
+    transform-style: preserve-3d; border: 1px solid var(--hair-orange);
+    background: linear-gradient(165deg, rgba(20, 16, 22, 0.9), rgba(10, 10, 14, 0.85));
+    box-shadow: 0 20px 50px rgba(0,0,0,0.7), inset 0 0 25px rgba(255,90,31,0.08);
+    backface-visibility: hidden;
+  }
+  .clipcard img {
+    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.65;
+  }
+  .clipcard .card-grad {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.2) 100%);
+  }
+  .clipcard .scan-box {
+    position: absolute; top: 22%; left: 50%; transform: translateX(-50%);
+    width: 60px; height: 60px; border: 2px solid var(--champagne); border-radius: 8px;
+    box-shadow: 0 0 14px rgba(255,90,31,0.5);
+  }
+  .clipcard .flame-badge {
+    position: absolute; top: 10px; right: 10px;
+    background: rgba(255, 90, 31, 0.2); border: 1px solid rgba(255, 90, 31, 0.5);
+    color: #ffb27a; font-size: 0.7rem; font-weight: 700; padding: 2px 7px; border-radius: 100px;
+    display: flex; align-items: center; gap: 3px;
+  }
+  .clipcard .clip-caption {
+    position: absolute; bottom: 12px; left: 8px; right: 8px;
+    background: rgba(0,0,0,0.85); border: 1px solid rgba(255,255,255,0.12);
+    padding: 6px 8px; border-radius: 8px; font-size: 0.68rem; font-weight: 800;
+    text-align: center; text-transform: uppercase; color: #fff;
+  }
+
+  .wrap { position: relative; z-index: 3; max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+
+  /* Navbar */
+  nav {
+    position: sticky; top: 16px; z-index: 50;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 12px 24px; margin-top: 16px;
+    border-radius: 100px; background: rgba(10, 10, 14, 0.75);
+    backdrop-filter: blur(14px); border: 1px solid var(--hair);
+  }
+  .brand-logo {
+    display: flex; align-items: center; gap: 10px; text-decoration: none; color: #fff;
+  }
+  .brand-logo img {
+    width: 32px; height: 32px; object-fit: contain;
+    filter: drop-shadow(0 2px 10px rgba(255,90,31,0.4));
+  }
+  .brand-name {
+    font-size: 1.25rem; font-weight: 800; letter-spacing: 0.06em;
+    background: linear-gradient(to right, #fff 40%, var(--champagne) 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .nav-links { display: flex; align-items: center; gap: 24px; list-style: none; }
+  .nav-links a {
+    color: var(--mist-2); text-decoration: none; font-size: 0.88rem; font-weight: 500;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: #fff; }
+  .btn-forge {
+    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-2) 100%);
+    color: #fff; border: none; padding: 9px 20px; border-radius: 100px;
+    font-size: 0.86rem; font-weight: 700; cursor: pointer; text-decoration: none;
+    display: inline-flex; align-items: center; gap: 6px;
+    box-shadow: 0 4px 18px rgba(255, 90, 31, 0.35); transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .btn-forge:hover {
+    transform: translateY(-1px); box-shadow: 0 6px 24px rgba(255, 90, 31, 0.5);
+  }
+
+  /* Hero Section */
+  .hero {
+    text-align: center; padding: 70px 16px 40px; position: relative;
+  }
+  .pill-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 6px 16px; border-radius: 100px;
+    background: rgba(255, 90, 31, 0.1); border: 1px solid rgba(255, 90, 31, 0.3);
+    color: var(--champagne); font-size: 0.78rem; font-weight: 700; margin-bottom: 24px;
+  }
+  .hero-title {
+    font-size: clamp(2.4rem, 5.2vw, 4.4rem); font-weight: 800; line-height: 1.1;
+    letter-spacing: -0.03em; margin-bottom: 18px;
+  }
+  .hero-title span {
+    background: linear-gradient(135deg, #fff 30%, var(--champagne) 70%, var(--gold) 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .hero-sub {
+    font-size: clamp(1rem, 1.8vw, 1.25rem); color: var(--mist);
+    max-width: 660px; margin: 0 auto 36px; line-height: 1.6;
+  }
+
+  /* YouTube Input Bar */
+  .paste-bar-container {
+    max-width: 620px; margin: 0 auto 50px; position: relative;
+  }
+  .paste-bar {
+    display: flex; align-items: center; gap: 10px;
+    background: rgba(14, 14, 18, 0.85); backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 90, 31, 0.35); border-radius: 16px;
+    padding: 8px 10px 8px 18px; box-shadow: 0 10px 35px rgba(0,0,0,0.5), 0 0 20px rgba(255,90,31,0.15);
+  }
+  .paste-icon { color: var(--gold); font-size: 1.3rem; }
+  .paste-input {
+    flex: 1; background: transparent; border: none; outline: none;
+    color: #fff; font-size: 0.95rem; font-family: 'Inter', sans-serif;
+  }
+  .paste-input::placeholder { color: var(--mist-2); }
+  .paste-btn {
+    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-2) 100%);
+    color: #fff; border: none; border-radius: 12px; padding: 12px 22px;
+    font-weight: 700; font-size: 0.9rem; cursor: pointer; white-space: nowrap;
+    box-shadow: 0 4px 15px rgba(255, 90, 31, 0.4); transition: transform 0.2s;
+  }
+  .paste-btn:hover { transform: scale(1.02); }
+
+  /* Output Interactive Demo */
+  .demo-output {
+    display: none; margin: 20px auto 40px; max-width: 620px;
+    background: rgba(20, 16, 22, 0.9); border: 1px solid var(--hair-orange);
+    border-radius: 16px; padding: 20px; text-align: left;
+  }
+  .demo-output.active { display: block; animation: fadeIn 0.4s ease; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* Feature Grid */
+  .feature-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px; margin: 60px 0;
+  }
+  .feat-card {
+    background: rgba(12, 12, 16, 0.65); border: 1px solid var(--hair);
+    border-radius: 20px; padding: 28px; backdrop-filter: blur(8px);
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  .feat-card:hover {
+    border-color: var(--hair-orange); transform: translateY(-3px);
+  }
+  .feat-icon {
+    width: 44px; height: 44px; border-radius: 12px;
+    background: rgba(255, 90, 31, 0.12); border: 1px solid rgba(255, 90, 31, 0.3);
+    color: var(--champagne); display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; margin-bottom: 18px;
+  }
+  .feat-card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 8px; color: #fff; }
+  .feat-card p { font-size: 0.88rem; color: var(--mist-2); line-height: 1.55; }
+
+  /* Pricing Row */
+  .pricing-row {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px; margin: 40px 0 80px;
+  }
+  .price-card {
+    background: rgba(14, 14, 18, 0.7); border: 1px solid var(--hair);
+    border-radius: 20px; padding: 28px; position: relative;
+  }
+  .price-card.featured {
+    border-color: var(--gold);
+    box-shadow: 0 0 35px rgba(255, 90, 31, 0.2);
+  }
+  .price-badge {
+    position: absolute; top: 16px; right: 16px;
+    background: var(--gold); color: #fff; font-size: 0.7rem; font-weight: 800;
+    padding: 3px 10px; border-radius: 100px;
+  }
+  .price-val { font-size: 2.2rem; font-weight: 800; color: #fff; margin: 16px 0 8px; }
+  .price-val span { font-size: 0.9rem; color: var(--mist-2); font-weight: 400; }
+  .price-features { list-style: none; margin: 20px 0; font-size: 0.84rem; color: var(--mist); }
+  .price-features li { margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+  .price-features li::before { content: "✓"; color: var(--gold); font-weight: 900; }
+
+  /* Footer */
+  footer {
+    border-top: 1px solid var(--hair); padding: 30px 0 50px;
+    display: flex; justify-content: space-between; align-items: center;
+    color: var(--mist-2); font-size: 0.82rem;
+  }
+</style>
+</head>
+<body>
+
+<div class="amb"></div>
+
+<!-- 3D ROTATING CLIP RING -->
+<div class="bgstage">
+  <div class="bgring" id="bgRing">
+    <!-- 8 rotating cards placed in 3D circle -->
+    <div class="clipcard" style="transform: rotateY(0deg) translateZ(480px);">
+      <img src="images/bg-terrain.webp" alt="Clip 1" />
+      <div class="card-grad"></div>
+      <div class="flame-badge">🔥 98</div>
+      <div class="scan-box"></div>
+      <div class="clip-caption">THE AI TURNING POINT</div>
+    </div>
+    <div class="clipcard" style="transform: rotateY(45deg) translateZ(480px);">
+      <img src="images/bg-terrain.webp" alt="Clip 2" />
+      <div class="card-grad"></div>
+      <div class="flame-badge">🔥 94</div>
+      <div class="scan-box"></div>
+      <div class="clip-caption">10 VIRAL CLIPS IN 60S</div>
+    </div>
+    <div class="clipcard" style="transform: rotateY(90deg) translateZ(480px);">
+      <img src="images/bg-terrain.webp" alt="Clip 3" />
+      <div class="card-grad"></div>
+      <div class="flame-badge">🔥 91</div>
+      <div class="scan-box"></div>
+      <div class="clip-caption">AUTONOMOUS SPEAKER TRACK</div>
+    </div>
+    <div class="clipcard" style="transform: rotateY(135deg) translateZ(480px);">
+      <img src="images/bg-terrain.webp" alt="Clip 4" />
+      <div class="card-grad"></div>
+      <div class="flame-badge">🔥 89</div>
+      <div class="scan-box"></div>
+      <div class="clip-caption">DYNAMIC KARAOKE CAPTIONS</div>
+    </div>
+    <div class="clipcard" style="transform: rotateY(180deg) translateZ(480px);">
+      <img src="images/bg-terrain.webp" alt="Clip 5" />
+      <div class="card-grad"></div>
+      <div class="flame-badge">🔥 96</div>
+      <div class="scan-box"></div>
+      <div class="clip-caption">ZERO MANUAL OVERHEAD</div>
+    </div>
+    <div class="clipcard" style="transform: rotateY(225deg) translateZ(480px);">
+      <img src="images/bg-terrain.webp" alt="Clip 6" />
+      <div class="card-grad"></div>
+      <div class="flame-badge">🔥 90</div>
+      <div class="scan-box"></div>
+      <div class="clip-caption">HOOK RETENTION ENGINE</div>
+    </div>
+    <div class="clipcard" style="transform: rotateY(270deg) translateZ(480px);">
+      <img src="images/bg-terrain.webp" alt="Clip 7" />
+      <div class="card-grad"></div>
+      <div class="flame-badge">🔥 95</div>
+      <div class="scan-box"></div>
+      <div class="clip-caption">9:16 VERTICAL CROPPING</div>
+    </div>
+    <div class="clipcard" style="transform: rotateY(315deg) translateZ(480px);">
+      <img src="images/bg-terrain.webp" alt="Clip 8" />
+      <div class="card-grad"></div>
+      <div class="flame-badge">🔥 93</div>
+      <div class="scan-box"></div>
+      <div class="clip-caption">WHISPER AI SYNC</div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <!-- Nav -->
+  <nav>
+    <a href="#" class="brand-logo">
+      <img src="brand/logo.png" alt="Clipzila" onerror="this.style.display='none'" />
+      <span class="brand-name">CLIPZILA</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#pipeline">Architecture</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+    </ul>
+    <a href="#try" class="btn-forge">Start Clipping Free ↗</a>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" id="try">
+    <div class="pill-badge">
+      <span>⚡ AI VIDEO REPURPOSING PLATFORM</span>
+    </div>
+    <h1 class="hero-title">
+      One video in.<br/>
+      <span>A week of clips out.</span>
+    </h1>
+    <p class="hero-sub">
+      Transform long YouTube episodes and podcasts into viral 9:16 vertical shorts in under 90 seconds. Powered by Groq Whisper, InsightFace face tracking, and animated karaoke captions.
+    </p>
+
+    <!-- Paste Bar -->
+    <div class="paste-bar-container">
+      <div class="paste-bar">
+        <span class="paste-icon">▶</span>
+        <input type="text" id="ytUrlInput" class="paste-input" placeholder="Paste YouTube link (e.g. youtube.com/watch?v=dQw4w9WgXcQ)..." value="https://youtube.com/watch?v=lex-fridman-sam-altman-ai" />
+        <button type="button" id="btnGenClips" class="paste-btn">Generate 10 Clips ⚡</button>
+      </div>
+      <div id="demoOutput" class="demo-output">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+          <strong style="color:var(--champagne); font-size:0.9rem;">⚡ Clipzila AI Ingestion Complete!</strong>
+          <span style="font-family:'JetBrains Mono'; font-size:0.75rem; color:var(--mist-2);">10/10 Clips Generated</span>
+        </div>
+        <div style="font-size:0.84rem; color:var(--mist); line-height:1.6;">
+          • <strong>Hook Retention Score:</strong> 96/100 (Detected viral opener at 04:12)<br/>
+          • <strong>Face Tracking:</strong> Active centered speaker 9:16 crop<br/>
+          • <strong>Captions:</strong> Kinetic dynamic karaoke subtitles generated via Whisper AI<br/>
+          • <strong>Cloud Ingestion:</strong> Pushed to Cloudflare R2 bucket in 1.4s
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Grid -->
+  <section id="features" style="padding-top:20px;">
+    <div style="text-align:center; margin-bottom:30px;">
+      <h2 style="font-size:2rem; font-weight:800; color:#fff;">Engineered for Maximum Virality</h2>
+      <p style="color:var(--mist-2); font-size:0.95rem; margin-top:8px;">Zero manual video editing. Pure algorithmic extraction.</p>
+    </div>
+    <div class="feature-grid">
+      <div class="feat-card">
+        <div class="feat-icon">🎯</div>
+        <h3>InsightFace Speaker Tracking</h3>
+        <p>Computer vision continuously tracks active speakers, smoothly panning horizontal 16:9 cameras into centered, natural 9:16 vertical video.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">⚡</div>
+        <h3>Groq Whisper AI Transcription</h3>
+        <p>Sub-second audio transcription delivers word-level timestamps with 99.4% accuracy, generating synchronized karaoke typography.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🔥</div>
+        <h3>Algorithmic Hook Scoring</h3>
+        <p>Deep NLP analyzes emotional cadence, punchlines, and question-answer peaks to extract the exact 30–60 second clips that hook viewers.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">☁️</div>
+        <h3>Decoupled FFmpeg Cloud Workers</h3>
+        <p>GPU-accelerated video rendering offloaded to distributed workers, uploading directly to Cloudflare R2 without blocking API threads.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section id="pricing" style="padding-top:40px;">
+    <div style="text-align:center; margin-bottom:30px;">
+      <h2 style="font-size:2rem; font-weight:800; color:#fff;">Simple Credit Tiers</h2>
+      <p style="color:var(--mist-2); font-size:0.95rem; margin-top:8px;">Paddle & Whop automated subscription billing.</p>
+    </div>
+    <div class="pricing-row">
+      <div class="price-card">
+        <h3 style="font-size:1.1rem; color:#fff;">Starter</h3>
+        <div class="price-val">$19 <span>/ month</span></div>
+        <p style="color:var(--mist-2); font-size:0.82rem;">For solo creators & podcasters</p>
+        <ul class="price-features">
+          <li>60 Video Minutes / mo</li>
+          <li>InsightFace Speaker Centering</li>
+          <li>Standard 1080p Export</li>
+          <li>Auto TikTok & Reels Captions</li>
+        </ul>
+        <button class="btn-forge" style="width:100%; justify-content:center;">Get Starter</button>
+      </div>
+      <div class="price-card featured">
+        <div class="price-badge">POPULAR</div>
+        <h3 style="font-size:1.1rem; color:#fff;">Creator Pro</h3>
+        <div class="price-val">$49 <span>/ month</span></div>
+        <p style="color:var(--mist-2); font-size:0.82rem;">For serious channels & media brands</p>
+        <ul class="price-features">
+          <li>240 Video Minutes / mo</li>
+          <li>Priority GPU Video Workers</li>
+          <li>Kinetic Custom Brand Captions</li>
+          <li>No Watermark + 4K Upscale</li>
+        </ul>
+        <button class="btn-forge" style="width:100%; justify-content:center;">Get Creator Pro</button>
+      </div>
+      <div class="price-card">
+        <h3 style="font-size:1.1rem; color:#fff;">Agency</h3>
+        <div class="price-val">$129 <span>/ month</span></div>
+        <p style="color:var(--mist-2); font-size:0.82rem;">For agencies managing multiple clients</p>
+        <ul class="price-features">
+          <li>1,000 Video Minutes / mo</li>
+          <li>Multi-Tenant Team Seats</li>
+          <li>Direct Webhook & S3 Export</li>
+          <li>Dedicated Slack Support</li>
+        </ul>
+        <button class="btn-forge" style="width:100%; justify-content:center;">Get Agency</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div>© 2026 CLIPZILA Inc. Built with Next.js, Groq Whisper & GPU FFmpeg.</div>
+    <div>Engineered by Abdelraheem Baraka</div>
+  </footer>
+</div>
+
+<script>
+  // Interactive Clip Demo
+  const btnGen = document.getElementById('btnGenClips');
+  const demoOutput = document.getElementById('demoOutput');
+  if (btnGen && demoOutput) {
+    btnGen.addEventListener('click', () => {
+      btnGen.textContent = 'Processing Video... ⏳';
+      setTimeout(() => {
+        btnGen.textContent = '✔ Clips Ready!';
+        demoOutput.classList.add('active');
+      }, 700);
+    });
+  }
+</script>
+</body>
+</html>
